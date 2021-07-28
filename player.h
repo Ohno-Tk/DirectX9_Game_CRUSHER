@@ -1,59 +1,57 @@
 /*=============================================================================
 
-		ƒvƒŒƒCƒ„[[ player.h ]
+		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[[ player.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/07/28
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/07/28
-			E\‘¢‘Ì’Ç‰Á
+			ï¿½Eï¿½\ï¿½ï¿½ï¿½Ì’Ç‰ï¿½
 				PLAYER
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				void InitPlayer(void);	//	ƒvƒŒƒCƒ„[‚Ì‰Šú‰»
-				void UninitPlayer(void);	//	ƒvƒŒƒCƒ„[‚ÌI—¹
-				void UpdatePlayer(void);	//	ƒvƒŒƒCƒ„[‚ÌXV
-				void DrawPlayer(void);	//	ƒvƒŒƒCƒ„[‚Ì•`‰æ
-				PLAYER *GetPlayer(void);	//	ƒvƒŒƒCƒ„[î•ñ‚ÌŽæ“¾
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				void InitPlayer(void);	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+				void UninitPlayer(void);	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌIï¿½ï¿½
+				void UpdatePlayer(void);	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌXï¿½V
+				void DrawPlayer(void);	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì•`ï¿½ï¿½
+				PLAYER *GetPlayer(void);	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÌŽæ“¾
 		2016/08/29
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				bool *GetGoolFlag( void );	//	ƒS[ƒ‹‚µ‚½‚©‚Ç‚¤‚©‚Ìî•ñŽæ“¾
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				bool *GetGoolFlag( void );	//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½æ“¾
 -----------------------------------------------------------------------------*/
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define GRAVITY ( 1.0f )	//	d—Í
-#define TEX_WIDTH ( 0.5f )	//	ˆê‚Â‚ÌƒeƒNƒXƒ`ƒƒ‚Ì‰¡•
-#define TEX_HEIGHT ( 0.5f )	//	ˆê‚Â‚ÌƒeƒNƒXƒ`ƒƒ‚Ìc•
+#define GRAVITY ( 1.0f )	//	ï¿½dï¿½ï¿½
+#define TEX_WIDTH ( 0.5f )	//	ï¿½ï¿½Â‚Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½
+#define TEX_HEIGHT ( 0.5f )	//	ï¿½ï¿½Â‚Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìcï¿½ï¿½
 /*-----------------------------------------------------------------------------
-	\‘¢‘Ì
+	ï¿½\ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 typedef struct
 {
-	D3DXVECTOR2 Pos;	//	À•W
-	D3DXVECTOR2 OldPos;	//	‘O‰ñ‚ÌÀ•W
-	D3DXVECTOR2 Size;	//	‘å‚«‚³
-	D3DXVECTOR2 Move;	//	ˆÚ“®—Ê
-	float Direct;	//	Œü‚«
-	float HitMove_Y;	//	ƒqƒbƒg‚µ‚½Žž‚ÌˆÚ“®—ÊY
-	bool gool;	//	ƒS[ƒ‹‚µ‚½‚©
-	bool Hit;	//	“G‚É“–‚½‚Á‚½‚©
-	bool Jump;	//	ƒWƒƒƒ“ƒv‚µ‚½‚©
-	bool fall;	//	’n–Ê‚æ‚è‰º‚És‚Á‚½‚©
-	bool bUse;	//	Žg—p’†‚È‚çtrue
+	D3DXVECTOR2 Pos;	//	ï¿½ï¿½ï¿½W
+	D3DXVECTOR2 OldPos;	//	ï¿½Oï¿½ï¿½Ìï¿½ï¿½W
+	D3DXVECTOR2 Size;	//	ï¿½å‚«ï¿½ï¿½
+	D3DXVECTOR2 Move;	//	ï¿½Ú“ï¿½ï¿½ï¿½
+	float Direct;	//	ï¿½ï¿½ï¿½ï¿½
+	float HitMove_Y;	//	ï¿½qï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌˆÚ“ï¿½ï¿½ï¿½Y
+	bool gool;	//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	bool Hit;	//	ï¿½Gï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	bool Jump;	//	ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	bool fall;	//	ï¿½nï¿½Ê‚ï¿½è‰ºï¿½Ésï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	bool bUse;	//	ï¿½gï¿½pï¿½ï¿½ï¿½È‚ï¿½true
 }PLAYER;
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-void InitPlayer(void);	//	ƒvƒŒƒCƒ„[‚Ì‰Šú‰»
-void UninitPlayer(void);	//	ƒvƒŒƒCƒ„[‚ÌI—¹
-void UpdatePlayer(void);	//	ƒvƒŒƒCƒ„[‚ÌXV
-void DrawPlayer(void);	//	ƒvƒŒƒCƒ„[‚Ì•`‰æ
-PLAYER *GetPlayer(void);	//	ƒvƒŒƒCƒ„[î•ñ‚ÌŽæ“¾
+void InitPlayer(void);	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+void UninitPlayer(void);	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌIï¿½ï¿½
+void UpdatePlayer(void);	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌXï¿½V
+void DrawPlayer(void);	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì•`ï¿½ï¿½
+PLAYER *GetPlayer(void);	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÌŽæ“¾
 #endif

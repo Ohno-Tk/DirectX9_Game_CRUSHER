@@ -1,40 +1,38 @@
 /*=============================================================================
 
-		ƒ^ƒCƒgƒ‹[ Title.h ]
+		ï¿½^ï¿½Cï¿½gï¿½ï¿½[ Title.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/08/02
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/08/02
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾‚Ì’Ç‰Á
-				void InitTitle( void );	//	ƒ^ƒCƒgƒ‹‚Ì‰Šú‰»
-				void UninitTitle( void );	//	ƒ^ƒCƒgƒ‹‚ÌI—¹
-				void UpdateTitle( void );	//	ƒ^ƒCƒgƒ‹‚ÌXV
-				void DrawTitle( void );	//	ƒ^ƒCƒgƒ‹‚Ì•`‰æ
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ì’Ç‰ï¿½
+				void InitTitle( void );	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+				void UninitTitle( void );	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ÌIï¿½ï¿½
+				void UpdateTitle( void );	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ÌXï¿½V
+				void DrawTitle( void );	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 */
 #ifndef _TITLE_H_
 #define _TITLE_H_
 
-#define DELAY_PAD ( 10 )	//	ƒpƒbƒh‚ÌƒfƒBƒŒƒC
+#define DELAY_PAD ( 10 )	//	ï¿½pï¿½bï¿½hï¿½Ìƒfï¿½Bï¿½ï¿½ï¿½C
 /*-----------------------------------------------------------------------------
-	\‘¢‘Ì
+	ï¿½\ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 typedef struct
 {
-	D3DXVECTOR2 Pos;	//	À•W
-	D3DXVECTOR2 Size;	//	‘å‚«‚³
-	D3DXVECTOR2 move;	//	ˆÚ“®—Ê
+	D3DXVECTOR2 Pos;	//	ï¿½ï¿½ï¿½W
+	D3DXVECTOR2 Size;	//	ï¿½å‚«ï¿½ï¿½
+	D3DXVECTOR2 move;	//	ï¿½Ú“ï¿½ï¿½ï¿½
 }TITLE;
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-void InitTitle( void );	//	ƒ^ƒCƒgƒ‹‚Ì‰Šú‰»
-void UninitTitle( void );	//	ƒ^ƒCƒgƒ‹‚ÌI—¹
-void UpdateTitle( void );	//	ƒ^ƒCƒgƒ‹‚ÌXV
-void DrawTitle( void );	//	ƒ^ƒCƒgƒ‹‚Ì•`‰æ
+void InitTitle( void );	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+void UninitTitle( void );	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ÌIï¿½ï¿½
+void UpdateTitle( void );	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ÌXï¿½V
+void DrawTitle( void );	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 #endif

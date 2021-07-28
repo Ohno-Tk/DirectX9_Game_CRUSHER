@@ -1,54 +1,52 @@
 /*=============================================================================
 
-		‰_[ cloud.h ]
+		ï¿½_[ cloud.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/09/14
-			E’è”’è‹`’Ç‰Á
-				#define MAX_CLOUD	//	‰_‚ÌÅ‘å”
-			E\‘¢‘Ì’Ç‰Á
+			ï¿½Eï¿½è”ï¿½ï¿½`ï¿½Ç‰ï¿½
+				#define MAX_CLOUD	//	ï¿½_ï¿½ÌÅ‘å”
+			ï¿½Eï¿½\ï¿½ï¿½ï¿½Ì’Ç‰ï¿½
 				typedef struct
 				{
-					D3DXVECTOR2 pos;	//	À•W
-					D3DXVECTOR2 size;	//	‘å‚«‚³
-					float move_X;	//	ˆÚ“®—Ê
+					D3DXVECTOR2 pos;	//	ï¿½ï¿½ï¿½W
+					D3DXVECTOR2 size;	//	ï¿½å‚«ï¿½ï¿½
+					float move_X;	//	ï¿½Ú“ï¿½ï¿½ï¿½
 					bool use;
 				}CLOUD;
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				void InitCloud(void);	//	‰_‚Ì‰Šú‰»
-				void UninitCloud(void);	//	‰_‚ÌI—¹
-				void UpdateCloud(void);	//	‰_‚ÌXV
-				void DrawCloud(void);	//	‰_‚Ì•`‰æ
-				CLOUD *GetCloud( void );	//	‰_î•ñ‚Ìæ“¾
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				void InitCloud(void);	//	ï¿½_ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+				void UninitCloud(void);	//	ï¿½_ï¿½ÌIï¿½ï¿½
+				void UpdateCloud(void);	//	ï¿½_ï¿½ÌXï¿½V
+				void DrawCloud(void);	//	ï¿½_ï¿½Ì•`ï¿½ï¿½
+				CLOUD *GetCloud( void );	//	ï¿½_ï¿½ï¿½ï¿½Ìæ“¾
 		2016/09/27
-			E’è”’è‹`íœ
-				#define MAX_CLOUD	//	‰_‚ÌÅ‘å”
+			ï¿½Eï¿½è”ï¿½ï¿½`ï¿½íœ
+				#define MAX_CLOUD	//	ï¿½_ï¿½ÌÅ‘å”
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/09/14
 -----------------------------------------------------------------------------*/
 #ifndef _CLOUD_H_
 #define _CLOUD_H_
 /*-----------------------------------------------------------------------------
-	\‘¢‘Ì
+	ï¿½\ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 typedef struct
 {
-	D3DXVECTOR2 pos;	//	À•W
-	D3DXVECTOR2 size;	//	‘å‚«‚³
-	float move_X;	//	ˆÚ“®—Ê
+	D3DXVECTOR2 pos;	//	ï¿½ï¿½ï¿½W
+	D3DXVECTOR2 size;	//	ï¿½å‚«ï¿½ï¿½
+	float move_X;	//	ï¿½Ú“ï¿½ï¿½ï¿½
 	bool use;
 }CLOUD;
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-void InitCloud(void);	//	‰_‚Ì‰Šú‰»
-void UninitCloud(void);	//	‰_‚ÌI—¹
-void UpdateCloud(void);	//	‰_‚ÌXV
-void DrawCloud(void);	//	‰_‚Ì•`‰æ
-CLOUD *GetCloud( void );	//	‰_î•ñ‚Ìæ“¾
+void InitCloud(void);	//	ï¿½_ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+void UninitCloud(void);	//	ï¿½_ï¿½ÌIï¿½ï¿½
+void UpdateCloud(void);	//	ï¿½_ï¿½ÌXï¿½V
+void DrawCloud(void);	//	ï¿½_ï¿½Ì•`ï¿½ï¿½
+CLOUD *GetCloud( void );	//	ï¿½_ï¿½ï¿½ï¿½Ìæ“¾
 #endif

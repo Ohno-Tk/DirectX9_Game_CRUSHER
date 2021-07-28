@@ -1,19 +1,17 @@
 /*=============================================================================
 
-		ƒtƒF[ƒhˆ—[ fade.cpp ]
+		ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½[ fade.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/07/04
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/04/18
 =============================================================================*/
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include <math.h>
@@ -25,46 +23,46 @@
 #include "result.h"
 
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define FADE_TEXTURENAME "data/TEXTURE/func/fade.png"
 
-#define FADE_POS_X ( 0.0f )	//	ƒtƒF[ƒh‚Ì•\¦ˆÊ’u‚w
-#define FADE_POS_Y ( 0.0f )	//	ƒtƒF[ƒh‚Ì•\¦ˆÊ’u‚x
+#define FADE_POS_X ( 0.0f )	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½w
+#define FADE_POS_Y ( 0.0f )	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½x
 
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-HRESULT MakeVertexFade( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
-void SetColorFade(D3DXCOLOR g_colorFade);	//	’¸“_ƒJƒ‰[‚Ìİ’è
+HRESULT MakeVertexFade( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+void SetColorFade(D3DXCOLOR g_colorFade);	//	ï¿½ï¿½ï¿½_ï¿½Jï¿½ï¿½ï¿½[ï¿½Ìİ’ï¿½
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
 LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferFade = NULL;
-LPDIRECT3DTEXTURE9 g_pTextureFade = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+LPDIRECT3DTEXTURE9 g_pTextureFade = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-D3DXCOLOR g_colorFade;	//	ƒtƒF[ƒhF
-FADE g_fade;	//	ƒtƒF[ƒhó‘Ô
-MODE g_modenext = MODE_TITLE;	//	Ÿ‚Ìƒ‚[ƒh
+D3DXCOLOR g_colorFade;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½F
+FADE g_fade;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½
+MODE g_modenext = MODE_TITLE;	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 
 bool g_FadeUse = false;
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT InitFade( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒtƒF[ƒh‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT InitFade( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½tï¿½Fï¿½[ï¿½hï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void InitFade( void )
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , FADE_TEXTURENAME , &g_pTextureFade  ) ) )
 	{
-		MessageBox( NULL , "ƒeƒNƒXƒ`ƒƒ‚Ì“Ç‚İ‚İ‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½İ‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}
 
-	MakeVertexFade( pDevice );	//	’¸“_‚Ìì¬
+	MakeVertexFade( pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 
 	g_colorFade = D3DXCOLOR(0.0f , 0.0f , 0.0f , 1.0f);
 	g_fade = FADE_IN;
@@ -73,41 +71,41 @@ void InitFade( void )
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitFade( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒtƒF[ƒh‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitFade( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½tï¿½Fï¿½[ï¿½hï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitFade( void )
 {
-	if( g_pTextureFade != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	if( g_pTextureFade != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureFade -> Release();
 		g_pTextureFade = NULL;
 	}
-	if(g_pVtxBufferFade != NULL)	//	’¸“_ƒoƒbƒtƒ@‚ÌŠJ•ú
+	if(g_pVtxBufferFade != NULL)	//	ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌŠJï¿½ï¿½
 	{
 		g_pVtxBufferFade -> Release();
 		g_pVtxBufferFade = NULL;
 	}
 }
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdataFade( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒtƒF[ƒh‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdataFade( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½tï¿½Fï¿½[ï¿½hï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdateFade( void )
 {
 
-	if(g_fade == FADE_NONE)	//	ƒtƒF[ƒh‚ª‚È‚¢‚Ìˆ—
+	if(g_fade == FADE_NONE)	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	{
 		return;
 	}
-	if(g_fade == FADE_IN)	//	ƒtƒF[ƒhƒCƒ“‚Ìˆ—
+	if(g_fade == FADE_IN)	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	{
-		g_colorFade.a -= FADE_RATE;	//	a’l‚ğŒ¸Z‚µ‚ÄŒã‚ë‚Ì‰æ–Ê‚ğ•‚‚©‚Ñã‚ª‚ç‚¹‚é
-		//	ƒtƒF[ƒhƒCƒ“‚ÌI—¹
+		g_colorFade.a -= FADE_RATE;	//	aï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ÄŒï¿½ï¿½Ì‰ï¿½Ê‚ğ•‚‚ï¿½ï¿½Ñã‚ªï¿½ç‚¹ï¿½ï¿½
+		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½ÌIï¿½ï¿½
 		if(g_colorFade.a < 0.0f)
 		{
 			g_colorFade.a = 0.0f;
@@ -116,94 +114,94 @@ void UpdateFade( void )
 			g_FadeUse = false;
 		}
 	}
-	else if(g_fade == FADE_OUT)	//	ƒtƒF[ƒhƒAƒEƒg‚Ìˆ—
+	else if(g_fade == FADE_OUT)	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	{
-		g_colorFade.a += FADE_RATE;	//	a’l‚ğ‰ÁZ‚µ‚ÄŒã‚ë‚Ì‰æ–Ê‚ğÁ‚µ‚Ä‚¢‚­
+		g_colorFade.a += FADE_RATE;	//	aï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ÄŒï¿½ï¿½Ì‰ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
 
-		//	ƒtƒF[ƒhƒAƒEƒg‚ÌI—¹
+		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ÌIï¿½ï¿½
 		if(g_colorFade.a > 1.0f)
 		{
 			g_colorFade.a = 1.0f;
-			g_fade = FADE_IN;	//	ƒtƒF[ƒhƒCƒ“‚Éˆ—‚ÌØ‚è‘Ö‚¦
+			g_fade = FADE_IN;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ÌØ‚ï¿½Ö‚ï¿½
 			SetMode(g_modenext);
 
 		}
 	}
-	//	’¸“_ƒJƒ‰[‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Jï¿½ï¿½ï¿½[ï¿½Ìİ’ï¿½
 	SetColorFade(g_colorFade);
 
 }
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawFade( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒtƒF[ƒh‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawFade( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawFade( void )
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½Ìİ’ï¿½
 	pDevice -> SetFVF( FVF_VERTEX_2D );
 
-	//	ƒXƒgƒŠ[ƒ€‚ğİ’è‚·‚é
+	//	ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½
 	pDevice -> SetStreamSource( 0 , g_pVtxBufferFade , 0 , sizeof( VERTEX_2D ) );
 
-	//	ƒeƒNƒXƒ`ƒƒİ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½İ’ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureFade );
 
 	//pDevice -> SetRenderState( D3DRS_BLENDOP , D3DBLENDOP_ADD );
 	//pDevice -> SetRenderState( D3DRS_SRCBLEND , D3DBLEND_SRCALPHA );
 	//pDevice -> SetRenderState( D3DRS_DESTBLEND , D3DBLEND_ONE );
 
-	//	ƒtƒF[ƒh‚Ì•`‰æ
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 0, NUM_POLYGON);
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void MakeVertexFade( LPDIRECT3DDEVICE9 pDevice )
- ˆø”:		LPDIRECT3DDEVICE9 pDevice
- –ß‚è’l:	‚È‚µ
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	void MakeVertexFade( LPDIRECT3DDEVICE9 pDevice )
+ ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 pDevice
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 HRESULT MakeVertexFade( LPDIRECT3DDEVICE9 pDevice )
 {
 	
-	// FAILEDƒ}ƒNƒ‚ÅƒGƒ‰[ƒ`ƒFƒbƒN
+	// FAILEDï¿½}ï¿½Nï¿½ï¿½ï¿½ÅƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if ( FAILED ( pDevice -> CreateVertexBuffer ( sizeof ( VERTEX_2D ) * NUM_VERTEX , D3DUSAGE_WRITEONLY , FVF_VERTEX_2D , D3DPOOL_MANAGED , &g_pVtxBufferFade , NULL ) ) )
 	{
 		return E_FAIL;
 	}
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ğƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ğæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferFade -> Lock ( 0 ,
 		                          0 ,
-								  ( void** )&pVtx ,      // ‰¼‘z(‹^—)ƒAƒhƒŒƒXæ“¾
+								  ( void** )&pVtx ,      // ï¿½ï¿½ï¿½z(ï¿½^ï¿½ï¿½)ï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½æ“¾
 								  0 );
 
-	//	’¸“_À•W‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( FADE_POS_X , FADE_POS_Y , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( FADE_POS_X+SCREEN_WIDTH , FADE_POS_Y , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( FADE_POS_X , FADE_POS_Y+SCREEN_HEIGHT , 0.0f );
 	pVtx[ 3 ].pos = D3DXVECTOR3( FADE_POS_X+SCREEN_WIDTH , FADE_POS_Y+SCREEN_HEIGHT , 0.0f );
 
 
-	//	À•W•ÏŠ·Ï‚İ’¸“_ƒtƒ‰ƒO‚Ìİ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚İ’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½Ìİ’ï¿½
 	pVtx[ 0 ].rhw = 1.0f;
 	pVtx[ 1 ].rhw = 1.0f;
 	pVtx[ 2 ].rhw = 1.0f;
 	pVtx[ 3 ].rhw = 1.0f;
 
-	//	’¸“_F‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½Ìİ’ï¿½
 	pVtx[ 0 ].color = D3DXCOLOR( 255 , 255 , 255 , 255 );
 	pVtx[ 1 ].color = D3DXCOLOR( 255 , 255 , 255 , 255 );
 	pVtx[ 2 ].color = D3DXCOLOR( 255 , 255 , 255 , 255 );
 	pVtx[ 3 ].color = D3DXCOLOR( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚Ìİ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
@@ -216,22 +214,22 @@ HRESULT MakeVertexFade( LPDIRECT3DDEVICE9 pDevice )
 
 }
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void SetColorFade(D3DXCOLOR g_colorFade)
- ˆø”:		D3DXCOLOR g_colorFade
- –ß‚è’l:	‚È‚µ
- à–¾:		’¸“_ƒJƒ‰[‚Ìİ’è
+ ï¿½Öï¿½ï¿½ï¿½:	void SetColorFade(D3DXCOLOR g_colorFade)
+ ï¿½ï¿½ï¿½ï¿½:		D3DXCOLOR g_colorFade
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Jï¿½ï¿½ï¿½[ï¿½Ìİ’ï¿½
 -----------------------------------------------------------------------------*/
 void SetColorFade(D3DXCOLOR colorFade)
 {
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ğƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ğæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferFade -> Lock ( 0 ,
 		                          0 ,
-								  ( void** )&pVtx ,      // ‰¼‘z(‹^—)ƒAƒhƒŒƒXæ“¾
+								  ( void** )&pVtx ,      // ï¿½ï¿½ï¿½z(ï¿½^ï¿½ï¿½)ï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½æ“¾
 								  0 );
-	//	’¸“_F‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½Ìİ’ï¿½
 	pVtx[ 0 ].color = D3DXCOLOR( colorFade.r , colorFade.g , colorFade.b , colorFade.a );
 	pVtx[ 1 ].color = D3DXCOLOR( colorFade.r , colorFade.g , colorFade.b , colorFade.a );
 	pVtx[ 2 ].color = D3DXCOLOR( colorFade.r , colorFade.g , colorFade.b , colorFade.a );
@@ -241,11 +239,11 @@ void SetColorFade(D3DXCOLOR colorFade)
 
 }
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void SetFade( FADE fade , MODE modenext )
- ˆø”:		FADE fade
+ ï¿½Öï¿½ï¿½ï¿½:	void SetFade( FADE fade , MODE modenext )
+ ï¿½ï¿½ï¿½ï¿½:		FADE fade
 			MODE modenext
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒtƒF[ƒh‚Ìİ’è
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½tï¿½Fï¿½[ï¿½hï¿½Ìİ’ï¿½
 -----------------------------------------------------------------------------*/
 void SetFade( FADE fade , MODE modenext )
 {
@@ -256,10 +254,10 @@ void SetFade( FADE fade , MODE modenext )
 
 }
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	MODE *GetNextMode( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	return &g_modenext;
- à–¾:		Ÿ‚Ìƒ‚[ƒh‚Ì’Ç‰Á
+ ï¿½Öï¿½ï¿½ï¿½:	MODE *GetNextMode( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	return &g_modenext;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½hï¿½Ì’Ç‰ï¿½
 -----------------------------------------------------------------------------*/
 MODE *GetNextMode( void )
 {
@@ -267,10 +265,10 @@ MODE *GetNextMode( void )
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	bool *GetFadeUse( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	return &g_FadeUse;
- à–¾:		ƒtƒF[ƒh’†‚©‚Ç‚¤‚©
+ ï¿½Öï¿½ï¿½ï¿½:	bool *GetFadeUse( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	return &g_FadeUse;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 bool *GetFadeUse( void )
 {

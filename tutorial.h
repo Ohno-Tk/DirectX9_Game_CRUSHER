@@ -1,43 +1,41 @@
 /*=============================================================================
 
-		à–¾[ tutorial.h ]
+		ï¿½ï¿½ï¿½ï¿½[ tutorial.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/09/01
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/09/01
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				void InitTutorial(void);	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì‰Šú‰»
-				void UninitTutorial(void);	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚ÌI—¹
-				void UpdateTutorial(void);	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚ÌXV
-				void DrawTutorial(void);	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì•`‰æ
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				void InitTutorial(void);	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+				void UninitTutorial(void);	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌIï¿½ï¿½
+				void UpdateTutorial(void);	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌXï¿½V
+				void DrawTutorial(void);	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #ifndef _TUTORIAL_H_
 #define _TUTORIAL_H_
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define MAX_TUTORIAL ( 5 )
 /*-----------------------------------------------------------------------------
-	\‘¢‘Ì
+	ï¿½\ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 typedef struct
 {
-	D3DXVECTOR2 pos;	//	À•W
-	D3DXVECTOR2 size;	//	‘å‚«‚³
-	float Move_X;	//	ˆÚ“®—Ê
+	D3DXVECTOR2 pos;	//	ï¿½ï¿½ï¿½W
+	D3DXVECTOR2 size;	//	ï¿½å‚«ï¿½ï¿½
+	float Move_X;	//	ï¿½Ú“ï¿½ï¿½ï¿½
 }TUTORIAL;
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-void InitTutorial(void);	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì‰Šú‰»
-void UninitTutorial(void);	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚ÌI—¹
-void UpdateTutorial(void);	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚ÌXV
-void DrawTutorial(void);	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì•`‰æ
-TUTORIAL *GetTutorial( void );	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹î•ñ‚ÌŽæ“¾
+void InitTutorial(void);	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+void UninitTutorial(void);	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌIï¿½ï¿½
+void UpdateTutorial(void);	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌXï¿½V
+void DrawTutorial(void);	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
+TUTORIAL *GetTutorial( void );	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ÌŽæ“¾
 #endif

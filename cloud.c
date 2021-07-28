@@ -1,34 +1,32 @@
 /*=============================================================================
 
-		‰_[ cloud.cpp ]
+		ï¿½_[ cloud.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/09/14
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 	2016/09/14
-		Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+		ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 			#include <stdio.h>
 			#include "main.h"
 			#include "cloud.h"
-		E’è”’è‹`’Ç‰Á
+		ï¿½Eï¿½è”ï¿½ï¿½`ï¿½Ç‰ï¿½
 			#define CLOUD_TEXTURENAME
-		EƒOƒ[ƒoƒ‹•Ï”’Ç‰Á
-			LPDIRECT3DTEXTURE9 g_pTextureCloud = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-			LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferCloud = NULL;//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
+		ï¿½Eï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½ï¿½Ç‰ï¿½
+			LPDIRECT3DTEXTURE9 g_pTextureCloud = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+			LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferCloud = NULL;//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
 
 			CLOUD g_Cloud[ MAX_CLOUD ];
-		Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-			HRESULT MakeVertexCloud( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
-			void UpdateCloudAct( VERTEX_2D* pVtx , int CntCloud );	//	XVŽž‚Ì‰_‚Ìs“®
-			void MakeVertexCloudPos( VERTEX_2D* pVtx , int CntCloud );	//	À•W‚ÌXV
+		ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+			HRESULT MakeVertexCloud( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+			void UpdateCloudAct( VERTEX_2D* pVtx , int CntCloud );	//	ï¿½Xï¿½Vï¿½ï¿½ï¿½Ì‰_ï¿½Ìsï¿½ï¿½
+			void MakeVertexCloudPos( VERTEX_2D* pVtx , int CntCloud );	//	ï¿½ï¿½ï¿½Wï¿½ÌXï¿½V
 -------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include <time.h>
@@ -36,49 +34,49 @@
 #include "cloud.h"
 #include "fade.h"
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define CLOUD_TEXTURENAME "data/TEXTURE/game/‰_.png"
+#define CLOUD_TEXTURENAME "data/TEXTURE/game/ï¿½_.png"
 
-#define MAX_CLOUD ( 7 )	//	‰_‚ÌÅ‘å”
+#define MAX_CLOUD ( 7 )	//	ï¿½_ï¿½ÌÅ‘å”
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-LPDIRECT3DTEXTURE9 g_pTextureCloud = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferCloud = NULL;//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
+LPDIRECT3DTEXTURE9 g_pTextureCloud = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferCloud = NULL;//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
 
 CLOUD g_Cloud[ MAX_CLOUD ];
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-HRESULT MakeVertexCloud( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
-void UpdateCloudAct( VERTEX_2D* pVtx , int CntCloud );	//	XVŽž‚Ì‰_‚Ìs“®
-void MakeVertexCloudPos( VERTEX_2D* pVtx , int CntCloud );	//	À•W‚ÌXV
+HRESULT MakeVertexCloud( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+void UpdateCloudAct( VERTEX_2D* pVtx , int CntCloud );	//	ï¿½Xï¿½Vï¿½ï¿½ï¿½Ì‰_ï¿½Ìsï¿½ï¿½
+void MakeVertexCloudPos( VERTEX_2D* pVtx , int CntCloud );	//	ï¿½ï¿½ï¿½Wï¿½ÌXï¿½V
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void InitCloud(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		‰_‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void InitCloud(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½_ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void InitCloud(void)
 {
 	int CntCloud;
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	ŽŸ‚Ìƒ‚[ƒh‚ÌŽæ“¾
+	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½hï¿½ÌŽæ“¾
 	MODE *Mode = GetNextMode();
 
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , CLOUD_TEXTURENAME , &g_pTextureCloud  ) ) )
 	{
-		MessageBox( NULL , "‰_‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½_ï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
 	if( *Mode == MODE_TITLE )
 	{
-		//	‰Šú‰»
+		//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for( CntCloud = 0 ; CntCloud < MAX_CLOUD ; CntCloud++ )
 		{
 			g_Cloud[ CntCloud ].pos.x = 0.0f;
@@ -114,7 +112,7 @@ void InitCloud(void)
 
 	else
 	{
-		//	‰Šú‰»
+		//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for( CntCloud = 0 ; CntCloud < MAX_CLOUD - 3 ; CntCloud++ )
 		{
 			g_Cloud[ CntCloud ].pos.x = rand()%800;
@@ -136,23 +134,23 @@ void InitCloud(void)
 		}	//	end of for
 	}
 
-	MakeVertexCloud( pDevice );	//	’¸“_‚Ìì¬
+	MakeVertexCloud( pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitCloud(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		‰_‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitCloud(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½_ï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitCloud(void)
 {
-	if( g_pTextureCloud != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	if( g_pTextureCloud != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureCloud -> Release();
 		g_pTextureCloud = NULL;
 	}	//	end of if
-	if(g_pVtxBufferCloud != NULL)	//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^‚Ì‰ð•ú
+	if(g_pVtxBufferCloud != NULL)	//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½Ì‰ï¿½ï¿½
 	{
 		g_pVtxBufferCloud -> Release();
 		g_pVtxBufferCloud = NULL;
@@ -160,10 +158,10 @@ void UninitCloud(void)
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdateCloud(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		‰_‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdateCloud(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½_ï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdateCloud(void)
 {
@@ -171,39 +169,39 @@ void UpdateCloud(void)
 
 	VERTEX_2D* pVtx;
 
-	//ƒoƒbƒtƒ@‚ðƒƒbƒN‚µ‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾‚·‚é
+	//ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	g_pVtxBufferCloud -> Lock( 0 , 0 ,	( void** )&pVtx , 0 );
 
 	for( CntCloud = 0 ; CntCloud < MAX_CLOUD ; CntCloud++ )
 	{
 		if( g_Cloud[ CntCloud ].use = true )
 		{
-			//	XVŽž‚Ì‰_‚Ì“®‚«
+			//	ï¿½Xï¿½Vï¿½ï¿½ï¿½Ì‰_ï¿½Ì“ï¿½ï¿½ï¿½
 			UpdateCloudAct( pVtx , CntCloud );
 
 		}	//	end of if
 	}	//	end of for
 
-	g_pVtxBufferCloud -> Unlock(); //‚±‚êˆÈ~G‚ê‚Ä‚Í‚¢‚¯‚È‚¢
+	g_pVtxBufferCloud -> Unlock(); //ï¿½ï¿½ï¿½ï¿½È~ï¿½Gï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawCloud(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		‰_‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawCloud(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½_ï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawCloud(void)
 {
 	int CntCloud;
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ÌÝ’ï¿½
 	pDevice -> SetFVF( FVF_VERTEX_2D );
 
-	//	ƒXƒgƒŠ[ƒ€‚ðÝ’è‚·‚é
+	//	ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½Ý’è‚·ï¿½ï¿½
 	pDevice -> SetStreamSource( 0 , g_pVtxBufferCloud , 0 , sizeof( VERTEX_2D ) );
 
 	pDevice -> SetTexture( 0 , g_pTextureCloud );
@@ -212,62 +210,62 @@ void DrawCloud(void)
 	{
 		if( g_Cloud[CntCloud].use == true )
 		{
-			//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+			//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 			pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , CntCloud * NUM_VERTEX , NUM_POLYGON);
 		}	//	end of if
 	}	//	end of for
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT MakeVertexCloud( LPDIRECT3DDEVICE9 pDevice )
- ˆø”:		LPDIRECT3DDEVICE9 pDevice
- –ß‚è’l:	—Ç‚¢ê‡	return S_OK;
-			ƒ_ƒ‚Èê‡	return E_FAIL;
- à–¾:		‰_‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT MakeVertexCloud( LPDIRECT3DDEVICE9 pDevice )
+ ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 pDevice
+ ï¿½ß‚ï¿½l:	ï¿½Ç‚ï¿½ï¿½ê‡	return S_OK;
+			ï¿½_ï¿½ï¿½ï¿½Èê‡	return E_FAIL;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½_ï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 HRESULT MakeVertexCloud( LPDIRECT3DDEVICE9 pDevice )
 {
 	int CntCloud;
 
-	// FAILEDƒ}ƒNƒ‚ÅƒGƒ‰[ƒ`ƒFƒbƒN
+	// FAILEDï¿½}ï¿½Nï¿½ï¿½ï¿½ÅƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if ( FAILED ( pDevice -> CreateVertexBuffer ( sizeof ( VERTEX_2D ) * NUM_VERTEX * MAX_CLOUD  , D3DUSAGE_WRITEONLY , FVF_VERTEX_2D , D3DPOOL_MANAGED , &g_pVtxBufferCloud , NULL ) ) )
 	{
 		return E_FAIL;
 	}	//	end of if
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferCloud -> Lock ( 0 , 0 , ( void** )&pVtx ,  0 );
 
 	for( CntCloud = 0 ; CntCloud < MAX_CLOUD ; CntCloud++ )
 	{
-		//	’¸“_À•W‚ÌÝ’è
+		//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 		pVtx[ CntCloud*NUM_VERTEX+0 ].pos = D3DXVECTOR3( g_Cloud[CntCloud].pos.x                            , g_Cloud[CntCloud].pos.y , 0.0f );
 		pVtx[ CntCloud*NUM_VERTEX+1 ].pos = D3DXVECTOR3( g_Cloud[CntCloud].pos.x + g_Cloud[CntCloud].size.x , g_Cloud[CntCloud].pos.y , 0.0f );
 		pVtx[ CntCloud*NUM_VERTEX+2 ].pos = D3DXVECTOR3( g_Cloud[CntCloud].pos.x                            , g_Cloud[CntCloud].pos.y+g_Cloud[CntCloud].size.y , 0.0f );
 		pVtx[ CntCloud*NUM_VERTEX+3 ].pos = D3DXVECTOR3( g_Cloud[CntCloud].pos.x + g_Cloud[CntCloud].size.x , g_Cloud[CntCloud].pos.y+g_Cloud[CntCloud].size.y , 0.0f );
 
-		//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+		//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 		pVtx[ CntCloud*NUM_VERTEX+0 ].rhw = 1.0f;
 		pVtx[ CntCloud*NUM_VERTEX+1 ].rhw = 1.0f;
 		pVtx[ CntCloud*NUM_VERTEX+2 ].rhw = 1.0f;
 		pVtx[ CntCloud*NUM_VERTEX+3 ].rhw = 1.0f;
 
-		//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+		//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 		pVtx[ CntCloud*NUM_VERTEX+0 ].rhw = 1.0f;
 		pVtx[ CntCloud*NUM_VERTEX+1 ].rhw = 1.0f;
 		pVtx[ CntCloud*NUM_VERTEX+2 ].rhw = 1.0f;
 		pVtx[ CntCloud*NUM_VERTEX+3 ].rhw = 1.0f;
 
-		//	’¸“_F‚ÌÝ’è
+		//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 		pVtx[ CntCloud*NUM_VERTEX+0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntCloud*NUM_VERTEX+1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntCloud*NUM_VERTEX+2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntCloud*NUM_VERTEX+3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-		//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 		pVtx[ CntCloud*NUM_VERTEX+0 ].tex = D3DXVECTOR2( 0 , 0 );
 		pVtx[ CntCloud*NUM_VERTEX+1 ].tex = D3DXVECTOR2( 1 , 0 );
 		pVtx[ CntCloud*NUM_VERTEX+2 ].tex = D3DXVECTOR2( 0 , 1 );
@@ -280,18 +278,18 @@ HRESULT MakeVertexCloud( LPDIRECT3DDEVICE9 pDevice )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdateCloudAct( VERTEX_2D* pVtx , int CntCloud )
- ˆø”:		VERTEX_2D* pVtx
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdateCloudAct( VERTEX_2D* pVtx , int CntCloud )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
 			int CntCloud
- –ß‚è’l:	‚È‚µ
- à–¾:		XVŽž‚Ì‰_‚Ì“®‚«
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½Vï¿½ï¿½ï¿½Ì‰_ï¿½Ì“ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UpdateCloudAct( VERTEX_2D* pVtx , int CntCloud )
 {
 
 	g_Cloud[ CntCloud ].pos.x -= g_Cloud[ CntCloud ].move_X;
 
-	//	‰æ–ÊŠOˆ—
+	//	ï¿½ï¿½ÊŠOï¿½ï¿½ï¿½ï¿½
 	if( g_Cloud[ CntCloud ].pos.x + g_Cloud[ CntCloud ].size.x < 0 )
 	{
 		g_Cloud[ CntCloud ].pos.x = SCREEN_WIDTH;
@@ -301,17 +299,17 @@ void UpdateCloudAct( VERTEX_2D* pVtx , int CntCloud )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void MakeVertexCloudPos( VERTEX_2D* pVtx , int CntCloud )
- ˆø”:		VERTEX_2D* pVtx
+ ï¿½Öï¿½ï¿½ï¿½:	void MakeVertexCloudPos( VERTEX_2D* pVtx , int CntCloud )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
 			int CntCloud
- –ß‚è’l:	‚È‚µ
- à–¾:		À•W‚ÌXV
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½Wï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void MakeVertexCloudPos( VERTEX_2D* pVtx , int CntCloud )
 {
 	pVtx += CntCloud * NUM_VERTEX;
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( g_Cloud[CntCloud].pos.x                            , g_Cloud[CntCloud].pos.y , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( g_Cloud[CntCloud].pos.x + g_Cloud[CntCloud].size.x , g_Cloud[CntCloud].pos.y , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( g_Cloud[CntCloud].pos.x                            , g_Cloud[CntCloud].pos.y+g_Cloud[CntCloud].size.y , 0.0f );
@@ -319,10 +317,10 @@ void MakeVertexCloudPos( VERTEX_2D* pVtx , int CntCloud )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	CLOUD *GetCloud( void )
- ˆø”:		
- –ß‚è’l:	‚È‚µ
- à–¾:		‰_‚Ìî•ñ‚ÌŽæ“¾
+ ï¿½Öï¿½ï¿½ï¿½:	CLOUD *GetCloud( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½_ï¿½Ìï¿½ï¿½ÌŽæ“¾
 -----------------------------------------------------------------------------*/
 CLOUD *GetCloud( void )
 {

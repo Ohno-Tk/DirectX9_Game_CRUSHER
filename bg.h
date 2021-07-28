@@ -1,39 +1,37 @@
 /*=============================================================================
 
-		”wŒi[ bg.h ]
+		ï¿½wï¿½i[ bg.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/07/28
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/07/28
-			E’è”’è‹`’Ç‰Á
-				#define BG_TEX_SPEED ( 0.005f )	//	‚Ç‚ê‚­‚ç‚¢‚Ì‘¬‚³‚ÅƒeƒNƒXƒ`ƒƒÀ•W‚ª•Ï‚í‚é‚Ì‚©
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				void InitBg( void );	//	”wŒi‚Ì‰Šú‰»
-				void UninitBg( void );	//	”wŒi‚ÌI—¹
-				void UpdateBg( void );	//	”wŒi‚ÌXV
-				void DrawBg( void );	//	”wŒi‚Ì•`‰æ
-				float *GetBgTex(void);	//	”wŒi‚ÌƒeƒNƒXƒ`ƒƒÀ•WŽæ“¾
+			ï¿½Eï¿½è”ï¿½ï¿½`ï¿½Ç‰ï¿½
+				#define BG_TEX_SPEED ( 0.005f )	//	ï¿½Ç‚ê‚­ï¿½ç‚¢ï¿½Ì‘ï¿½ï¿½ï¿½ï¿½Åƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½Ï‚ï¿½ï¿½Ì‚ï¿½
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				void InitBg( void );	//	ï¿½wï¿½iï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+				void UninitBg( void );	//	ï¿½wï¿½iï¿½ÌIï¿½ï¿½
+				void UpdateBg( void );	//	ï¿½wï¿½iï¿½ÌXï¿½V
+				void DrawBg( void );	//	ï¿½wï¿½iï¿½Ì•`ï¿½ï¿½
+				float *GetBgTex(void);	//	ï¿½wï¿½iï¿½Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½æ“¾
 -----------------------------------------------------------------------------*/
 
 #ifndef _BG_H_
 #define _BG_H_
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define BG_TEX_SPEED ( 0.001f )	//	‚Ç‚ê‚­‚ç‚¢‚Ì‘¬‚³‚ÅƒeƒNƒXƒ`ƒƒÀ•W‚ª•Ï‚í‚é‚Ì‚©
+#define BG_TEX_SPEED ( 0.001f )	//	ï¿½Ç‚ê‚­ï¿½ç‚¢ï¿½Ì‘ï¿½ï¿½ï¿½ï¿½Åƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½Ï‚ï¿½ï¿½Ì‚ï¿½
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-void InitBg( void );	//	”wŒi‚Ì‰Šú‰»
-void UninitBg( void );	//	”wŒi‚ÌI—¹
-void UpdateBg( void );	//	”wŒi‚ÌXV
-void DrawBg( void );	//	”wŒi‚Ì•`‰æ
-float *GetBgTex(void);	//	”wŒi‚ÌƒeƒNƒXƒ`ƒƒÀ•WŽæ“¾
+void InitBg( void );	//	ï¿½wï¿½iï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+void UninitBg( void );	//	ï¿½wï¿½iï¿½ÌIï¿½ï¿½
+void UpdateBg( void );	//	ï¿½wï¿½iï¿½ÌXï¿½V
+void DrawBg( void );	//	ï¿½wï¿½iï¿½Ì•`ï¿½ï¿½
+float *GetBgTex(void);	//	ï¿½wï¿½iï¿½Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½æ“¾
 float *GetVTex( void );
 #endif

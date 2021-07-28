@@ -1,41 +1,39 @@
 /*=============================================================================
 
-		‘«ê•`‰æ[ base.cpp ]
+		ï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½[ base.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/08/22
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/08/22
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include <stdio.h>
 				#include "main.h"
 				#include "base.h"
 				#include "bg.h"
-			E’è”’è‹`’Ç‰Á
+			ï¿½Eï¿½è”ï¿½ï¿½`ï¿½Ç‰ï¿½
 				#define BASE_TEXTURENAME
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				HRESULT MakeVertexBase( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
-				void BasePos( VERTEX_2D* pVtx , int IndexBase );			//	‘«êÀ•WXV
-				void CreateBase( float PosX , float PosY , float Width , float Height );	//	‘«ê‚Ì¶¬
-			EƒOƒ[ƒoƒ‹•Ï”’Ç‰Á
-				LPDIRECT3DTEXTURE9 g_pTextureBase = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-				LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferBase = NULL;	//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				HRESULT MakeVertexBase( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+				void BasePos( VERTEX_2D* pVtx , int IndexBase );			//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Xï¿½V
+				void CreateBase( float PosX , float PosY , float Width , float Height );	//	ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
+			ï¿½Eï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½ï¿½Ç‰ï¿½
+				LPDIRECT3DTEXTURE9 g_pTextureBase = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+				LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferBase = NULL;	//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
 				BASE g_Base[ MAX_BASE ];
 		2016/08/27
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "player.h"
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-			void Create( void );	//	‰æ–ÊƒXƒNƒ[ƒ‹‚Ì‘«ê‚Ì¶¬
-			void BaseDecision( VERTEX_2D* pVtx );	//	‘«ê‚Ì”»’è
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+			void Create( void );	//	ï¿½ï¿½ÊƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
+			void BaseDecision( VERTEX_2D* pVtx );	//	ï¿½ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½
 -------------------------------------------------------------------------------
 */
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "main.h"
@@ -45,69 +43,69 @@
 #include "enemy.h"
 #include "fade.h"
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define BASE_TEXTURENAME "data/TEXTURE/game/base.jpg"
 #define GOOL_TEXTURENAME "data/TEXTURE/game/gool.png"
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-HRESULT MakeVertexBase( LPDIRECT3DDEVICE9 pDevice );						//	’¸“_‚Ìì¬
-void GoolPos( VERTEX_2D* pVtx );											//	ƒS[ƒ‹À•WXV
-void BasePos( VERTEX_2D* pVtx , int IndexBase );							//	‘«êÀ•WXV
-void CreateBase( float PosX , float PosY , float Width , float Height );	//	‘«ê‚Ì¶¬
-void BaseTutorial( void );	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì‘«ê‚Ì¶¬
-void BaseStage1( void );													//	ƒXƒe[ƒW‚P‚Ì‘«ê‚Ì¶¬
-void BaseDecision( VERTEX_2D* pVtx );										//	‘«ê‚Ì”»’è
-void PlayerBaseDecision( VERTEX_2D* pVtx );									//	ƒvƒŒƒCƒ„[‚Ì‘«ê”»’è
-void EnemyBaseDecision( VERTEX_2D* pVtx );									//	“G‚Ì‘«ê”»’è
+HRESULT MakeVertexBase( LPDIRECT3DDEVICE9 pDevice );						//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+void GoolPos( VERTEX_2D* pVtx );											//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Xï¿½V
+void BasePos( VERTEX_2D* pVtx , int IndexBase );							//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Xï¿½V
+void CreateBase( float PosX , float PosY , float Width , float Height );	//	ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
+void BaseTutorial( void );	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
+void BaseStage1( void );													//	ï¿½Xï¿½eï¿½[ï¿½Wï¿½Pï¿½Ì‘ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
+void BaseDecision( VERTEX_2D* pVtx );										//	ï¿½ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½
+void PlayerBaseDecision( VERTEX_2D* pVtx );									//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì‘ï¿½ï¿½ê”»ï¿½ï¿½
+void EnemyBaseDecision( VERTEX_2D* pVtx );									//	ï¿½Gï¿½Ì‘ï¿½ï¿½ê”»ï¿½ï¿½
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-LPDIRECT3DTEXTURE9 g_pTextureBase = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferBase = NULL;	//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
-//	ƒS[ƒ‹
-LPDIRECT3DTEXTURE9 g_pTextureGool = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+LPDIRECT3DTEXTURE9 g_pTextureBase = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferBase = NULL;	//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
+//	ï¿½Sï¿½[ï¿½ï¿½
+LPDIRECT3DTEXTURE9 g_pTextureGool = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
 BASE g_Base[ MAX_BASE ];
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT InitBase( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	—Ç‚¢ê‡	return S_OK;
-			ƒ_ƒ‚Èê‡	return E_FAIL;
- à–¾:		‘«ê‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT InitBase( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½Ç‚ï¿½ï¿½ê‡	return S_OK;
+			ï¿½_ï¿½ï¿½ï¿½Èê‡	return E_FAIL;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 HRESULT InitBase( void )
 {
 	int CntBase;
 
-	//	ƒfƒoƒCƒXî•ñ‚Ìæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ï¿½ï¿½Ìæ“¾
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	Ÿ‚Ìƒ‚[ƒh‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½hï¿½Ìæ“¾
 	MODE *Mode = GetNextMode();
 
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , BASE_TEXTURENAME , &g_pTextureBase  ) ) )
 	{
-		MessageBox( NULL , "‘«ê‚Ì“Ç‚İ‚İ‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½İ‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		return E_FAIL;
 	}
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , GOOL_TEXTURENAME , &g_pTextureGool  ) ) )
 	{
-		MessageBox( NULL , "ƒS[ƒ‹‚Ì“Ç‚İ‚İ‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½Sï¿½[ï¿½ï¿½ï¿½Ì“Ç‚İï¿½ï¿½İ‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		return E_FAIL;
 	}
 	
-	//	‘«ê‰Šú‰»
+	//	ï¿½ï¿½ï¿½ê‰ï¿½ï¿½ï¿½ï¿½
 	for( CntBase = 0 ; CntBase < MAX_BASE ; CntBase++ )
 	{
 		g_Base[ CntBase ].size.x = 0.0f;	//	Width	
 		g_Base[ CntBase ].size.y = 0.0f;	//	Height
-		g_Base[ CntBase ].move_X = MOVE_REPOSIT;	//	ˆÚ“®—Ê
-		g_Base[ CntBase ].use = false;		//	g—pƒtƒ‰ƒO
+		g_Base[ CntBase ].move_X = MOVE_REPOSIT;	//	ï¿½Ú“ï¿½ï¿½ï¿½
+		g_Base[ CntBase ].use = false;		//	ï¿½gï¿½pï¿½tï¿½ï¿½ï¿½O
 	}	//	end of for
 
 	if( *Mode == MODE_TITLE )
@@ -117,9 +115,9 @@ HRESULT InitBase( void )
 
 	else if( *Mode == MODE_TUTORIAL )
 	{
-		BaseTutorial();	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì‘«ê‚Ì¶¬
+		BaseTutorial();	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 
-		//	ƒS[ƒ‹‰Šú‰»
+		//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		g_Base[ MAX_GOOL ].pos.x = SCREEN_WIDTH + 2800.0f;
 		g_Base[ MAX_GOOL ].pos.y = 200.0f;
 		g_Base[ MAX_GOOL ].size.x = 100.0f;
@@ -131,9 +129,9 @@ HRESULT InitBase( void )
 
 	else if( *Mode == MODE_GAME )
 	{
-		BaseStage1();	//	ƒXƒe[ƒW‚P‚Ì‘«ê‚Ì¶¬
+		BaseStage1();	//	ï¿½Xï¿½eï¿½[ï¿½Wï¿½Pï¿½Ì‘ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 
-		//	ƒS[ƒ‹‰Šú‰»
+		//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		g_Base[ MAX_GOOL ].pos.x = SCREEN_WIDTH + 8700.0f;
 		g_Base[ MAX_GOOL ].pos.y = 100.0f;
 		g_Base[ MAX_GOOL ].size.x = 100.0f;
@@ -144,41 +142,41 @@ HRESULT InitBase( void )
 
 	}	//	end of else if
 
-	MakeVertexBase( pDevice );	//	’¸“_‚Ìì¬
+	MakeVertexBase( pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 
 	return S_OK;
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitBase( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		‘«ê‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitBase( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitBase( void )
 {
-	if( g_pTextureBase != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	if( g_pTextureBase != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureBase -> Release();
 		g_pTextureBase = NULL;
 	}
-	if(g_pVtxBufferBase != NULL)	//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^‚Ì‰ğ•ú
+	if(g_pVtxBufferBase != NULL)	//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½Ì‰ï¿½ï¿½
 	{
 		g_pVtxBufferBase -> Release();
 		g_pVtxBufferBase  = NULL;
 	}
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdateBase( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		‘«ê‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdateBase( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdateBase( void )
 {
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ğƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ğæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferBase -> Lock ( 0 ,0 ,( void** )&pVtx ,0 );
 
 	GoolPos( pVtx );
@@ -191,127 +189,127 @@ void UpdateBase( void )
 	g_pVtxBufferBase -> Unlock();
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawBase( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		‘«ê‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawBase( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawBase( void )
 {
 	int CntBase;
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½Ìİ’ï¿½
 	pDevice -> SetFVF( FVF_VERTEX_2D );
 
-	//	ƒXƒgƒŠ[ƒ€‚ğİ’è‚·‚é
+	//	ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½
 	pDevice -> SetStreamSource( 0 , g_pVtxBufferBase , 0 , sizeof( VERTEX_2D ) );
 
 	pDevice -> SetTexture( 0 , g_pTextureBase );
 
-	//	‘«ê
+	//	ï¿½ï¿½ï¿½ï¿½
 	for( CntBase = 0 ; CntBase < MAX_BASE - 1 ; CntBase++ )
 	{
 		if( g_Base[ CntBase ].use == true )
 		{
-			//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+			//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 			pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , CntBase * NUM_VERTEX, NUM_POLYGON);
 		}	//	end of if
 	}	//	end of for
 
-	//	ƒS[ƒ‹
+	//	ï¿½Sï¿½[ï¿½ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureGool );
 
 	if( g_Base[ MAX_GOOL ].use == true )
 	{
-		//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+		//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 		pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , MAX_GOOL * NUM_VERTEX, NUM_POLYGON);
 	}	//	end of if
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT MakeVertexBase( LPDIRECT3DDEVICE9 pDevice )
- ˆø”:		LPDIRECT3DDEVICE9 pDevice
- –ß‚è’l:	—Ç‚¢ê‡	return S_OK;
-			ƒ_ƒ‚Èê‡	return E_FAIL;
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT MakeVertexBase( LPDIRECT3DDEVICE9 pDevice )
+ ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 pDevice
+ ï¿½ß‚ï¿½l:	ï¿½Ç‚ï¿½ï¿½ê‡	return S_OK;
+			ï¿½_ï¿½ï¿½ï¿½Èê‡	return E_FAIL;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 HRESULT MakeVertexBase( LPDIRECT3DDEVICE9 pDevice )
 {
 	int CntBase;
 
-	// FAILEDƒ}ƒNƒ‚ÅƒGƒ‰[ƒ`ƒFƒbƒN
+	// FAILEDï¿½}ï¿½Nï¿½ï¿½ï¿½ÅƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if ( FAILED ( pDevice -> CreateVertexBuffer ( sizeof ( VERTEX_2D ) * NUM_VERTEX * MAX_BASE  , D3DUSAGE_WRITEONLY , FVF_VERTEX_2D , D3DPOOL_MANAGED , &g_pVtxBufferBase , NULL ) ) )
 	{
 		return E_FAIL;
 	}	//	end of if
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ğƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ğæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferBase -> Lock ( 0 , 0 , ( void** )&pVtx ,  0 );
 	
-	//	‘«ê
+	//	ï¿½ï¿½ï¿½ï¿½
 	for( CntBase = 0 ; CntBase < MAX_BASE-1 ; CntBase++ )
 	{
-		//	’¸“_À•W‚Ìİ’è
+		//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 		BasePos( pVtx , CntBase );
 
-		//	À•W•ÏŠ·Ï‚İ’¸“_ƒtƒ‰ƒO‚Ìİ’è
+		//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚İ’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½Ìİ’ï¿½
 		pVtx[ CntBase*NUM_VERTEX+0 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+1 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+2 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+3 ].rhw = 1.0f;
 
-		//	À•W•ÏŠ·Ï‚İ’¸“_ƒtƒ‰ƒO‚Ìİ’è
+		//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚İ’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½Ìİ’ï¿½
 		pVtx[ CntBase*NUM_VERTEX+0 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+1 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+2 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+3 ].rhw = 1.0f;
 
-		//	’¸“_F‚Ìİ’è
+		//	ï¿½ï¿½ï¿½_ï¿½Fï¿½Ìİ’ï¿½
 		pVtx[ CntBase*NUM_VERTEX+0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntBase*NUM_VERTEX+1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntBase*NUM_VERTEX+2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntBase*NUM_VERTEX+3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-		//	ƒeƒNƒXƒ`ƒƒÀ•W‚Ìİ’è
+		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 		pVtx[ CntBase*NUM_VERTEX+0 ].tex = D3DXVECTOR2( 0 , 0 );
 		pVtx[ CntBase*NUM_VERTEX+1 ].tex = D3DXVECTOR2( 1 , 0 );
 		pVtx[ CntBase*NUM_VERTEX+2 ].tex = D3DXVECTOR2( 0 , 1 );
 		pVtx[ CntBase*NUM_VERTEX+3 ].tex = D3DXVECTOR2( 1 , 1 );
 	}	//	end of for
 
-	//	ƒS[ƒ‹
+	//	ï¿½Sï¿½[ï¿½ï¿½
 	for( CntBase = MAX_GOOL ; CntBase < MAX_BASE ; CntBase++ )
 	{
-		//	ƒS[ƒ‹
-		//	’¸“_À•W‚Ìİ’è
+		//	ï¿½Sï¿½[ï¿½ï¿½
+		//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 		pVtx[ CntBase*NUM_VERTEX+0 ].pos = D3DXVECTOR3( g_Base[ MAX_GOOL ].pos.x , g_Base[ MAX_GOOL ].pos.y , 0.0f );
 		pVtx[ CntBase*NUM_VERTEX+1 ].pos = D3DXVECTOR3( g_Base[ MAX_GOOL ].pos.x+g_Base[ MAX_GOOL ].size.x , g_Base[ MAX_GOOL ].pos.y , 0.0f );
 		pVtx[ CntBase*NUM_VERTEX+2 ].pos = D3DXVECTOR3( g_Base[ MAX_GOOL ].pos.x , g_Base[ MAX_GOOL ].pos.y+g_Base[ MAX_GOOL ].size.y , 0.0f );
 		pVtx[ CntBase*NUM_VERTEX+3 ].pos = D3DXVECTOR3( g_Base[ MAX_GOOL ].pos.x+g_Base[ MAX_GOOL ].size.x , g_Base[ MAX_GOOL ].pos.y+g_Base[ MAX_GOOL ].size.y , 0.0f );
 
-		//	À•W•ÏŠ·Ï‚İ’¸“_ƒtƒ‰ƒO‚Ìİ’è
+		//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚İ’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½Ìİ’ï¿½
 		pVtx[ CntBase*NUM_VERTEX+0 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+1 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+2 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+3 ].rhw = 1.0f;
 
-		//	À•W•ÏŠ·Ï‚İ’¸“_ƒtƒ‰ƒO‚Ìİ’è
+		//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚İ’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½Ìİ’ï¿½
 		pVtx[ CntBase*NUM_VERTEX+0 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+1 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+2 ].rhw = 1.0f;
 		pVtx[ CntBase*NUM_VERTEX+3 ].rhw = 1.0f;
 
-		//	’¸“_F‚Ìİ’è
+		//	ï¿½ï¿½ï¿½_ï¿½Fï¿½Ìİ’ï¿½
 		pVtx[ CntBase*NUM_VERTEX+0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntBase*NUM_VERTEX+1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntBase*NUM_VERTEX+2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntBase*NUM_VERTEX+3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-		//	ƒeƒNƒXƒ`ƒƒÀ•W‚Ìİ’è
+		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 		pVtx[ CntBase*NUM_VERTEX+0 ].tex = D3DXVECTOR2( 0 , 0 );
 		pVtx[ CntBase*NUM_VERTEX+1 ].tex = D3DXVECTOR2( 1 , 0 );
 		pVtx[ CntBase*NUM_VERTEX+2 ].tex = D3DXVECTOR2( 0 , 1 );
@@ -324,12 +322,12 @@ HRESULT MakeVertexBase( LPDIRECT3DDEVICE9 pDevice )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CreateBase( float PosX , float PosY , float Width , float Height )
- ˆø”:		float PosX
+ ï¿½Öï¿½ï¿½ï¿½:	void CreateBase( float PosX , float PosY , float Width , float Height )
+ ï¿½ï¿½ï¿½ï¿½:		float PosX
 			float PosY
 			float Width
- –ß‚è’l:	‚È‚µ
- à–¾:		‘«ê‚Ì¶¬
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CreateBase( float PosX , float PosY , float Width , float Height )
 {
@@ -339,140 +337,140 @@ void CreateBase( float PosX , float PosY , float Width , float Height )
 	{
 		if( g_Base[ CntBase ].use == false )
 		{
-			g_Base[ CntBase ].pos.x = PosX;		//	XÀ•W
-			g_Base[ CntBase ].pos.y = PosY;		//	YÀ•W
+			g_Base[ CntBase ].pos.x = PosX;		//	Xï¿½ï¿½ï¿½W
+			g_Base[ CntBase ].pos.y = PosY;		//	Yï¿½ï¿½ï¿½W
 			g_Base[ CntBase ].size.x = Width;	//	Width
 			g_Base[ CntBase ].size.y = Height;	//	Height
-			g_Base[ CntBase ].use = true;		//	g—pƒtƒ‰ƒO
+			g_Base[ CntBase ].use = true;		//	ï¿½gï¿½pï¿½tï¿½ï¿½ï¿½O
 			break;
 		}
 	}
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void BaseTutorial( void )
- ˆø”:		
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì‘«ê‚Ì¶¬
+ ï¿½Öï¿½ï¿½ï¿½:	void BaseTutorial( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void BaseTutorial( void )
 {
-	//	‘«ê‚Ì¶¬
+	//	ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	CreateBase( -20.0f , SCREEN_HEIGHT - 50.0f , SCREEN_WIDTH + 1950.0f , 50.0f );
 
 	CreateBase( SCREEN_WIDTH + 2025.0f , SCREEN_HEIGHT - 50.0f , 2800.0f , 50.0f );
 
-	//	ƒKƒCƒh‘«ê
+	//	ï¿½Kï¿½Cï¿½hï¿½ï¿½ï¿½ï¿½
 	CreateBase( 300.0f , SCREEN_HEIGHT - 200.0f , 150.0f , 50.0f );
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void BaseStage1( void )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒXƒe[ƒW‚P‚Ì‘«ê‚Ì¶¬
+ ï¿½Öï¿½ï¿½ï¿½:	void BaseStage1( void )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½eï¿½[ï¿½Wï¿½Pï¿½Ì‘ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void BaseStage1( void )
 {
-	//	‘«ê‚Ì¶¬
+	//	ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	CreateBase( -20.0f , SCREEN_HEIGHT - 50.0f , SCREEN_WIDTH + 2600.0f , 50.0f );	
 	CreateBase( SCREEN_WIDTH + 2700.0f , SCREEN_HEIGHT - 50.0f , 840.0f , 50.0f );	
 	CreateBase( SCREEN_WIDTH + 3675.0f , SCREEN_HEIGHT - 50.0f , 3075.0f , 50.0f );	
 	CreateBase( SCREEN_WIDTH + 6850.0f , SCREEN_HEIGHT - 50.0f , 3100.0f , 50.0f );	
 
-	//	‘«ê‚P
+	//	ï¿½ï¿½ï¿½ï¿½P
 	CreateBase( SCREEN_WIDTH - 150.0f , SCREEN_HEIGHT - 200.0f , 50.0f , 50.0f );	
 
-	//	‘«ê‚Q
+	//	ï¿½ï¿½ï¿½ï¿½Q
 	CreateBase( SCREEN_WIDTH + 225.0f , SCREEN_HEIGHT - 200.0f , 200.0f , 50.0f );
 
-	//	‘«ê‚R
+	//	ï¿½ï¿½ï¿½ï¿½R
 	CreateBase( SCREEN_WIDTH + 305.0f , SCREEN_HEIGHT - 350.0f , 50.0f , 50.0f );	
 
-	//	‘«ê‚S
+	//	ï¿½ï¿½ï¿½ï¿½S
 	CreateBase( SCREEN_WIDTH + 600.0f , SCREEN_HEIGHT - 150.0f , 80.0f , 100.0f );	
 
-	//	‘«ê‚T
+	//	ï¿½ï¿½ï¿½ï¿½T
 	CreateBase( SCREEN_WIDTH + 950.0f, SCREEN_HEIGHT - 200.0f , 80.0f , 150.0f );	
 
-	//	‘«ê‚U
+	//	ï¿½ï¿½ï¿½ï¿½U
 	CreateBase( SCREEN_WIDTH + 1400.0f , SCREEN_HEIGHT - 225.0f , 80.0f , 175.0f );	
 
-	//	‘«ê7
+	//	ï¿½ï¿½ï¿½ï¿½7
 	CreateBase( SCREEN_WIDTH + 2000.0f , SCREEN_HEIGHT - 225.0f , 80.0f , 175.0f );	
 
-	//	‘«ê‚W
+	//	ï¿½ï¿½ï¿½ï¿½W
 	CreateBase( SCREEN_WIDTH + 3000.0f , SCREEN_HEIGHT - 225.0f , 150.0f , 50.0f );
 
-	//	‘«ê‚X
+	//	ï¿½ï¿½ï¿½ï¿½X
 	CreateBase( SCREEN_WIDTH + 3200.0f , SCREEN_HEIGHT - 380.0f , 400.0f , 50.0f );	
 
-	//	‘«ê‚P‚O
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½O
 	CreateBase( SCREEN_WIDTH + 3700.0f , SCREEN_HEIGHT - 380.0f , 200.0f , 50.0f );	
 
-	//	‘«ê‚P‚P
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½P
 	CreateBase( SCREEN_WIDTH + 3850.0f , SCREEN_HEIGHT - 200.0f , 50.0f , 50.0f );	
 
-	//	‘«ê‚P‚Q
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½Q
 	CreateBase( SCREEN_WIDTH + 4150.0f , SCREEN_HEIGHT - 225.0f , 100.0f , 50.0f );
 
-	//	‘«ê‚P‚R
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½R
 	CreateBase( SCREEN_WIDTH + 4450.0f , SCREEN_HEIGHT - 200.0f , 50.0f , 50.0f );	
 
-	//	‘«ê‚P‚R
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½R
 	CreateBase( SCREEN_WIDTH + 4600.0f , SCREEN_HEIGHT - 200.0f , 50.0f , 50.0f );	
 
-	//	‘«ê‚P‚S
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½S
 	CreateBase( SCREEN_WIDTH + 4600.0f , SCREEN_HEIGHT - 350.0f , 50.0f , 50.0f );	
 
-	//	‘«ê‚P‚T
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½T
 	CreateBase( SCREEN_WIDTH + 4750.0f , SCREEN_HEIGHT - 200.0f , 50.0f , 50.0f );	
 
-	//	‘«ê‚P‚U
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½U
 	CreateBase( SCREEN_WIDTH + 5050.0f , SCREEN_HEIGHT - 200.0f , 50.0f , 50.0f );	
 
-	//	‘«ê‚P‚V
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½V
 	CreateBase( SCREEN_WIDTH + 5150.0f , SCREEN_HEIGHT - 300.0f , 150.0f , 50.0f );
 
-	//	‘«ê‚P‚W
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½W
 	CreateBase( SCREEN_WIDTH + 5550.0f , SCREEN_HEIGHT - 300.0f , 200.0f , 50.0f );
 
-	//	‘«ê‚P‚X
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½X
 	CreateBase( SCREEN_WIDTH + 5600.0f , SCREEN_HEIGHT - 200.0f , 100.0f , 50.0f );
 
-	//	‘«ê‚P‚X( ŠK’iƒuƒƒbƒN )
+	//	ï¿½ï¿½ï¿½ï¿½Pï¿½X( ï¿½Kï¿½iï¿½uï¿½ï¿½ï¿½bï¿½N )
 	CreateBase( SCREEN_WIDTH + 5850.0f , SCREEN_HEIGHT - 90.0f  , 200.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 5900.0f , SCREEN_HEIGHT - 130.0f , 150.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 5950.0f , SCREEN_HEIGHT - 170.0f , 100.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 6000.0f , SCREEN_HEIGHT - 210.0f , 50.0f  , 40.0f );	
 
-	//	‘«ê‚Q‚O( ‹tŠK’iƒuƒƒbƒN )
+	//	ï¿½ï¿½ï¿½ï¿½Qï¿½O( ï¿½tï¿½Kï¿½iï¿½uï¿½ï¿½ï¿½bï¿½N )
 	CreateBase( SCREEN_WIDTH + 6150.0f , SCREEN_HEIGHT - 90.0f  , 200.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 6150.0f , SCREEN_HEIGHT - 130.0f , 150.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 6150.0f , SCREEN_HEIGHT - 170.0f , 100.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 6150.0f , SCREEN_HEIGHT - 210.0f , 50.0f  , 40.0f );	
 
-	//	‘«ê‚Q‚P( ŠK’iƒuƒƒbƒN )
+	//	ï¿½ï¿½ï¿½ï¿½Qï¿½P( ï¿½Kï¿½iï¿½uï¿½ï¿½ï¿½bï¿½N )
 	CreateBase( SCREEN_WIDTH + 6550.0f , SCREEN_HEIGHT - 90.0f  , 200.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 6600.0f , SCREEN_HEIGHT - 130.0f , 150.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 6650.0f , SCREEN_HEIGHT - 170.0f , 100.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 6700.0f , SCREEN_HEIGHT - 210.0f , 50.0f  , 40.0f );	
 
-	//	‘«ê‚Q‚Q( ‹tŠK’iƒuƒƒbƒN )
+	//	ï¿½ï¿½ï¿½ï¿½Qï¿½Q( ï¿½tï¿½Kï¿½iï¿½uï¿½ï¿½ï¿½bï¿½N )
 	CreateBase( SCREEN_WIDTH + 6850.0f , SCREEN_HEIGHT - 90.0f  , 200.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 6850.0f , SCREEN_HEIGHT - 130.0f , 150.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 6850.0f , SCREEN_HEIGHT - 170.0f , 100.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 6850.0f , SCREEN_HEIGHT - 210.0f , 50.0f  , 40.0f );	
 
-	//	‘«ê‚Q‚R
+	//	ï¿½ï¿½ï¿½ï¿½Qï¿½R
 	CreateBase( SCREEN_WIDTH + 7250.0f , SCREEN_HEIGHT - 150.0f  , 50.0f , 100.0f );
 
-	//	‘«ê‚Q‚S
+	//	ï¿½ï¿½ï¿½ï¿½Qï¿½S
 	CreateBase( SCREEN_WIDTH + 7450.0f , SCREEN_HEIGHT - 200.0f  , 200.0f , 50.0f );
 
-	//	‘«ê‚Q‚T
+	//	ï¿½ï¿½ï¿½ï¿½Qï¿½T
 	CreateBase( SCREEN_WIDTH + 8000.0f , SCREEN_HEIGHT - 150.0f  , 50.0f , 100.0f );
 
-	//	‘«ê‚Q‚U( ŠK’iƒuƒƒbƒN )
+	//	ï¿½ï¿½ï¿½ï¿½Qï¿½U( ï¿½Kï¿½iï¿½uï¿½ï¿½ï¿½bï¿½N )
 	CreateBase( SCREEN_WIDTH + 8050.0f , SCREEN_HEIGHT - 90.0f  , 450.0f , 40.0f );	
 	CreateBase( SCREEN_WIDTH + 8100.0f , SCREEN_HEIGHT - 130.0f  , 400.0f , 40.0f );
 	CreateBase( SCREEN_WIDTH + 8150.0f , SCREEN_HEIGHT - 170.0f  , 350.0f , 40.0f );
@@ -482,54 +480,54 @@ void BaseStage1( void )
 	CreateBase( SCREEN_WIDTH + 8350.0f , SCREEN_HEIGHT - 330.0f  , 150.0f , 40.0f );
 	CreateBase( SCREEN_WIDTH + 8400.0f , SCREEN_HEIGHT - 370.0f  , 100.0f , 40.0f );//	g_Base[ 51 ]
 
-	//	ƒKƒCƒh‘«ê
+	//	ï¿½Kï¿½Cï¿½hï¿½ï¿½ï¿½ï¿½
 	CreateBase( 300.0f , SCREEN_HEIGHT - 200.0f , 150.0f , 50.0f );
 
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void BaseDecision( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		‘«ê‚Ì”»’è
+ ï¿½Öï¿½ï¿½ï¿½:	void BaseDecision( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void BaseDecision( VERTEX_2D* pVtx )
 {
-	//	ƒvƒŒƒCƒ„[î•ñ‚Ìæ“¾
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìæ“¾
 	PLAYER *Player = GetPlayer();
 
-	//	ƒvƒŒƒCƒ„[‚ª“G‚Æ“–‚½‚Á‚½‚ç
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Gï¿½Æ“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if( Player -> Hit == false )
 	{
-		//	ƒvƒŒƒCƒ„[‚Ì‘«ê”»’è
+		//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì‘ï¿½ï¿½ê”»ï¿½ï¿½
 		PlayerBaseDecision( pVtx );
 	}	//	end of if
 
-	//	“G‚Ì‘«ê”»’è
+	//	ï¿½Gï¿½Ì‘ï¿½ï¿½ê”»ï¿½ï¿½
 	EnemyBaseDecision( pVtx );
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void PlayerBaseDecision( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒvƒŒƒCƒ„[‚Ì‘«ê”»’è
+ ï¿½Öï¿½ï¿½ï¿½:	void PlayerBaseDecision( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì‘ï¿½ï¿½ê”»ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void PlayerBaseDecision( VERTEX_2D* pVtx )
 {
 	int CntBase;
 
-	//	ƒvƒŒƒCƒ„[î•ñ‚Ìæ“¾
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìæ“¾
 	PLAYER *Player = GetPlayer();
 
-	//	ƒvƒŒƒCƒ„[‚Æ‚Ì”»’è
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Æ‚Ì”ï¿½ï¿½ï¿½
 	for( CntBase = 0 ; CntBase < MAX_BASE-1 ; CntBase++ )
 	{
 		if( g_Base[ CntBase ].use == true )
 		{
-			//	‘«ê‚Æ‚Ì”»’è
+			//	ï¿½ï¿½ï¿½ï¿½Æ‚Ì”ï¿½ï¿½ï¿½
 			if( g_Base[ CntBase ].pos.x <= ( Player->Pos.x + Player->Size.x ) - 35.0f &&  Player->Pos.x + 10.0f < g_Base[ CntBase ].pos.x + g_Base[ CntBase ].size.x - 10.0f )
 			{
-				//ã‚Ì”»’è
+				//ï¿½ï¿½Ì”ï¿½ï¿½ï¿½
 				if( g_Base[ CntBase ].pos.y < Player->Pos.y + Player->Size.y && Player->OldPos.y <= g_Base[ CntBase ].pos.y )
 				{					
 
@@ -539,7 +537,7 @@ void PlayerBaseDecision( VERTEX_2D* pVtx )
 
 				}	//	end of if
 
-				//‰º‚Ì”»’è
+				//ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½
 				if( Player->Pos.y <= g_Base[ CntBase ].pos.y + g_Base[ CntBase ].size.y && Player->OldPos.y > g_Base[ CntBase ].pos.y )
 				{
 					Player->Move.y = 0.0f;
@@ -547,43 +545,43 @@ void PlayerBaseDecision( VERTEX_2D* pVtx )
 				}	//	end of if
 			}	//	end of if
 
-			//	‰¡•Ç‚Ì”»’è
+			//	ï¿½ï¿½ï¿½Ç‚Ì”ï¿½ï¿½ï¿½
 			if( g_Base[ CntBase ].pos.y < Player->Pos.y + Player->Size.y && Player->Pos.y < g_Base[ CntBase ].pos.y + g_Base[ CntBase ].size.y )
 			{
 
-				//	¶•Ç‚Æ‚Ì”»’è
+				//	ï¿½ï¿½ï¿½Ç‚Æ‚Ì”ï¿½ï¿½ï¿½
 				if(  g_Base[ CntBase ].pos.x < Player->Pos.x + Player->Size.x - 10.0f && Player->Pos.x + Player->Size.x - 10.0f < g_Base[ CntBase ].pos.x + 12.0f )
 				{
 					Player->Pos.x = g_Base[ CntBase ].pos.x - Player->Size.x + 10.0f;
 				}	//	end of if
 
-				//	‰E•Ç‚Æ‚Ì”»’è
+				//	ï¿½Eï¿½Ç‚Æ‚Ì”ï¿½ï¿½ï¿½
 				if( Player->Pos.x < g_Base[ CntBase ].pos.x + g_Base[ CntBase ].size.x && g_Base[ CntBase ].pos.x + g_Base[ CntBase ].size.x < Player->Pos.x + 10.0f )
 				{
 					Player->Pos.x = g_Base[ CntBase ].pos.x + g_Base[ CntBase ].size.x + 10.0f;
 				}	//	end of if
 			}	//	end of if
 
-			//	‘«êÀ•WXV
+			//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Xï¿½V
 			BasePos( pVtx , CntBase );
 
 		}	//	end of if
 	}	//	end of for
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void EnemyBaseDecision( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		“G‚Ì‘«ê”»’è
+ ï¿½Öï¿½ï¿½ï¿½:	void EnemyBaseDecision( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Gï¿½Ì‘ï¿½ï¿½ê”»ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void EnemyBaseDecision( VERTEX_2D* pVtx )
 {
 	int CntBase , CntEnemy;
 
-	//	“G‚Ìî•ñ‚Ìæ“¾
+	//	ï¿½Gï¿½Ìï¿½ï¿½Ìæ“¾
 	ENEMY *Enemy = GetEnemy( 0 );
 
-	//	“G‚Æ‚Ì”»’è
+	//	ï¿½Gï¿½Æ‚Ì”ï¿½ï¿½ï¿½
 	for( CntBase = 0 ; CntBase < MAX_BASE-1 ; CntBase++ )
 	{
 		if( g_Base[ CntBase ].use == true )
@@ -593,18 +591,18 @@ void EnemyBaseDecision( VERTEX_2D* pVtx )
 				if( Enemy[CntEnemy].Use ==true )
 				{
 
-					//	‘«ê‚Æ‚Ì”»’è
+					//	ï¿½ï¿½ï¿½ï¿½Æ‚Ì”ï¿½ï¿½ï¿½
 					if( g_Base[ CntBase ].pos.x <= Enemy[CntEnemy].Pos.x + Enemy[CntEnemy].Size.x &&  Enemy[CntEnemy].Pos.x < ( g_Base[ CntBase ].pos.x + g_Base[ CntBase ].size.x ) - 15.0f )
 					{
 
-						//ã‚Ì”»’è
+						//ï¿½ï¿½Ì”ï¿½ï¿½ï¿½
 						if( g_Base[ CntBase ].pos.y < Enemy[CntEnemy].Pos.y + Enemy[CntEnemy].Size.y && Enemy[CntEnemy].OldPos.y <= g_Base[ CntBase ].pos.y )
 						{
 							Enemy[CntEnemy].Move.y = 0.0f;
 							Enemy[CntEnemy].Pos.y = g_Base[ CntBase ].pos.y - Enemy[CntEnemy].Size.y;
 						}	//	end of if
 
-						//////‰º‚Ì”»’è
+						//////ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½
 						//if( Enemy[CntEnemy].Pos.y <= g_Base[ CntBase ].pos.y + g_Base[ CntBase ].size.y && Enemy[CntEnemy].OldPos.y > g_Base[ CntBase ].pos.y )
 						//{
 						//	Enemy[CntEnemy].Move.y = 0.0f;
@@ -612,18 +610,18 @@ void EnemyBaseDecision( VERTEX_2D* pVtx )
 						//}
 					}	//	end of if
 
-					//	‰¡•Ç‚Ì”»’è
+					//	ï¿½ï¿½ï¿½Ç‚Ì”ï¿½ï¿½ï¿½
 					if( g_Base[ CntBase ].pos.y < Enemy[CntEnemy].Pos.y + Enemy[CntEnemy].Size.y && Enemy[CntEnemy].Pos.y < g_Base[ CntBase ].pos.y + g_Base[ CntBase ].size.y )
 					{
 
-						//	¶•Ç‚Æ‚Ì”»’è
+						//	ï¿½ï¿½ï¿½Ç‚Æ‚Ì”ï¿½ï¿½ï¿½
 						if(  g_Base[ CntBase ].pos.x < Enemy[CntEnemy].Pos.x + Enemy[CntEnemy].Size.x - 10.0f && Enemy[CntEnemy].Pos.x + Enemy[CntEnemy].Size.x - 10.0f < g_Base[ CntBase ].pos.x + 12.0f )
 						{
 							Enemy[CntEnemy].Pos.x = g_Base[ CntBase ].pos.x - Enemy[CntEnemy].Size.x + 10.0f;
 							Enemy[CntEnemy].Move.x *= -1.0f;
 						}	//	end of if
 
-						//	‰E•Ç‚Æ‚Ì”»’è
+						//	ï¿½Eï¿½Ç‚Æ‚Ì”ï¿½ï¿½ï¿½
 						if( Enemy[CntEnemy].Pos.x < g_Base[ CntBase ].pos.x + g_Base[ CntBase ].size.x && g_Base[ CntBase ].pos.x + g_Base[ CntBase ].size.x < Enemy[CntEnemy].Pos.x + 20.0f )
 						{
 							Enemy[CntEnemy].Pos.x = g_Base[ CntBase ].pos.x + g_Base[ CntBase ].size.x + 10.0f;
@@ -632,7 +630,7 @@ void EnemyBaseDecision( VERTEX_2D* pVtx )
 					}	//	end of if
 				}	//	end of if
 
-				//	‘«êÀ•WXV
+				//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Xï¿½V
 				BasePos( pVtx , CntBase );
 
 			}	//	end of for
@@ -640,22 +638,22 @@ void EnemyBaseDecision( VERTEX_2D* pVtx )
 	}	//	end of for
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void GoolPos( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒS[ƒ‹À•WXV
+ ï¿½Öï¿½ï¿½ï¿½:	void GoolPos( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void GoolPos( VERTEX_2D* pVtx )
 {
 	pVtx += MAX_GOOL * NUM_VERTEX;
 
-	//	’¸“_À•W‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( g_Base[ MAX_GOOL ].pos.x , g_Base[ MAX_GOOL ].pos.y , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( g_Base[ MAX_GOOL ].pos.x+g_Base[ MAX_GOOL ].size.x , g_Base[ MAX_GOOL ].pos.y , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( g_Base[ MAX_GOOL ].pos.x , g_Base[ MAX_GOOL ].pos.y+g_Base[ MAX_GOOL ].size.y , 0.0f );
 	pVtx[ 3 ].pos = D3DXVECTOR3( g_Base[ MAX_GOOL ].pos.x+g_Base[ MAX_GOOL ].size.x , g_Base[ MAX_GOOL ].pos.y+g_Base[ MAX_GOOL ].size.y , 0.0f );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚Ìİ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
@@ -663,17 +661,17 @@ void GoolPos( VERTEX_2D* pVtx )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void BasePos( VERTEX_2D* pVtx , int IndexBase )
- ˆø”:		VERTEX_2D* pVtx
+ ï¿½Öï¿½ï¿½ï¿½:	void BasePos( VERTEX_2D* pVtx , int IndexBase )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
 			int IndexBase
- –ß‚è’l:	‚È‚µ
- à–¾:		‘«êÀ•WXV
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void BasePos( VERTEX_2D* pVtx , int IndexBase )
 {
 	pVtx += IndexBase * NUM_VERTEX;
 
-	//	’¸“_À•W‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( g_Base[ IndexBase ].pos.x , g_Base[ IndexBase ].pos.y , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( g_Base[ IndexBase ].pos.x+g_Base[ IndexBase ].size.x , g_Base[ IndexBase ].pos.y , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( g_Base[ IndexBase ].pos.x , g_Base[ IndexBase ].pos.y+g_Base[ IndexBase ].size.y , 0.0f );
@@ -681,10 +679,10 @@ void BasePos( VERTEX_2D* pVtx , int IndexBase )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	BASE *GetBase( int IndexBase )
- ˆø”:		‚È‚µ
- –ß‚è’l:	return &g_Base[IndexBase];
- à–¾:		‘«êî•ñ‚Ìæ“¾
+ ï¿½Öï¿½ï¿½ï¿½:	BASE *GetBase( int IndexBase )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	return &g_Base[IndexBase];
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 -----------------------------------------------------------------------------*/
 BASE *GetBase( int IndexBase )
 {

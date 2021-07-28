@@ -1,35 +1,33 @@
 /*=============================================================================
 
-		“G[ enemy.cpp ]
+		ï¿½G[ enemy.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/08/08
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 	2016/07/28
-		Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+		ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 			#include <stdio.h>
 			#include "main.h"
 			#include "enemy.h"
-		E’è”’è‹`’Ç‰Á
+		ï¿½Eï¿½è”ï¿½ï¿½`ï¿½Ç‰ï¿½
 			#define ENEMY_TEXTURENAME
-		EƒOƒ[ƒoƒ‹•Ï”’Ç‰Á
-			LPDIRECT3DTEXTURE9 g_pTextureEnemy = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-			LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferEnemy = NULL;//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
+		ï¿½Eï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½ï¿½Ç‰ï¿½
+			LPDIRECT3DTEXTURE9 g_pTextureEnemy = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+			LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferEnemy = NULL;//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
 
 			ENEMY g_Enemy;
-		Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-			HRESULT MakeVertexPolygon( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
+		ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+			HRESULT MakeVertexPolygon( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 	2016/09/07
-		Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-			void EnemyStage1( void );	//	ƒXƒe[ƒW‚P‚Ì“G‚Ì”z’u
+		ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+			void EnemyStage1( void );	//	ï¿½Xï¿½eï¿½[ï¿½Wï¿½Pï¿½Ì“Gï¿½Ì”zï¿½u
 -------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include <time.h>
@@ -42,51 +40,51 @@
 #include "particle.h"
 #include "score.h"
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define ENEMY_TEXTURENAME "data/TEXTURE/game/car.png"
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-LPDIRECT3DTEXTURE9 g_pTextureEnemy = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferEnemy = NULL;//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
+LPDIRECT3DTEXTURE9 g_pTextureEnemy = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferEnemy = NULL;//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
 
 ENEMY g_Enemy[MAX_ENEMY];
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-HRESULT MakeVertexEnemy( LPDIRECT3DDEVICE9 pDevice );		//	’¸“_‚Ìì¬
-void ModeTitleEnemy( int IndexEnemy );						//	ƒ^ƒCƒgƒ‹ƒ‚[ƒh‚Ì“G‚Ìs“®
-void MakeEnemyPos( VERTEX_2D* pVtx , int IndexEnemy );		//	“G‚ÌÀ•W•ÏX
-void UpdateEnemyAct( int IndexEnemy );						//	XV‚Ì“G‚Ìs“®
-void CreateEnemy( float PosX , float PosY , float Speed );	//	“G‚Ì¶¬
-void EnemyTitle( void );									//	ƒ^ƒCƒgƒ‹‚Ì“G‚Ì¶¬
-void EnemyTutorial( void );									//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì“G‚Ì”z’u
-void EnemyStage1( void );									//	ƒXƒe[ƒW‚P‚Ì“G‚Ì”z’u
+HRESULT MakeVertexEnemy( LPDIRECT3DDEVICE9 pDevice );		//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+void ModeTitleEnemy( int IndexEnemy );						//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½Ì“Gï¿½Ìsï¿½ï¿½
+void MakeEnemyPos( VERTEX_2D* pVtx , int IndexEnemy );		//	ï¿½Gï¿½Ìï¿½ï¿½Wï¿½ÏX
+void UpdateEnemyAct( int IndexEnemy );						//	ï¿½Xï¿½Vï¿½ï¿½ï¿½Ì“Gï¿½Ìsï¿½ï¿½
+void CreateEnemy( float PosX , float PosY , float Speed );	//	ï¿½Gï¿½Ìï¿½ï¿½ï¿½
+void EnemyTitle( void );									//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ì“Gï¿½Ìï¿½ï¿½ï¿½
+void EnemyTutorial( void );									//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì“Gï¿½Ì”zï¿½u
+void EnemyStage1( void );									//	ï¿½Xï¿½eï¿½[ï¿½Wï¿½Pï¿½Ì“Gï¿½Ì”zï¿½u
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void InitEnemy(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		“G‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void InitEnemy(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void InitEnemy(void)
 {
 	int CntEnemy;
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	‘«êî•ñ‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	BASE *Base = GetBase( 0 );
 
-	//	Ÿ‚Ìƒ‚[ƒh‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½hï¿½Ìæ“¾
 	MODE *Mode = GetNextMode();
 
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , ENEMY_TEXTURENAME , &g_pTextureEnemy  ) ) )
 	{
-		MessageBox( NULL , "“G‚Ì“Ç‚İ‚İ‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½Gï¿½Ì“Ç‚İï¿½ï¿½İ‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
-	//	“G‚Ì‰Šú‰»
+	//	ï¿½Gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 	for( CntEnemy = 0 ; CntEnemy < MAX_ENEMY ; CntEnemy++ )
 	{
 		g_Enemy[CntEnemy].Size.x = 100.0f;
@@ -98,46 +96,46 @@ void InitEnemy(void)
 		g_Enemy[CntEnemy].Use = false;
 	}	//	end of for
 
-	//	“G‚Ì¶¬
+	//	ï¿½Gï¿½Ìï¿½ï¿½ï¿½
 	if( *Mode == MODE_TITLE )
 	{
-		EnemyTitle();	//	ƒ^ƒCƒgƒ‹‚Ì“G‚Ì”z’u
+		EnemyTitle();	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ì“Gï¿½Ì”zï¿½u
 	}	//	end of if
 	if( *Mode == MODE_TUTORIAL )
 	{
-		EnemyTutorial();	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì“G‚Ì”z’u
+		EnemyTutorial();	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì“Gï¿½Ì”zï¿½u
 	}	//	end of if
 
 	else if( *Mode == MODE_GAME )
 	{
-		EnemyStage1();	//	ƒXƒe[ƒW‚P‚Ì“G‚Ì”z’u
+		EnemyStage1();	//	ï¿½Xï¿½eï¿½[ï¿½Wï¿½Pï¿½Ì“Gï¿½Ì”zï¿½u
 	}	//	end of else if
 	
 
-	MakeVertexEnemy( pDevice );	//	’¸“_‚Ìì¬
+	MakeVertexEnemy( pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitEnemy(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		“G‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitEnemy(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Gï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitEnemy(void)
 {
 
-	if( g_pTextureEnemy != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	if( g_pTextureEnemy != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureEnemy -> Release();
 		g_pTextureEnemy = NULL;
 	}	//	end of if
 
-	if(g_pVtxBufferEnemy != NULL)	//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^‚Ì‰ğ•ú
+	if(g_pVtxBufferEnemy != NULL)	//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½Ì‰ï¿½ï¿½
 	{
 		g_pVtxBufferEnemy -> Release();
 		g_pVtxBufferEnemy = NULL;
 	}	//	end of if
 
-	//	“G‚Ì‰Šú‰»
+	//	ï¿½Gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 	for( int CntEnemy = 0 ; CntEnemy < MAX_ENEMY ; CntEnemy++ )
 	{
 		if( g_Enemy[CntEnemy].Use == true )
@@ -148,67 +146,67 @@ void UninitEnemy(void)
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdateEnemy(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		“G‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdateEnemy(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Gï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdateEnemy(void)
 {
 	int CntEnemy;
 
-	//	¡‚Ìƒ‚[ƒh
+	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 	MODE *Mode = GetNextMode();
 
-	//	ƒtƒF[ƒh’†‚©‚Ç‚¤‚©
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
 	bool *FadeUse = GetFadeUse();
 
 	VERTEX_2D* pVtx;
 
-	//ƒoƒbƒtƒ@‚ğƒƒbƒN‚µ‰¼‘zƒAƒhƒŒƒX‚ğæ“¾‚·‚é
+	//ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	g_pVtxBufferEnemy -> Lock( 0 , 0 ,	( void** )&pVtx , 0 );
 
 	for( CntEnemy = 0 ; CntEnemy < MAX_ENEMY ; CntEnemy++ )
 	{
 
-		//	“G‚ª¶‚«‚Ä‚¢‚½‚ç ‚©‚Â@ƒtƒF[ƒh‚ğ‚µ‚Ä‚¢‚È‚©‚Á‚½‚ç
+		//	ï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â@ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( g_Enemy[CntEnemy].Use == true && *FadeUse == false )
 		{
 			if( *Mode == MODE_TITLE )
 			{
-				//	ƒ^ƒCƒgƒ‹ƒ‚[ƒh‚Ì“G‚Ìs“®
+				//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½Ì“Gï¿½Ìsï¿½ï¿½
 				ModeTitleEnemy( CntEnemy );
 
 			}
 
 			else if( *Mode == MODE_GAME || *Mode == MODE_TUTORIAL )
 			{
-				//	XV‚Ì“G‚Ìs“®
+				//	ï¿½Xï¿½Vï¿½ï¿½ï¿½Ì“Gï¿½Ìsï¿½ï¿½
 				UpdateEnemyAct( CntEnemy );
 			}
 
-			MakeEnemyPos( pVtx , CntEnemy );	//	“G‚ÌÀ•W•ÏX
+			MakeEnemyPos( pVtx , CntEnemy );	//	ï¿½Gï¿½Ìï¿½ï¿½Wï¿½ÏX
 		}	//	end of if
 	}	//	end of for
 
-	g_pVtxBufferEnemy -> Unlock(); //‚±‚êˆÈ~G‚ê‚Ä‚Í‚¢‚¯‚È‚¢
+	g_pVtxBufferEnemy -> Unlock(); //ï¿½ï¿½ï¿½ï¿½È~ï¿½Gï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawEnemy(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		“G‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawEnemy(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Gï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawEnemy(void)
 {
 	int CntEnemy;
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½Ìİ’ï¿½
 	pDevice -> SetFVF( FVF_VERTEX_2D );
 
-	//	ƒXƒgƒŠ[ƒ€‚ğİ’è‚·‚é
+	//	ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½
 	pDevice -> SetStreamSource( 0 , g_pVtxBufferEnemy , 0 , sizeof( VERTEX_2D ) );
 
 	pDevice -> SetTexture( 0 , g_pTextureEnemy );
@@ -217,61 +215,61 @@ void DrawEnemy(void)
 	{
 		if( g_Enemy[CntEnemy].Use == true )
 		{
-			//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+			//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 			pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , CntEnemy * NUM_VERTEX , NUM_POLYGON);
 		}	//	end of if
 	}	//	end of for
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT MakeVertexEnemy( LPDIRECT3DDEVICE9 pDevice )
- ˆø”:		‚È‚µ
- –ß‚è’l:	—Ç‚¢ê‡	return S_OK;
-			ƒ_ƒ‚Èê‡	return E_FAIL;
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT MakeVertexEnemy( LPDIRECT3DDEVICE9 pDevice )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½Ç‚ï¿½ï¿½ê‡	return S_OK;
+			ï¿½_ï¿½ï¿½ï¿½Èê‡	return E_FAIL;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 HRESULT MakeVertexEnemy( LPDIRECT3DDEVICE9 pDevice )
 {
 	int CntEnemy;
 
-	// FAILEDƒ}ƒNƒ‚ÅƒGƒ‰[ƒ`ƒFƒbƒN
+	// FAILEDï¿½}ï¿½Nï¿½ï¿½ï¿½ÅƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if ( FAILED ( pDevice -> CreateVertexBuffer ( sizeof ( VERTEX_2D ) * NUM_VERTEX * MAX_ENEMY  , D3DUSAGE_WRITEONLY , FVF_VERTEX_2D , D3DPOOL_MANAGED , &g_pVtxBufferEnemy , NULL ) ) )
 	{
 		return E_FAIL;
 	}	//	end of if
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ğƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ğæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferEnemy -> Lock ( 0 , 0 , ( void** )&pVtx ,  0 );
 
 	for(CntEnemy = 0;CntEnemy < MAX_ENEMY;CntEnemy++)
 	{
-		//	’¸“_À•W‚Ìİ’è
+		//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 		pVtx[ CntEnemy*NUM_VERTEX+0 ].pos = D3DXVECTOR3( g_Enemy[CntEnemy].Pos.x , g_Enemy[CntEnemy].Pos.y , 0.0f );
 		pVtx[ CntEnemy*NUM_VERTEX+1 ].pos = D3DXVECTOR3( g_Enemy[CntEnemy].Pos.x+g_Enemy[CntEnemy].Size.x , g_Enemy[CntEnemy].Pos.y , 0.0f );
 		pVtx[ CntEnemy*NUM_VERTEX+2 ].pos = D3DXVECTOR3( g_Enemy[CntEnemy].Pos.x , g_Enemy[CntEnemy].Pos.y+g_Enemy[CntEnemy].Size.y , 0.0f );
 		pVtx[ CntEnemy*NUM_VERTEX+3 ].pos = D3DXVECTOR3( g_Enemy[CntEnemy].Pos.x+g_Enemy[CntEnemy].Size.x , g_Enemy[CntEnemy].Pos.y+g_Enemy[CntEnemy].Size.y , 0.0f );
 
-		//	À•W•ÏŠ·Ï‚İ’¸“_ƒtƒ‰ƒO‚Ìİ’è
+		//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚İ’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½Ìİ’ï¿½
 		pVtx[ CntEnemy*NUM_VERTEX+0 ].rhw = 1.0f;
 		pVtx[ CntEnemy*NUM_VERTEX+1 ].rhw = 1.0f;
 		pVtx[ CntEnemy*NUM_VERTEX+2 ].rhw = 1.0f;
 		pVtx[ CntEnemy*NUM_VERTEX+3 ].rhw = 1.0f;
 
-		//	À•W•ÏŠ·Ï‚İ’¸“_ƒtƒ‰ƒO‚Ìİ’è
+		//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚İ’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½Ìİ’ï¿½
 		pVtx[ CntEnemy*NUM_VERTEX+0 ].rhw = 1.0f;
 		pVtx[ CntEnemy*NUM_VERTEX+1 ].rhw = 1.0f;
 		pVtx[ CntEnemy*NUM_VERTEX+2 ].rhw = 1.0f;
 		pVtx[ CntEnemy*NUM_VERTEX+3 ].rhw = 1.0f;
 
-		//	’¸“_F‚Ìİ’è
+		//	ï¿½ï¿½ï¿½_ï¿½Fï¿½Ìİ’ï¿½
 		pVtx[ CntEnemy*NUM_VERTEX+0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntEnemy*NUM_VERTEX+1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntEnemy*NUM_VERTEX+2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ CntEnemy*NUM_VERTEX+3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-		//	ƒeƒNƒXƒ`ƒƒÀ•W‚Ìİ’è
+		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 		pVtx[ CntEnemy*NUM_VERTEX+0 ].tex = D3DXVECTOR2( 0 , 0 );
 		pVtx[ CntEnemy*NUM_VERTEX+1 ].tex = D3DXVECTOR2( 1 , 0 );
 		pVtx[ CntEnemy*NUM_VERTEX+2 ].tex = D3DXVECTOR2( 0 , 1 );
@@ -284,16 +282,16 @@ HRESULT MakeVertexEnemy( LPDIRECT3DDEVICE9 pDevice )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void ModeTitleEnemy( int IndexEnemy )
- ˆø”:		int IndexEnemy
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ^ƒCƒgƒ‹ƒ‚[ƒh‚Ì“G‚Ìs“®
+ ï¿½Öï¿½ï¿½ï¿½:	void ModeTitleEnemy( int IndexEnemy )
+ ï¿½ï¿½ï¿½ï¿½:		int IndexEnemy
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½Ì“Gï¿½Ìsï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void ModeTitleEnemy( int IndexEnemy )
 {
 	g_Enemy[IndexEnemy].Pos.x += g_Enemy[IndexEnemy].Move.x;
 
-	//	‰æ–ÊŠOˆ—
+	//	ï¿½ï¿½ÊŠOï¿½ï¿½ï¿½ï¿½
 	if( g_Enemy[IndexEnemy].Pos.x > SCREEN_WIDTH )
 	{
 		g_Enemy[IndexEnemy].Pos.x = -( g_Enemy[IndexEnemy].Size.x );
@@ -301,27 +299,27 @@ void ModeTitleEnemy( int IndexEnemy )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdateEnemyAct( int IndexEnemy )
- ˆø”:		int IndexEnemy
- –ß‚è’l:	‚È‚µ
- à–¾:		XV‚Ì“G‚Ìs“®
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdateEnemyAct( int IndexEnemy )
+ ï¿½ï¿½ï¿½ï¿½:		int IndexEnemy
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½Vï¿½ï¿½ï¿½Ì“Gï¿½Ìsï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UpdateEnemyAct( int IndexEnemy )
 {
 	g_Enemy[IndexEnemy].OldPos.x = g_Enemy[IndexEnemy].Pos.x;
 	g_Enemy[IndexEnemy].OldPos.y = g_Enemy[IndexEnemy].Pos.y;
 
-	//	“G‚ª‰æ–Ê‚ÉŒ»‚ê‚½‚ç
+	//	ï¿½Gï¿½ï¿½ï¿½ï¿½Ê‚ÉŒï¿½ï¿½ê‚½ï¿½ï¿½
 	if( g_Enemy[IndexEnemy].Pos.x + g_Enemy[IndexEnemy].Size.x < SCREEN_WIDTH )
 	{
-		//	ˆÚ“®
+		//	ï¿½Ú“ï¿½
 		g_Enemy[IndexEnemy].Pos.x -= g_Enemy[IndexEnemy].Move.x;
 	}	//	end of if
 
-	g_Enemy[IndexEnemy].Move.y += GRAVITY;	//	d—Í‚ğ‰Á‚¦‚é
+	g_Enemy[IndexEnemy].Move.y += GRAVITY;	//	ï¿½dï¿½Í‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	g_Enemy[IndexEnemy].Pos.y += g_Enemy[IndexEnemy]. Move.y;
 
-	//	‰æ–Ê‚ª‚¢ˆ—
+	//	ï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if( g_Enemy[IndexEnemy].Pos.x + g_Enemy[IndexEnemy].Size.x < 0 )
 	{
 		g_Enemy[IndexEnemy].Use = false;
@@ -332,11 +330,11 @@ void UpdateEnemyAct( int IndexEnemy )
 	}	//	end of if
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CreateEnemy( float PosX , float PosY )
- ˆø”:		float PosX
+ ï¿½Öï¿½ï¿½ï¿½:	void CreateEnemy( float PosX , float PosY )
+ ï¿½ï¿½ï¿½ï¿½:		float PosX
 			float PosY
- –ß‚è’l:	‚È‚µ
- à–¾:		“G‚Ì¶¬
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Gï¿½Ìï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void CreateEnemy( float PosX , float PosY , float Speed )
 {
@@ -355,16 +353,16 @@ void CreateEnemy( float PosX , float PosY , float Speed )
 	}	//	end of for
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void MakeEnemyPos( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		“G‚ÌÀ•W•ÏX
+ ï¿½Öï¿½ï¿½ï¿½:	void MakeEnemyPos( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Gï¿½Ìï¿½ï¿½Wï¿½ÏX
 -----------------------------------------------------------------------------*/
 void MakeEnemyPos( VERTEX_2D* pVtx , int IndexEnemy )
 {
 	pVtx += IndexEnemy*NUM_VERTEX;
 
-	//	’¸“_À•W‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( g_Enemy[IndexEnemy].Pos.x , g_Enemy[IndexEnemy].Pos.y , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( g_Enemy[IndexEnemy].Pos.x+g_Enemy[IndexEnemy].Size.x , g_Enemy[IndexEnemy].Pos.y , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( g_Enemy[IndexEnemy].Pos.x , g_Enemy[IndexEnemy].Pos.y+g_Enemy[IndexEnemy].Size.y , 0.0f );
@@ -372,10 +370,10 @@ void MakeEnemyPos( VERTEX_2D* pVtx , int IndexEnemy )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void EnemyTutorial( void )
- ˆø”:		
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ^ƒCƒgƒ‹‚Ì“G‚Ì”z’u
+ ï¿½Öï¿½ï¿½ï¿½:	void EnemyTutorial( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ì“Gï¿½Ì”zï¿½u
 -----------------------------------------------------------------------------*/
 void EnemyTitle( void )
 {
@@ -385,10 +383,10 @@ void EnemyTitle( void )
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void EnemyTutorial( void )
- ˆø”:		
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì“G‚Ì”z’u
+ ï¿½Öï¿½ï¿½ï¿½:	void EnemyTutorial( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì“Gï¿½Ì”zï¿½u
 -----------------------------------------------------------------------------*/
 void EnemyTutorial( void )
 {
@@ -396,10 +394,10 @@ void EnemyTutorial( void )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void EnemyStage1( void )
- ˆø”:		
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒXƒe[ƒW‚P‚Ì“G‚Ì”z’u
+ ï¿½Öï¿½ï¿½ï¿½:	void EnemyStage1( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½eï¿½[ï¿½Wï¿½Pï¿½Ì“Gï¿½Ì”zï¿½u
 -----------------------------------------------------------------------------*/
 void EnemyStage1( void )
 {
@@ -423,10 +421,10 @@ void EnemyStage1( void )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	ENEMY *GetEnemy( int IndexEnemy )
- ˆø”:		int IndexEnemy
- –ß‚è’l:	return &g_Enemy;
- à–¾:		“Gî•ñ‚Ìæ“¾
+ ï¿½Öï¿½ï¿½ï¿½:	ENEMY *GetEnemy( int IndexEnemy )
+ ï¿½ï¿½ï¿½ï¿½:		int IndexEnemy
+ ï¿½ß‚ï¿½l:	return &g_Enemy;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Gï¿½ï¿½ï¿½Ìæ“¾
 -----------------------------------------------------------------------------*/
 ENEMY *GetEnemy( int IndexEnemy )
 {

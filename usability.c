@@ -1,39 +1,37 @@
 /*=============================================================================
 
-		ŒvZˆ—[ usability.h ]
+		ï¿½vï¿½Zï¿½ï¿½ï¿½ï¿½[ usability.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/08/02
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/08/02
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 			#include <stdio.h>
 			#include "main.h"
 			#include "usability.h"
 -----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "main.h"
 #include "usability.h"
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	bool RectangleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float bPosX , float bPosY , float bWidth , float bHeight )
- ˆø”:		float aPosX
+ ï¿½Öï¿½ï¿½ï¿½:	bool RectangleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float bPosX , float bPosY , float bWidth , float bHeight )
+ ï¿½ï¿½ï¿½ï¿½:		float aPosX
 			float aPosY
 			float aWidth
 			float aHeight
@@ -41,16 +39,16 @@
 			float bPosY
 			float bWidth
 			float bHeight
- –ß‚è’l:	“–‚½‚Á‚Ä‚¢‚éê‡	return true;
-			“–‚½‚Á‚Ä‚¢‚È‚¢ê‡	return false;
- à–¾:		‹éŒ`‚Ì“–‚½‚è”»’è
+ ï¿½ß‚ï¿½l:	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ê‡	return true;
+			ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ê‡	return false;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½`ï¿½Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 bool RectangleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float bPosX , float bPosY , float bWidth , float bHeight )
 {
 	float x[] = { aPosX , aPosX +  aWidth , bPosX , bPosX + bWidth};
 	float y[] = { aPosY , aPosY +  aHeight , bPosY , bPosY + bHeight};
 
-	//	“–‚½‚è”»’è
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
 	if( x[0] < x[3] && x[2] < x[1] && y[0] < y[3] && y[2] < y[1] )
 	{
 		return true;
@@ -58,8 +56,8 @@ bool RectangleDecision( float aPosX , float aPosY , float aWidth , float aHeight
 	return false;
 }
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	bool CircleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float aArea , float bPosX , float bPosY , float bWidth , float bHeight , float bArea )
- ˆø”:		float aPosX
+ ï¿½Öï¿½ï¿½ï¿½:	bool CircleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float aArea , float bPosX , float bPosY , float bWidth , float bHeight , float bArea )
+ ï¿½ï¿½ï¿½ï¿½:		float aPosX
 			float aPosY
 			float aWidth
 			float aHeight
@@ -69,13 +67,13 @@ bool RectangleDecision( float aPosX , float aPosY , float aWidth , float aHeight
 			float bWidth
 			float bHeight
 			float bArea
- –ß‚è’l:	“–‚½‚Á‚Ä‚¢‚éê‡	return true;
-			“–‚½‚Á‚Ä‚¢‚È‚¢ê‡	return false;
- à–¾:		‰~‚Ì“–‚½‚è”»’è
+ ï¿½ß‚ï¿½l:	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ê‡	return true;
+			ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ê‡	return false;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½~ï¿½Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 bool CircleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float aArea , float bPosX , float bPosY , float bWidth , float bHeight , float bArea )
 {
-	//	“–‚½‚è”»’è
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
 	if( (((aPosY + aHeight * 0.5f) - (bPosY + bHeight * 0.5f)) * ((aPosY + aHeight * 0.5f) - (bPosY + bWidth * 0.5f))) + (((aPosX + aWidth * 0.5f) - (bPosX + bWidth * 0.5f)) * ((aPosX + aWidth * 0.5f) - (bPosX + bWidth * 0.5f))) < (aArea + bArea) * (aArea + bArea) )
 	{
 		return true;

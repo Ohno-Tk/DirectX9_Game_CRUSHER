@@ -1,20 +1,18 @@
 /*=============================================================================
 
-		ƒŠƒUƒ‹ƒg[ result.cpp ]
+		ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½g[ result.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/06/29
 -------------------------------------------------------------------------------
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/08/23
 -------------------------------------------------------------------------------
 */
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 
 #include <stdio.h>
@@ -29,7 +27,7 @@
 #include "time.h"
 #include "fade.h"
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define RESULT_TEXTURENAME "data/TEXTURE/result/result.jpg"
 
@@ -44,111 +42,111 @@
 #define RESULT_PAD_TEXTURENAME "data/TEXTURE/func/ButtomPad.png"
 
 
-#define MAX_RESULT_TEXTURE ( 5 )	//	ƒeƒNƒXƒ`ƒƒ‚ÌÅ‘å”
+#define MAX_RESULT_TEXTURE ( 5 )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÌÅ‘å”
 
-#define RESULT_POS_X ( 0.0f )		//	ƒ|ƒŠƒSƒ“‚Ì•\Ž¦ˆÊ’u‚w
-#define RESULT_POS_Y ( 0.0f )		//	ƒ|ƒŠƒSƒ“‚Ì•\Ž¦ˆÊ’u‚x
-#define RESULT_WIDTH ( 800.0f )		//	ƒ|ƒŠƒSƒ“‚Ì•
-#define RESULT_HEIGHT ( 600.0f )	//	ƒ|ƒŠƒSƒ“‚Ì‚‚³
+#define RESULT_POS_X ( 0.0f )		//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½w
+#define RESULT_POS_Y ( 0.0f )		//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½x
+#define RESULT_WIDTH ( 800.0f )		//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•ï¿½
+#define RESULT_HEIGHT ( 600.0f )	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 
-#define RESULT_CLEAR_POS_X ( 250.0f )	//	ƒNƒŠƒAPosX
-#define RESULT_CLEAR_POS_Y ( 0.0f )		//	ƒNƒŠƒAPosY
-#define RESULT_CLEAR_WIDTH ( 500.0f )	//	ƒNƒŠƒAWIDTH
-#define RESULT_CLEAR_HEIGHT ( 250.0f )	//	ƒNƒŠƒAHEIGHT
+#define RESULT_CLEAR_POS_X ( 250.0f )	//	ï¿½Nï¿½ï¿½ï¿½APosX
+#define RESULT_CLEAR_POS_Y ( 0.0f )		//	ï¿½Nï¿½ï¿½ï¿½APosY
+#define RESULT_CLEAR_WIDTH ( 500.0f )	//	ï¿½Nï¿½ï¿½ï¿½AWIDTH
+#define RESULT_CLEAR_HEIGHT ( 250.0f )	//	ï¿½Nï¿½ï¿½ï¿½AHEIGHT
 
-#define RESULT_GAMEOVER_POS_X ( 200.0f )	//	ƒQ[ƒ€ƒI[ƒo[PosX
-#define RESULT_GAMEOVER_POS_Y ( 0.0f )		//	ƒQ[ƒ€ƒI[ƒo[PosY
-#define RESULT_GAMEOVER_WIDTH ( 500.0f )	//	ƒQ[ƒ€ƒI[ƒo[WIDTH
-#define RESULT_GAMEOVER_HEIGHT ( 250.0f )	//	ƒQ[ƒ€ƒI[ƒo[HEIGHT
+#define RESULT_GAMEOVER_POS_X ( 200.0f )	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[PosX
+#define RESULT_GAMEOVER_POS_Y ( 0.0f )		//	ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[PosY
+#define RESULT_GAMEOVER_WIDTH ( 500.0f )	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[WIDTH
+#define RESULT_GAMEOVER_HEIGHT ( 250.0f )	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[HEIGHT
 
-#define RESULT_PLAYER_POS_X ( 300.0f )	//	ƒvƒŒƒCƒ„[PosX
-#define RESULT_PLAYER_POS_Y ( 200.0f )	//	ƒvƒŒƒCƒ„[PosY
-#define RESULT_PLAYER_WIDTH ( 400.0f )	//	ƒvƒŒƒCƒ„[WIDTH
-#define RESULT_PLAYER_HEIGHT ( 300.0f )	//	ƒvƒŒƒCƒ„[HEIGHT
+#define RESULT_PLAYER_POS_X ( 300.0f )	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[PosX
+#define RESULT_PLAYER_POS_Y ( 200.0f )	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[PosY
+#define RESULT_PLAYER_WIDTH ( 400.0f )	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[WIDTH
+#define RESULT_PLAYER_HEIGHT ( 300.0f )	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[HEIGHT
 
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-HRESULT MakeVertexresult( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
-void MakeVertexTex( VERTEX_2D* pVtx );	//	ƒeƒNƒXƒ`ƒƒ•ÏX
-void PushBottomFade( VERTEX_2D* pVtx );	//	ƒvƒbƒVƒ…ƒ{ƒ^ƒ“‚ÌƒtƒF[ƒh
+HRESULT MakeVertexresult( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+void MakeVertexTex( VERTEX_2D* pVtx );	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÏX
+void PushBottomFade( VERTEX_2D* pVtx );	//	ï¿½vï¿½bï¿½Vï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½Ìƒtï¿½Fï¿½[ï¿½h
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
 LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferresult = NULL;
 
-//	ƒŠƒUƒ‹ƒg”wŒi
-LPDIRECT3DTEXTURE9 g_pTextureresult = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½wï¿½i
+LPDIRECT3DTEXTURE9 g_pTextureresult = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	Pushƒ{ƒ^ƒ“
-LPDIRECT3DTEXTURE9 g_pTextureResult_Push = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	Pushï¿½{ï¿½^ï¿½ï¿½
+LPDIRECT3DTEXTURE9 g_pTextureResult_Push = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	ƒNƒŠƒA
-LPDIRECT3DTEXTURE9 g_pTextureResult_Clear = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½Nï¿½ï¿½ï¿½A
+LPDIRECT3DTEXTURE9 g_pTextureResult_Clear = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	ƒQ[ƒ€ƒI[ƒo[
-LPDIRECT3DTEXTURE9 g_pTextureResult_Gameover = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[
+LPDIRECT3DTEXTURE9 g_pTextureResult_Gameover = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	ƒvƒŒƒCƒ„[
-LPDIRECT3DTEXTURE9 g_pTextureResult_Player = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[
+LPDIRECT3DTEXTURE9 g_pTextureResult_Player = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-FADE g_ResultFade = FADE_IN;	//	ƒtƒF[ƒhó‘Ô
-D3DXCOLOR g_ResultFadeColor;	//	ƒtƒF[ƒhF
+FADE g_ResultFade = FADE_IN;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½
+D3DXCOLOR g_ResultFadeColor;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½F
 
 float Result_Uset = 0.0f , Result_Vset = 0.0f;
 float Result_Bg_Uset = 0.0f , Result_Bg_Vset = 0.0f;
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void InitResult( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒŠƒUƒ‹ƒg‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void InitResult( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void InitResult( void )
 {
-	//	‘«êî•ñ(ƒS[ƒ‹)‚ÌŽæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Sï¿½[ï¿½ï¿½)ï¿½ÌŽæ“¾
 	BASE *Base = GetBase( MAX_GOOL );
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	ƒQ[ƒ€ƒpƒbƒhƒfƒoƒCƒXŽæ“¾
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½æ“¾
 	LPDIRECTINPUTDEVICE8 *GamePad = GetGamePad( 0 );
 
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , RESULT_TEXTURENAME , &g_pTextureresult  ) ) )
 	{
-		MessageBox( NULL , "ƒŠƒUƒ‹ƒg”wŒi‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½wï¿½iï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , RESULT_PLAYER_TEXTURENAME , &g_pTextureResult_Player  ) ) )
 	{
-		MessageBox( NULL , "ƒŠƒUƒ‹ƒg‚ÌƒvƒŒƒCƒ„[‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
-	//	ƒQ[ƒ€ƒpƒbƒh‚ª–³‚©‚Á‚½‚ç
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if( GamePad[ 0 ] == NULL )
 	{
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , RESULT_PUSH_TEXTURENAME , &g_pTextureResult_Push  ) ) )
 		{
-			MessageBox( NULL , "Pushƒ{ƒ^ƒ“‚O‚P‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "Pushï¿½{ï¿½^ï¿½ï¿½ï¿½Oï¿½Pï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 	}
 
-	//	ƒQ[ƒ€ƒpƒbƒh‚ª‚ ‚Á‚½‚ç
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	else if( GamePad[ 0 ] != NULL )
 	{
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , RESULT_PAD_TEXTURENAME , &g_pTextureResult_Push  ) ) )
 		{
-			MessageBox( NULL , "Pushƒ{ƒ^ƒ“‚O‚Q‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "Pushï¿½{ï¿½^ï¿½ï¿½ï¿½Oï¿½Qï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 	}
 
-	//	ƒS[ƒ‹‚µ‚½‚©
+	//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if( Base -> GoolFalg == true )
 	{
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , RESULT_CLEAR_TEXTURENAME , &g_pTextureResult_Clear  ) ) )
 		{
-			MessageBox( NULL , "ƒNƒŠƒA‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½Nï¿½ï¿½ï¿½Aï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 	}	//	end of if
 
@@ -156,13 +154,13 @@ void InitResult( void )
 	{
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , RESULT_GAMEOVER_TEXTURENAME , &g_pTextureResult_Gameover  ) ) )
 		{
-			MessageBox( NULL , "ƒQ[ƒ€ƒI[ƒo[‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[ï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 	}	//	end of else if
 
-	MakeVertexresult( pDevice );	//	’¸“_‚Ìì¬
+	MakeVertexresult( pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 
-	//	‰Šú‰»
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	Result_Uset = 0.0f;
 	Result_Vset = 0.0f;
 
@@ -171,25 +169,25 @@ void InitResult( void )
 
 	g_ResultFadeColor = D3DXCOLOR( 1.0f , 1.0f , 1.0f , 1.0f );
 
-	//	‰¹ŠyÄ¶
+	//	ï¿½ï¿½ï¿½yï¿½Äï¿½
 	PlaySound( SOUND_LABEL_BGM_RESULT );
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitResult( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒŠƒUƒ‹ƒg‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitResult( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitResult( void )
 {
-	//	‘«êî•ñ(ƒS[ƒ‹)‚ÌŽæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Sï¿½[ï¿½ï¿½)ï¿½ÌŽæ“¾
 	BASE *Base = GetBase( MAX_GOOL );
 
 	Base -> GoolFalg = false;
 
-	//	”wŒi
+	//	ï¿½wï¿½i
 
-	if( g_pTextureresult != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	if( g_pTextureresult != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureresult -> Release();
 		g_pTextureresult = NULL;
@@ -200,28 +198,28 @@ void UninitResult( void )
 		g_pVtxBufferresult = NULL;
 	}	//	end of if
 
-	//	Pushƒ{ƒ^ƒ“
+	//	Pushï¿½{ï¿½^ï¿½ï¿½
 	if( g_pTextureResult_Push != NULL )
 	{
 		g_pTextureResult_Push -> Release();
 		g_pTextureResult_Push = NULL;
 	}	//	end of if
 
-	//	ƒvƒŒƒCƒ„[
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[
 	if( g_pTextureResult_Player != NULL )
 	{
 		g_pTextureResult_Player -> Release();
 		g_pTextureResult_Player = NULL;
 	}	//	end of if
 
-	//	ƒNƒŠƒA
+	//	ï¿½Nï¿½ï¿½ï¿½A
 	if( g_pTextureResult_Clear != NULL )
 	{
 		g_pTextureResult_Clear -> Release();
 		g_pTextureResult_Clear = NULL;
 	}	//	end of if
 
-	//	ƒQ[ƒ€ƒI[ƒo[
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[
 	if( g_pTextureResult_Gameover != NULL )
 	{
 		g_pTextureResult_Gameover -> Release();
@@ -230,30 +228,30 @@ void UninitResult( void )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdeteResult( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒŠƒUƒ‹ƒg‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdeteResult( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdateResult( void )
 {
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	//	‘«êî•ñ(ƒS[ƒ‹)‚ÌŽæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Sï¿½[ï¿½ï¿½)ï¿½ÌŽæ“¾
 	BASE *Base = GetBase( MAX_GOOL );
 
-	//	¡‚Ìƒ‚[ƒh
+	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 	MODE *Mode = GetMode();
 
-	//	ƒQ[ƒ€ƒpƒbƒhƒfƒoƒCƒXŽæ“¾
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½æ“¾
 	LPDIRECTINPUTDEVICE8 *GamePad = GetGamePad( 0 );
 
-	//	ƒtƒF[ƒh’†‚©‚Ç‚¤‚©
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
 	bool *FadeUse = GetFadeUse();
 
 
-	//	ƒS[ƒ‹‚µ‚½‚©
+	//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if( Base -> GoolFalg == true )
 	{
 		Result_Uset = 0.5f;
@@ -268,12 +266,12 @@ void UpdateResult( void )
 	Result_Bg_Uset += 0.004f;
 	Result_Bg_Vset -= 0.004f;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferresult -> Lock ( 0 , 0 ,( void** )&pVtx ,0 );
 
-	MakeVertexTex( pVtx );	//	ƒeƒNƒXƒ`ƒƒ•ÏX
+	MakeVertexTex( pVtx );	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÏX
 	
-	PushBottomFade(pVtx );	//	ƒvƒbƒVƒ…ƒ{ƒ^ƒ“‚ÌƒtƒF[ƒh
+	PushBottomFade(pVtx );	//	ï¿½vï¿½bï¿½Vï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½Ìƒtï¿½Fï¿½[ï¿½h
 
 	g_pVtxBufferresult -> Unlock();
 
@@ -281,33 +279,33 @@ void UpdateResult( void )
 	{
 		for( int CntPad = 0 ; CntPad < MAX_PAD ; CntPad++ , GamePad++ )
 		{
-			//	‰æ–Ê‘JˆÚ
+			//	ï¿½ï¿½Ê‘Jï¿½ï¿½
 			if( GamePad[ CntPad ] != NULL )
 			{
 				if( GetGamePadTrigger( BUTTOM_04 ) )
 				{
-					//	ƒ‚[ƒh‚ªƒQ[ƒ€‚ÌŽž
+					//	ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½Qï¿½[ï¿½ï¿½ï¿½ÌŽï¿½
 					if( *Mode == MODE_GAME )
 					{
 						SetFade(FADE_OUT , MODE_RANKING);
 
-						//	SEÄ¶
+						//	SEï¿½Äï¿½
 						PlaySound( SOUND_LABEL_SE_ENTER );
 
-						//	‰¹Šy’âŽ~
+						//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 						StopSound( SOUND_LABEL_BGM_RESULT );
 					}	//	end of if
 
-					//	ƒ‚[ƒh‚ªƒ`ƒ…[ƒgƒŠƒAƒ‹‚ÌŽž
+					//	ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌŽï¿½
 					else if( *Mode == MODE_TUTORIAL )
 					{
 						SetFade(FADE_OUT , MODE_TITLE);
 					}	//	end of else if
 
-					//	SEÄ¶
+					//	SEï¿½Äï¿½
 					PlaySound( SOUND_LABEL_SE_ENTER );
 
-					//	‰¹Šy’âŽ~
+					//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 					StopSound( SOUND_LABEL_BGM_RESULT );
 
 				}		//	end of if
@@ -318,30 +316,30 @@ void UpdateResult( void )
 				if( GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE) )
 				{
 
-					//	ƒ‚[ƒh‚ªƒQ[ƒ€‚ÌŽž
+					//	ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½Qï¿½[ï¿½ï¿½ï¿½ÌŽï¿½
 					if( *Mode == MODE_GAME )
 					{
 						SetFade(FADE_OUT , MODE_RANKING);
 
-						//	SEÄ¶
+						//	SEï¿½Äï¿½
 						PlaySound( SOUND_LABEL_SE_ENTER );
 
-						//	‰¹Šy’âŽ~
+						//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 						StopSound( SOUND_LABEL_BGM_RESULT );
 
 					}	//	end of if
 
-					//	ƒ‚[ƒh‚ªƒ`ƒ…[ƒgƒŠƒAƒ‹‚ÌŽž
+					//	ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌŽï¿½
 					else if( *Mode == MODE_TUTORIAL )
 					{
 						SetFade(FADE_OUT , MODE_TITLE);
 				
 					}	//	end of else if
 
-					//	SEÄ¶
+					//	SEï¿½Äï¿½
 					PlaySound( SOUND_LABEL_SE_ENTER );
 
-					//	‰¹Šy’âŽ~
+					//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 					StopSound( SOUND_LABEL_BGM_RESULT );
 
 				}	//	end of if
@@ -351,209 +349,209 @@ void UpdateResult( void )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawResult( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒŠƒUƒ‹ƒg‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawResult( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawResult( void )
 {
-	//	‘«êî•ñ(ƒS[ƒ‹)‚ÌŽæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Sï¿½[ï¿½ï¿½)ï¿½ÌŽæ“¾
 	BASE *Base = GetBase( MAX_GOOL );
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ÌÝ’ï¿½
 	pDevice -> SetFVF( FVF_VERTEX_2D );
 
-	//	ƒXƒgƒŠ[ƒ€‚ðÝ’è‚·‚é
+	//	ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½Ý’è‚·ï¿½ï¿½
 	pDevice -> SetStreamSource( 0 , g_pVtxBufferresult , 0 , sizeof( VERTEX_2D ) );
 
-	//	ƒŠƒUƒ‹ƒg”wŒi
+	//	ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½wï¿½i
 	pDevice -> SetTexture( 0 , g_pTextureresult );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 0, NUM_POLYGON);
 
-	//	ƒvƒŒƒCƒ„[
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[
 	pDevice -> SetTexture( 0 , g_pTextureResult_Player );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 16, NUM_POLYGON);
 
 
-	//	ƒS[ƒ‹‚µ‚½‚©
+	//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if( Base -> GoolFalg == true )
 	{
-		//	ƒNƒŠƒA
+		//	ï¿½Nï¿½ï¿½ï¿½A
 		pDevice -> SetTexture( 0 , g_pTextureResult_Clear );
 
-		//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+		//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 		pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 8, NUM_POLYGON);
 	}
 	else if( Base -> GoolFalg == false )
 	{
-		//	ƒQ[ƒ€ƒI[ƒo[
+		//	ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[
 		pDevice -> SetTexture( 0 , g_pTextureResult_Gameover );
 
-		//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+		//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 		pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 12, NUM_POLYGON);
 	}
 
-	//	Pushƒ{ƒ^ƒ“
+	//	Pushï¿½{ï¿½^ï¿½ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureResult_Push );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 4, NUM_POLYGON);
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT MakeVertexresult( LPDIRECT3DDEVICE9 pDevice )
- ˆø”:		LPDIRECT3DDEVICE9 pDevice
- –ß‚è’l:	‚È‚µ
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT MakeVertexresult( LPDIRECT3DDEVICE9 pDevice )
+ ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 pDevice
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 HRESULT MakeVertexresult( LPDIRECT3DDEVICE9 pDevice )
 {
 
-	// FAILEDƒ}ƒNƒ‚ÅƒGƒ‰[ƒ`ƒFƒbƒN
+	// FAILEDï¿½}ï¿½Nï¿½ï¿½ï¿½ÅƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if ( FAILED ( pDevice -> CreateVertexBuffer ( sizeof ( VERTEX_2D ) * NUM_VERTEX * MAX_RESULT_TEXTURE , D3DUSAGE_WRITEONLY , FVF_VERTEX_2D , D3DPOOL_MANAGED , &g_pVtxBufferresult , NULL ) ) )
 	{
 		return E_FAIL;
 	}
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferresult -> Lock ( 0 , 0 ,( void** )&pVtx ,0 );
 
-	//	”wŒi
+	//	ï¿½wï¿½i
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( RESULT_POS_X                , RESULT_POS_Y                 , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( RESULT_POS_X + SCREEN_WIDTH , RESULT_POS_Y                 , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( RESULT_POS_X                , RESULT_POS_Y + SCREEN_HEIGHT , 0.0f );
 	pVtx[ 3 ].pos = D3DXVECTOR3( RESULT_POS_X + SCREEN_WIDTH , RESULT_POS_Y + SCREEN_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].rhw = 1.0f;
 	pVtx[ 1 ].rhw = 1.0f;
 	pVtx[ 2 ].rhw = 1.0f;
 	pVtx[ 3 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 200 );
 	pVtx[ 1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 200 );
 	pVtx[ 2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 200 );
 	pVtx[ 3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 200 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 3 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	Pushƒ{ƒ^ƒ“
+	//	Pushï¿½{ï¿½^ï¿½ï¿½
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 4 ].pos = D3DXVECTOR3( RESULT_PUSH_POS_X                         , RESULT_PUSH_POS_Y                          , 0.0f );
 	pVtx[ 5 ].pos = D3DXVECTOR3( RESULT_PUSH_POS_X + RESULT_PUSH_POS_WIDTH , RESULT_PUSH_POS_Y                          , 0.0f );
 	pVtx[ 6 ].pos = D3DXVECTOR3( RESULT_PUSH_POS_X                         , RESULT_PUSH_POS_Y + RESULT_PUSH_POS_HEIGHT , 0.0f );
 	pVtx[ 7 ].pos = D3DXVECTOR3( RESULT_PUSH_POS_X + RESULT_PUSH_POS_WIDTH , RESULT_PUSH_POS_Y + RESULT_PUSH_POS_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 4 ].rhw = 1.0f;
 	pVtx[ 5 ].rhw = 1.0f;
 	pVtx[ 6 ].rhw = 1.0f;
 	pVtx[ 7 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 4 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 5 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 6 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 7 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 4 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 5 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 6 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 7 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	ƒNƒŠƒA
+	//	ï¿½Nï¿½ï¿½ï¿½A
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 8  ].pos = D3DXVECTOR3( RESULT_CLEAR_POS_X                      , RESULT_CLEAR_POS_Y                       , 0.0f );
 	pVtx[ 9  ].pos = D3DXVECTOR3( RESULT_CLEAR_POS_X + RESULT_CLEAR_WIDTH , RESULT_CLEAR_POS_Y                       , 0.0f );
 	pVtx[ 10 ].pos = D3DXVECTOR3( RESULT_CLEAR_POS_X                      , RESULT_CLEAR_POS_Y + RESULT_CLEAR_HEIGHT , 0.0f );
 	pVtx[ 11 ].pos = D3DXVECTOR3( RESULT_CLEAR_POS_X + RESULT_CLEAR_WIDTH , RESULT_CLEAR_POS_Y + RESULT_CLEAR_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 8  ].rhw = 1.0f;
 	pVtx[ 9  ].rhw = 1.0f;
 	pVtx[ 10 ].rhw = 1.0f;
 	pVtx[ 11 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 8  ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 9  ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 10 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 11 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 8  ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 9  ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 10 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 11 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	ƒQ[ƒ€ƒI[ƒo[
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 12 ].pos = D3DXVECTOR3( RESULT_GAMEOVER_POS_X                         , RESULT_GAMEOVER_POS_Y                          , 0.0f );
 	pVtx[ 13 ].pos = D3DXVECTOR3( RESULT_GAMEOVER_POS_X + RESULT_GAMEOVER_WIDTH , RESULT_GAMEOVER_POS_Y                          , 0.0f );
 	pVtx[ 14 ].pos = D3DXVECTOR3( RESULT_GAMEOVER_POS_X                         , RESULT_GAMEOVER_POS_Y + RESULT_GAMEOVER_HEIGHT , 0.0f );
 	pVtx[ 15 ].pos = D3DXVECTOR3( RESULT_GAMEOVER_POS_X + RESULT_GAMEOVER_WIDTH , RESULT_GAMEOVER_POS_Y + RESULT_GAMEOVER_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 12 ].rhw = 1.0f;
 	pVtx[ 13 ].rhw = 1.0f;
 	pVtx[ 14 ].rhw = 1.0f;
 	pVtx[ 15 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 12 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 13 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 14 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 15 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 12 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 13 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 14 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 15 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	ƒvƒŒƒCƒ„[
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].pos = D3DXVECTOR3( RESULT_PLAYER_POS_X                       , RESULT_PLAYER_POS_Y                          , 0.0f );
 	pVtx[ 17 ].pos = D3DXVECTOR3( RESULT_PLAYER_POS_X + RESULT_PLAYER_WIDTH , RESULT_PLAYER_POS_Y                          , 0.0f );
 	pVtx[ 18 ].pos = D3DXVECTOR3( RESULT_PLAYER_POS_X                       , RESULT_PLAYER_POS_Y + RESULT_PLAYER_HEIGHT , 0.0f );
 	pVtx[ 19 ].pos = D3DXVECTOR3( RESULT_PLAYER_POS_X + RESULT_PLAYER_WIDTH , RESULT_PLAYER_POS_Y + RESULT_PLAYER_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].rhw = 1.0f;
 	pVtx[ 17 ].rhw = 1.0f;
 	pVtx[ 18 ].rhw = 1.0f;
 	pVtx[ 19 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 17 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 18 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 19 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 17 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 18 ].tex = D3DXVECTOR2( 0 , 1 );
@@ -565,41 +563,41 @@ HRESULT MakeVertexresult( LPDIRECT3DDEVICE9 pDevice )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT MakeVertexTex( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒeƒNƒXƒ`ƒƒ•ÏX
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT MakeVertexTex( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÏX
 -----------------------------------------------------------------------------*/
 void MakeVertexTex( VERTEX_2D* pVtx )
 {
-	//	ƒŠƒUƒ‹ƒg”wŒi
+	//	ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½wï¿½i
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 + Result_Bg_Uset , 0 + Result_Bg_Vset );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 1 + Result_Bg_Uset , 0 + Result_Bg_Vset );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 + Result_Bg_Uset , 1 + Result_Bg_Vset );
 	pVtx[ 3 ].tex = D3DXVECTOR2( 1 + Result_Bg_Uset , 1 + Result_Bg_Vset );
 
-	//	ƒŠƒUƒ‹ƒg
+	//	ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½g
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].tex = D3DXVECTOR2( 0 + Result_Uset         , 0 + Result_Vset );
 	pVtx[ 17 ].tex = D3DXVECTOR2( TEX_WIDTH + Result_Uset , 0 + Result_Vset );
 	pVtx[ 18 ].tex = D3DXVECTOR2( 0 + Result_Uset         , TEX_HEIGHT + Result_Vset );
 	pVtx[ 19 ].tex = D3DXVECTOR2( TEX_WIDTH + Result_Uset , TEX_HEIGHT + Result_Vset );
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void PushBottomFade( VERTEX_2D* pVtx; )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒvƒbƒVƒ…ƒ{ƒ^ƒ“‚ÌƒtƒF[ƒh
+ ï¿½Öï¿½ï¿½ï¿½:	void PushBottomFade( VERTEX_2D* pVtx; )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½bï¿½Vï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½Ìƒtï¿½Fï¿½[ï¿½h
 -----------------------------------------------------------------------------*/
 void PushBottomFade( VERTEX_2D* pVtx )
 {
-	if( g_ResultFade == FADE_IN )	//	ƒtƒF[ƒhƒCƒ“Žž‚Ìˆ—
+	if( g_ResultFade == FADE_IN )	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	{
-		g_ResultFadeColor.a -= FADE_RATE;	//	a’l‚ðŒ¸ŽZ‚µ‚ÄŒã‚ë‚Ì‰æ–Ê‚ð•‚‚©‚Ñã‚ª‚ç‚¹‚é
-		//	ƒtƒF[ƒhƒCƒ“‚ÌI—¹
+		g_ResultFadeColor.a -= FADE_RATE;	//	aï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ÄŒï¿½ï¿½Ì‰ï¿½Ê‚ð•‚‚ï¿½ï¿½Ñã‚ªï¿½ç‚¹ï¿½ï¿½
+		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½ÌIï¿½ï¿½
 		if( g_ResultFadeColor.a < 0.0f )
 		{
 			g_ResultFadeColor.a = 0.0f;
@@ -607,18 +605,18 @@ void PushBottomFade( VERTEX_2D* pVtx )
 		}	//	end od if
 	}	//	end of if
 
-	else if( g_ResultFade == FADE_OUT )	//	ƒtƒF[ƒhƒAƒEƒgŽž‚Ìˆ—
+	else if( g_ResultFade == FADE_OUT )	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	{
-		g_ResultFadeColor.a += FADE_RATE;	//	a’l‚ð‰ÁŽZ‚µ‚ÄŒã‚ë‚Ì‰æ–Ê‚ðÁ‚µ‚Ä‚¢‚­
-		//	ƒtƒF[ƒhƒAƒEƒg‚ÌI—¹
+		g_ResultFadeColor.a += FADE_RATE;	//	aï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ÄŒï¿½ï¿½Ì‰ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
+		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ÌIï¿½ï¿½
 		if( g_ResultFadeColor.a > 1.0f )
 		{
 			g_ResultFadeColor.a = 1.0f;
-			g_ResultFade = FADE_IN;	//	ƒtƒF[ƒhƒCƒ“‚Éˆ—‚ÌØ‚è‘Ö‚¦
+			g_ResultFade = FADE_IN;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ÌØ‚ï¿½Ö‚ï¿½
 		}	//	end of if
 	}	//	end of else if
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 4 ].color = D3DXCOLOR( g_ResultFadeColor.r , g_ResultFadeColor.g , g_ResultFadeColor.b , g_ResultFadeColor.a );
 	pVtx[ 5 ].color = D3DXCOLOR( g_ResultFadeColor.r , g_ResultFadeColor.g , g_ResultFadeColor.b , g_ResultFadeColor.a );
 	pVtx[ 6 ].color = D3DXCOLOR( g_ResultFadeColor.r , g_ResultFadeColor.g , g_ResultFadeColor.b , g_ResultFadeColor.a );

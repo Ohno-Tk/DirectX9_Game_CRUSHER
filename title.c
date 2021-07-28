@@ -1,17 +1,15 @@
 /*=============================================================================
 
-		ƒ^ƒCƒgƒ‹[ Title.cpp ]
+		ï¿½^ï¿½Cï¿½gï¿½ï¿½[ Title.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/08/02
 -------------------------------------------------------------------------------
 */
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "main.h"
@@ -26,60 +24,60 @@
 #include "bg.h"
 #include "enemy.h"
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define TITLE_TEXTURENAME "data/TEXTURE/title/title.png"			//	ƒ^ƒCƒgƒ‹ƒeƒNƒXƒ`ƒƒ
-#define START_TEXTURENAME "data/TEXTURE/title/start.png"					//	ƒXƒ^[ƒgƒƒSƒeƒNƒXƒ`ƒƒ
-#define TUTORIAL_TEXTURENAME "data/TEXTURE/title/tutorial.png"			//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒƒSƒeƒNƒXƒ`ƒƒ
-#define SERECT_TEXTURENAME "data/TEXTURE/title/player.png"					//	–îˆóƒeƒNƒXƒ`ƒƒ
-#define RANKING_TEXTURENAME "data/TEXTURE/title/ranking.png"			//	ƒ‰ƒ“ƒLƒ“ƒOƒƒSƒeƒNƒXƒ`ƒƒ
+#define TITLE_TEXTURENAME "data/TEXTURE/title/title.png"			//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½
+#define START_TEXTURENAME "data/TEXTURE/title/start.png"					//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½ï¿½ï¿½Sï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½
+#define TUTORIAL_TEXTURENAME "data/TEXTURE/title/tutorial.png"			//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½
+#define SERECT_TEXTURENAME "data/TEXTURE/title/player.png"					//	ï¿½ï¿½ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½
+#define RANKING_TEXTURENAME "data/TEXTURE/title/ranking.png"			//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Sï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½
 
-#define MAX_TITLE_TEXTURE ( 6 )	//	Å‘åƒeƒNƒXƒ`ƒƒ
+#define MAX_TITLE_TEXTURE ( 6 )	//	ï¿½Å‘ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½
 
-#define TITLE_BG_POS_X ( 0.0f )	//	ƒ^ƒCƒgƒ‹”wŒi‚Ì•\Ž¦ˆÊ’u‚w
-#define TITLE_BG_POS_Y ( 0.0f )	//	ƒ^ƒCƒgƒ‹”wŒi‚Ì•\Ž¦ˆÊ’u‚x
+#define TITLE_BG_POS_X ( 0.0f )	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½wï¿½iï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½w
+#define TITLE_BG_POS_Y ( 0.0f )	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½wï¿½iï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½x
 
-#define TITLE_POS_Y ( 100.0f )	//	ƒ^ƒCƒgƒ‹‚Ì•\Ž¦ˆÊ’u‚x
+#define TITLE_POS_Y ( 100.0f )	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½x
 
-#define START_POS_X ( 375.0f )	//	ƒXƒ^[ƒg‚Ì•\Ž¦ˆÊ’u‚w
-#define START_POS_Y ( 250.0f )	//	ƒXƒ^[ƒg‚Ì•\Ž¦ˆÊ’u‚x
-#define START_WIDTH ( 200.0f )	//	ƒXƒ^[ƒg‚Ì•
-#define START_HEIGHT ( 100.0f )	//	ƒXƒ^[ƒg‚Ì‚‚³
+#define START_POS_X ( 375.0f )	//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½w
+#define START_POS_Y ( 250.0f )	//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½x
+#define START_WIDTH ( 200.0f )	//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½Ì•ï¿½
+#define START_HEIGHT ( 100.0f )	//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½Ìï¿½ï¿½ï¿½
 
-#define TUTORIAL_POS_X ( START_POS_X )	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì•\Ž¦ˆÊ’u‚w
-#define TUTORIAL_POS_Y ( START_POS_Y + 100.0f )		//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì•\Ž¦ˆÊ’u‚x
-#define TUTORIAL_WIDTH ( 200.0f )		//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì•
-#define TUTORIAL_HEIGHT ( 100.0f )		//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì‚‚³
+#define TUTORIAL_POS_X ( START_POS_X )	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½w
+#define TUTORIAL_POS_Y ( START_POS_Y + 100.0f )		//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½x
+#define TUTORIAL_WIDTH ( 200.0f )		//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì•ï¿½
+#define TUTORIAL_HEIGHT ( 100.0f )		//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 
-#define RANKING_POS_X ( START_POS_X )	//	ƒ‰ƒ“ƒLƒ“ƒO‚Ì•\Ž¦ˆÊ’u‚w
-#define RANKING_POS_Y ( START_POS_Y + 200.0f )		//	ƒ‰ƒ“ƒLƒ“ƒO‚Ì•\Ž¦ˆÊ’u‚x
-#define RANKING_WIDTH ( 200.0f )		//	ƒ‰ƒ“ƒLƒ“ƒO‚Ì•
-#define RANKING_HEIGHT ( 100.0f )		//	ƒ‰ƒ“ƒLƒ“ƒO‚Ì‚‚³
+#define RANKING_POS_X ( START_POS_X )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½w
+#define RANKING_POS_Y ( START_POS_Y + 200.0f )		//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½x
+#define RANKING_WIDTH ( 200.0f )		//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½Ì•ï¿½
+#define RANKING_HEIGHT ( 100.0f )		//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½Ìï¿½ï¿½ï¿½
 
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-HRESULT MakeVertextitle( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
-void MakeVerTexSerectPos( VERTEX_2D* pVtx );			//	–îˆóÀ•WXV
-void ScreenTransition( void );	//	‰æ–Ê‘JˆÚ
-void CursorMove( void );	//	ƒJ[ƒ\ƒ‹ˆÚ“®
-void GamePadCursorMove( void );	//	ƒQ[ƒ€ƒpƒbƒh‚ÌƒJ[ƒ\ƒ‹ˆÚ“®
-void GamePadTitleScreenTransition( void );	//	ƒQ[ƒ€ƒpƒbƒh‚Ì‰æ–Ê‘JˆÚ
-void TitleRogoPos( VERTEX_2D* pVtx );	//	ƒ^ƒCƒgƒ‹‚ÌÀ•W•ÏX
+HRESULT MakeVertextitle( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+void MakeVerTexSerectPos( VERTEX_2D* pVtx );			//	ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Xï¿½V
+void ScreenTransition( void );	//	ï¿½ï¿½Ê‘Jï¿½ï¿½
+void CursorMove( void );	//	ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
+void GamePadCursorMove( void );	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
+void GamePadTitleScreenTransition( void );	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½Ì‰ï¿½Ê‘Jï¿½ï¿½
+void TitleRogoPos( VERTEX_2D* pVtx );	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ìï¿½ï¿½Wï¿½ÏX
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferTitle = NULL;	//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
-//	ƒ^ƒCƒgƒ‹ƒƒS
-LPDIRECT3DTEXTURE9 g_pTexturetitle = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-//	ƒXƒ^[ƒgƒƒS
-LPDIRECT3DTEXTURE9 g_pTexturestart = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒƒS
-LPDIRECT3DTEXTURE9 g_pTextureTutorialRogo = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-//	–îˆó
-LPDIRECT3DTEXTURE9 g_pTextureSerect = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-//	ƒ‰ƒ“ƒLƒ“ƒOƒƒS
-LPDIRECT3DTEXTURE9 g_pTextureRankingRogo = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferTitle = NULL;	//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
+//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½S
+LPDIRECT3DTEXTURE9 g_pTexturetitle = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½ï¿½ï¿½S
+LPDIRECT3DTEXTURE9 g_pTexturestart = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½S
+LPDIRECT3DTEXTURE9 g_pTextureTutorialRogo = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+//	ï¿½ï¿½ï¿½
+LPDIRECT3DTEXTURE9 g_pTextureSerect = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½S
+LPDIRECT3DTEXTURE9 g_pTextureRankingRogo = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
 TITLE g_serect;
 
@@ -95,55 +93,55 @@ bool g_RankingFlag = false;
 bool g_TutorialFlag = false;
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void InitTitle( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ^ƒCƒgƒ‹‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void InitTitle( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void InitTitle( void )
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 
-	//	ƒ^ƒCƒgƒ‹ƒƒS
+	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½S
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , TITLE_TEXTURENAME , &g_pTexturetitle  ) ) )
 	{
-		MessageBox( NULL , "ƒ^ƒCƒgƒ‹ƒƒS‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
-	//	ƒXƒ^[ƒgƒƒS
+	//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½ï¿½ï¿½S
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , START_TEXTURENAME , &g_pTexturestart  ) ) )
 	{
-		MessageBox( NULL , "ƒXƒ^[ƒgƒƒS‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½Xï¿½^ï¿½[ï¿½gï¿½ï¿½ï¿½Sï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒƒS
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½S
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_TEXTURENAME , &g_pTextureTutorialRogo  ) ) )
 	{
-		MessageBox( NULL , "ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒƒS‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
-	//	–îˆó
+	//	ï¿½ï¿½ï¿½
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , SERECT_TEXTURENAME , &g_pTextureSerect  ) ) )
 	{
-		MessageBox( NULL , "–îˆó‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½ï¿½ï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
-	//	ƒ‰ƒ“ƒLƒ“ƒOƒƒS
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½S
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , RANKING_TEXTURENAME , &g_pTextureRankingRogo  ) ) )
 	{
-		MessageBox( NULL , "ƒ‰ƒ“ƒLƒ“ƒOƒƒS‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Sï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
-	//	‰Šú‰»
-	//	ƒJ[ƒ\ƒ‹
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//	ï¿½Jï¿½[ï¿½\ï¿½ï¿½
 	g_serect.Pos.x = START_POS_X - START_WIDTH * 0.4f;
 	g_serect.Pos.y = START_POS_Y + START_HEIGHT * 0.1f;
 	g_serect.Size.x = START_WIDTH * 0.5f;
 	g_serect.Size.y = START_HEIGHT*0.6f;
 
-	//	ƒ^ƒCƒgƒ‹ƒƒS
+	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½S
 	g_TitleRogo.Pos.x = 200.0f;
 	g_TitleRogo.Pos.y = -20.0f;
 	g_TitleRogo.Size.x = 600.0f;
@@ -159,25 +157,25 @@ void InitTitle( void )
 	g_RankingFlag = false;
 	g_TutorialFlag = false;
 
-	InitBg();	//	”wŒi‚Ì‰Šú‰»
+	InitBg();	//	ï¿½wï¿½iï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitCloud();	//	‰_‚Ì‰Šú‰»
+	InitCloud();	//	ï¿½_ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitBase();	//	‘«ê‚Ì‰Šú‰»
+	InitBase();	//	ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitEnemy();	//	“G‚Ì‰Šú‰»
+	InitEnemy();	//	ï¿½Gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	MakeVertextitle( pDevice );	//	’¸“_‚Ìì¬
+	MakeVertextitle( pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 
-	//	‰¹ŠyÄ¶
+	//	ï¿½ï¿½ï¿½yï¿½Äï¿½
 	PlaySound( SOUND_LABEL_BGM_TITLE );
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitTitle( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ^ƒCƒgƒ‹‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitTitle( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitTitle( void )
 {
@@ -188,36 +186,36 @@ void UninitTitle( void )
 		g_pVtxBufferTitle = NULL;
 	}
 
-	//	ƒ^ƒCƒgƒ‹ƒƒS
-	if( g_pTexturetitle != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½S
+	if( g_pTexturetitle != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTexturetitle -> Release();
 		g_pTexturetitle = NULL;
 	}	//	end of if
 
-	//	ƒXƒ^[ƒgƒƒS
-	if( g_pTexturestart != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½ï¿½ï¿½S
+	if( g_pTexturestart != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTexturestart -> Release();
 		g_pTexturestart = NULL;
 	}	//	end of if
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒƒS
-	if( g_pTextureTutorialRogo != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½S
+	if( g_pTextureTutorialRogo != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureTutorialRogo -> Release();
 		g_pTextureTutorialRogo = NULL;
 	}	//	end of if
 
-	//	–îˆó
-	if( g_pTextureSerect != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½ï¿½ï¿½
+	if( g_pTextureSerect != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureSerect -> Release();
 		g_pTextureSerect = NULL;
 	}	//	end of if
 
-	//	ƒ‰ƒ“ƒLƒ“ƒOƒƒS
-	if( g_pTextureRankingRogo != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½S
+	if( g_pTextureRankingRogo != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureRankingRogo -> Release();
 		g_pTextureRankingRogo = NULL;
@@ -226,40 +224,40 @@ void UninitTitle( void )
 
 
 
-	UninitBg();	//	”wŒi‚ÌI—¹
+	UninitBg();	//	ï¿½wï¿½iï¿½ÌIï¿½ï¿½
 
-	UninitCloud();	//	‰_‚ÌI—¹
+	UninitCloud();	//	ï¿½_ï¿½ÌIï¿½ï¿½
 
-	UninitBase();	//	‘«ê‚ÌI—¹
+	UninitBase();	//	ï¿½ï¿½ï¿½ï¿½ÌIï¿½ï¿½
 
-	UninitEnemy();	//	“G‚ÌI—¹
+	UninitEnemy();	//	ï¿½Gï¿½ÌIï¿½ï¿½
 
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdeteTitle( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ^ƒCƒgƒ‹‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdeteTitle( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdateTitle( void )
 {
-	//	ƒQ[ƒ€ƒpƒbƒhƒfƒoƒCƒXŽæ“¾
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½æ“¾
 	LPDIRECTINPUTDEVICE8 *GamePad = GetGamePad( 0 );
 
-	//	ƒtƒF[ƒh’†‚©‚Ç‚¤‚©
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
 	bool *FadeUse = GetFadeUse();
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	UpdateBg();	//	”wŒi‚ÌXV
+	UpdateBg();	//	ï¿½wï¿½iï¿½ÌXï¿½V
 
-	UpdateCloud();	//	‰_‚ÌXV
+	UpdateCloud();	//	ï¿½_ï¿½ÌXï¿½V
 
-	UpdateBase();	//	‘«ê‚ÌXV
+	UpdateBase();	//	ï¿½ï¿½ï¿½ï¿½ÌXï¿½V
 
-	UpdateEnemy();	//	“G‚ÌXV
+	UpdateEnemy();	//	ï¿½Gï¿½ÌXï¿½V
 
 	CntFrame++;	
 
@@ -269,13 +267,13 @@ void UpdateTitle( void )
 		{
 			if( GamePad[ CntPad ] == NULL )
 			{
-				//	ƒJ[ƒ\ƒ‹ˆÚ“®
+				//	ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
 				CursorMove();
 			}
 			if( GamePad[ CntPad ] != NULL )
 			{
 				
-				//	ƒQ[ƒ€ƒpƒbƒh‚ÌƒJ[ƒ\ƒ‹ˆÚ“®
+				//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
 				GamePadCursorMove();
 			}
 
@@ -283,214 +281,214 @@ void UpdateTitle( void )
 	}
 
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferTitle -> Lock ( 0 , 0 , ( void** )&pVtx , 0 );
 
-	//	–îˆóÀ•WXV
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Xï¿½V
 	MakeVerTexSerectPos( pVtx );
 
-	//	ƒ^ƒCƒgƒ‹‚ÌÀ•W•ÏX
+	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ìï¿½ï¿½Wï¿½ÏX
 	TitleRogoPos( pVtx );
 
 	g_pVtxBufferTitle -> Unlock();
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawTitle( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ^ƒCƒgƒ‹‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawTitle( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawTitle( void )
 {
-	DrawBg();	//	”wŒi‚Ì•`‰æ
+	DrawBg();	//	ï¿½wï¿½iï¿½Ì•`ï¿½ï¿½
 
-	DrawCloud();	//	‰_‚Ì•`‰æ
+	DrawCloud();	//	ï¿½_ï¿½Ì•`ï¿½ï¿½
 
-	DrawBase();		//	‘«ê‚Ì•`‰æ
+	DrawBase();		//	ï¿½ï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 
-	DrawEnemy();	//	“G‚Ì•`‰æ
+	DrawEnemy();	//	ï¿½Gï¿½Ì•`ï¿½ï¿½
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ÌÝ’ï¿½
 	pDevice -> SetFVF( FVF_VERTEX_2D );
 
-	//	ƒ^ƒCƒgƒ‹”wŒiƒƒS
-	//	ƒXƒgƒŠ[ƒ€‚ðÝ’è‚·‚é
+	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½wï¿½iï¿½ï¿½ï¿½S
+	//	ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½Ý’è‚·ï¿½ï¿½
 	pDevice -> SetStreamSource( 0 , g_pVtxBufferTitle , 0 , sizeof( VERTEX_2D ) );
 
-	//	ƒXƒ^[ƒgƒƒS
+	//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½ï¿½ï¿½S
 	pDevice -> SetTexture( 0 , g_pTexturestart );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 4, NUM_POLYGON);
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒƒS
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½S
 	pDevice -> SetTexture( 0 , g_pTextureTutorialRogo );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 8, NUM_POLYGON);
 
-	//	ƒ‰ƒ“ƒLƒ“ƒOƒƒS
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½S
 	pDevice -> SetTexture( 0 , g_pTextureRankingRogo );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 12, NUM_POLYGON);
 
-	//	–îˆó
+	//	ï¿½ï¿½ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureSerect );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 16, NUM_POLYGON);
 
-	//	ƒ^ƒCƒgƒ‹ƒƒS
+	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½S
 	pDevice -> SetTexture( 0 , g_pTexturetitle );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 0, NUM_POLYGON);
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT MakeVertextitle( LPDIRECT3DDEVICE9 pDevice )
- ˆø”:		LPDIRECT3DDEVICE9 pDevice
- –ß‚è’l:	‚È‚µ
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT MakeVertextitle( LPDIRECT3DDEVICE9 pDevice )
+ ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 pDevice
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 HRESULT MakeVertextitle( LPDIRECT3DDEVICE9 pDevice )
 {
-	// FAILEDƒ}ƒNƒ‚ÅƒGƒ‰[ƒ`ƒFƒbƒN
+	// FAILEDï¿½}ï¿½Nï¿½ï¿½ï¿½ÅƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if ( FAILED ( pDevice -> CreateVertexBuffer ( sizeof ( VERTEX_2D ) * NUM_VERTEX * MAX_TITLE_TEXTURE , D3DUSAGE_WRITEONLY , FVF_VERTEX_2D , D3DPOOL_MANAGED , &g_pVtxBufferTitle , NULL ) ) )
 	{
 		return E_FAIL;
 	}	//	end of if
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferTitle -> Lock ( 0 , 0 , ( void** )&pVtx , 0 );
 
-	//	ƒ^ƒCƒgƒ‹ƒƒS
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½S
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( g_TitleRogo.Pos.x                      , g_TitleRogo.Pos.y , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( g_TitleRogo.Pos.x + g_TitleRogo.Size.x , g_TitleRogo.Pos.y , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( g_TitleRogo.Pos.x                      , g_TitleRogo.Pos.y + g_TitleRogo.Size.y , 0.0f );
 	pVtx[ 3 ].pos = D3DXVECTOR3( g_TitleRogo.Pos.x + g_TitleRogo.Size.x , g_TitleRogo.Pos.y + g_TitleRogo.Size.y , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].rhw = 1.0f;
 	pVtx[ 1 ].rhw = 1.0f;
 	pVtx[ 2 ].rhw = 1.0f;
 	pVtx[ 3 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 3 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	ƒXƒ^[ƒgƒƒS
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½ï¿½ï¿½S
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 4 ].pos = D3DXVECTOR3( START_POS_X                , START_POS_Y , 0.0f );
 	pVtx[ 5 ].pos = D3DXVECTOR3( START_POS_X + START_WIDTH  , START_POS_Y , 0.0f );
 	pVtx[ 6 ].pos = D3DXVECTOR3( START_POS_X               , START_POS_Y + START_HEIGHT , 0.0f );
 	pVtx[ 7 ].pos = D3DXVECTOR3( START_POS_X + START_WIDTH , START_POS_Y + START_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 4 ].rhw = 1.0f;
 	pVtx[ 5 ].rhw = 1.0f;
 	pVtx[ 6 ].rhw = 1.0f;
 	pVtx[ 7 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 4 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 5 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 6 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 7 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 4 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 5 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 6 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 7 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒƒS
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½S
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 8  ].pos = D3DXVECTOR3( TUTORIAL_POS_X                   , TUTORIAL_POS_Y , 0.0f );
 	pVtx[ 9  ].pos = D3DXVECTOR3( TUTORIAL_POS_X + TUTORIAL_WIDTH  , TUTORIAL_POS_Y , 0.0f );
 	pVtx[ 10 ].pos = D3DXVECTOR3( TUTORIAL_POS_X                   , TUTORIAL_POS_Y + TUTORIAL_HEIGHT , 0.0f );
 	pVtx[ 11 ].pos = D3DXVECTOR3( TUTORIAL_POS_X + TUTORIAL_WIDTH  , TUTORIAL_POS_Y + TUTORIAL_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 8  ].rhw = 1.0f;
 	pVtx[ 9  ].rhw = 1.0f;
 	pVtx[ 10 ].rhw = 1.0f;
 	pVtx[ 11 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 8  ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 9  ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 10 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 11 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 8  ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 9  ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 10 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 11 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½O
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 12 ].pos = D3DXVECTOR3( RANKING_POS_X                  , RANKING_POS_Y , 0.0f );
 	pVtx[ 13 ].pos = D3DXVECTOR3( RANKING_POS_X + RANKING_WIDTH  , RANKING_POS_Y , 0.0f );
 	pVtx[ 14 ].pos = D3DXVECTOR3( RANKING_POS_X                  , RANKING_POS_Y + RANKING_HEIGHT , 0.0f );
 	pVtx[ 15 ].pos = D3DXVECTOR3( RANKING_POS_X + RANKING_WIDTH  , RANKING_POS_Y + RANKING_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 12 ].rhw = 1.0f;
 	pVtx[ 13 ].rhw = 1.0f;
 	pVtx[ 14 ].rhw = 1.0f;
 	pVtx[ 15 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 12 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 13 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 14 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 15 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 12 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 13 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 14 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 15 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	–îˆó
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].pos = D3DXVECTOR3( g_serect.Pos.x                   , g_serect.Pos.y , 0.0f );
 	pVtx[ 17 ].pos = D3DXVECTOR3( g_serect.Pos.x + g_serect.Size.x , g_serect.Pos.y , 0.0f );
 	pVtx[ 18 ].pos = D3DXVECTOR3( g_serect.Pos.x                   , g_serect.Pos.y + g_serect.Size.y , 0.0f );
 	pVtx[ 19 ].pos = D3DXVECTOR3( g_serect.Pos.x + g_serect.Size.x , g_serect.Pos.y + g_serect.Size.y , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].rhw = 1.0f;
 	pVtx[ 17 ].rhw = 1.0f;
 	pVtx[ 18 ].rhw = 1.0f;
 	pVtx[ 19 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 17 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 18 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 19 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 17 ].tex = D3DXVECTOR2( 0.5f , 0 );
 	pVtx[ 18 ].tex = D3DXVECTOR2( 0 , 1 );
@@ -501,16 +499,16 @@ HRESULT MakeVertextitle( LPDIRECT3DDEVICE9 pDevice )
 	return S_OK;
 }
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void ScreenTransition( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		‰æ–Ê‘JˆÚ
+ ï¿½Öï¿½ï¿½ï¿½:	void ScreenTransition( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½Ê‘Jï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void ScreenTransition( void )
 {
-	//	‰æ–Ê‘JˆÚ
+	//	ï¿½ï¿½Ê‘Jï¿½ï¿½
 
-	//	ƒQ[ƒ€
+	//	ï¿½Qï¿½[ï¿½ï¿½
 	if( RectangleDecision( g_serect.Pos.x , g_serect.Pos.y , g_serect.Size.x , g_serect.Size.y  , START_POS_X , START_POS_Y , START_WIDTH , START_HEIGHT ) )
 	{
 		if(GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE) )
@@ -519,17 +517,17 @@ void ScreenTransition( void )
 
 			SetFade(FADE_OUT , MODE_GAME);
 
-			//	SEÄ¶
+			//	SEï¿½Äï¿½
 			PlaySound( SOUND_LABEL_SE_ENTER );
 
 
-			//	‰¹Šy’âŽ~
+			//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 			StopSound( SOUND_LABEL_BGM_TITLE );
 
 		}	//	end of if
 	}	//	end of if
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½
 	if( RectangleDecision( g_serect.Pos.x , g_serect.Pos.y , g_serect.Size.x , g_serect.Size.y  , TUTORIAL_POS_X , TUTORIAL_POS_Y , TUTORIAL_WIDTH , TUTORIAL_HEIGHT ) )
 	{
 		if(GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE) )
@@ -538,16 +536,16 @@ void ScreenTransition( void )
 
 			SetFade(FADE_OUT , MODE_TUTORIAL);
 
-			//	SEÄ¶
+			//	SEï¿½Äï¿½
 			PlaySound( SOUND_LABEL_SE_ENTER );
 
-			//	‰¹Šy’âŽ~
+			//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 			StopSound( SOUND_LABEL_BGM_TITLE );
 
 		}	//	end of if
 	}	//	end of if
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½O
 	if( RectangleDecision( g_serect.Pos.x , g_serect.Pos.y , g_serect.Size.x , g_serect.Size.y  , RANKING_POS_X , RANKING_POS_Y , RANKING_WIDTH , RANKING_HEIGHT ) )
 	{
 		if(GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE) )
@@ -556,129 +554,129 @@ void ScreenTransition( void )
 
 			SetFade( FADE_OUT , MODE_RANKING );
 
-			//	SEÄ¶
+			//	SEï¿½Äï¿½
 			PlaySound( SOUND_LABEL_SE_ENTER );
 
-			//	‰¹Šy’âŽ~
+			//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 			StopSound( SOUND_LABEL_BGM_TITLE );
 		
 		}	//	end of if
 	}	//	end of if
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void CursorMove( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒJ[ƒ\ƒ‹ˆÚ“®
+ ï¿½Öï¿½ï¿½ï¿½:	void CursorMove( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
 -----------------------------------------------------------------------------*/
 void CursorMove( void )
 {
-	//	ƒJ[ƒ\ƒ‹ˆÚ“®
+	//	ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
 
-	//	ãˆÚ“®	
+	//	ï¿½ï¿½Ú“ï¿½	
 	if( GetKeyboardTrigger(DIK_W) || GetKeyboardTrigger(DIK_UPARROW) )
 	{
-		//	Œ»Ý‚ÌƒJ[ƒ\ƒ‹‚ÌˆÊ’u‚É‚æ‚Á‚ÄˆÊ’u‚ª•Ï‚í‚é
+		//	ï¿½ï¿½ï¿½Ý‚ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½ÌˆÊ’uï¿½É‚ï¿½ï¿½ï¿½ÄˆÊ’uï¿½ï¿½ï¿½Ï‚ï¿½ï¿½
 
-		//	ƒJ[ƒ\ƒ‹‚ªƒ`ƒ…[ƒgƒŠƒAƒ‹‚É‚ ‚éŽž
+		//	ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½É‚ï¿½ï¿½éŽž
 		if( RectangleDecision( g_serect.Pos.x , g_serect.Pos.y , g_serect.Size.x , g_serect.Size.y  , RANKING_POS_X , RANKING_POS_Y , RANKING_WIDTH , RANKING_HEIGHT ) )
 		{
-			//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒƒS‚ÉˆÚ“®‚·‚é
+			//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½
 			g_serect.Pos.y = TUTORIAL_POS_Y + TUTORIAL_WIDTH * 0.2f;
 		}	//	end of if
 
-		//	ƒJ[ƒ\ƒ‹‚ªƒ‰ƒ“ƒLƒ“ƒO‚É‚ ‚éŽž
+		//	ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½É‚ï¿½ï¿½éŽž
 		else if( RectangleDecision( g_serect.Pos.x , g_serect.Pos.y , g_serect.Size.x , g_serect.Size.y  , TUTORIAL_POS_X , TUTORIAL_POS_Y , TUTORIAL_WIDTH , TUTORIAL_HEIGHT ) )
 		{
-			//	ƒXƒ^[ƒgƒƒS‚ÉˆÚ“®‚·‚é
+			//	ï¿½Xï¿½^ï¿½[ï¿½gï¿½ï¿½ï¿½Sï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½
 			g_serect.Pos.y = START_POS_Y + START_WIDTH * 0.2f;
 		}	//	end of else if
 
-		//	SEÄ¶
+		//	SEï¿½Äï¿½
 		PlaySound( SOUND_LABEL_SE_SERECT );
 	}	//	end of if
 
 
-	//	‰ºˆÚ“®
+	//	ï¿½ï¿½ï¿½Ú“ï¿½
 	if(GetKeyboardTrigger(DIK_S) || GetKeyboardTrigger(DIK_DOWNARROW) )
 	{
-		//	Œ»Ý‚ÌƒJ[ƒ\ƒ‹‚ÌˆÊ’u‚É‚æ‚Á‚ÄˆÊ’u‚ª•Ï‚í‚é
+		//	ï¿½ï¿½ï¿½Ý‚ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½ÌˆÊ’uï¿½É‚ï¿½ï¿½ï¿½ÄˆÊ’uï¿½ï¿½ï¿½Ï‚ï¿½ï¿½
 
-		//	ƒJ[ƒ\ƒ‹‚ªƒXƒ^[ƒg‚É‚ ‚éŽž
+		//	ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½gï¿½É‚ï¿½ï¿½éŽž
 		if( RectangleDecision( g_serect.Pos.x , g_serect.Pos.y , g_serect.Size.x , g_serect.Size.y  , START_POS_X , START_POS_Y , START_WIDTH , START_HEIGHT ) )
 		{
-			//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒƒS‚ÉˆÚ“®‚·‚é
+			//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½
 			g_serect.Pos.y = TUTORIAL_POS_Y + TUTORIAL_WIDTH * 0.2f;
 		}	//	end of if
 
-		//	ƒJ[ƒ\ƒ‹‚ªƒ`ƒ…[ƒgƒŠƒAƒ‹‚É‚ ‚éŽž
+		//	ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½É‚ï¿½ï¿½éŽž
 		else if( RectangleDecision( g_serect.Pos.x , g_serect.Pos.y , g_serect.Size.x , g_serect.Size.y  , TUTORIAL_POS_X , TUTORIAL_POS_Y , TUTORIAL_WIDTH , TUTORIAL_HEIGHT ) )
 		{
-			//	ƒ‰ƒ“ƒLƒ“ƒOƒƒS‚ÉˆÚ“®‚·‚é
+			//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Sï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½
 			g_serect.Pos.y = RANKING_POS_Y + RANKING_WIDTH * 0.2f;
 		}	//	end of else if
 
-		//	SEÄ¶
+		//	SEï¿½Äï¿½
 		PlaySound( SOUND_LABEL_SE_SERECT );
 	}	//	end of if
 
-	//	‰æ–Ê‘JˆÚ
+	//	ï¿½ï¿½Ê‘Jï¿½ï¿½
 	ScreenTransition();
 
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void GamePadCursorMove( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒQ[ƒ€ƒpƒbƒh‚ÌƒJ[ƒ\ƒ‹ˆÚ“®
+ ï¿½Öï¿½ï¿½ï¿½:	void GamePadCursorMove( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
 -----------------------------------------------------------------------------*/
 void GamePadCursorMove( void )
 {
-	//	ƒXƒeƒBƒbƒN‚ÌŽæ“¾
+	//	ï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ÌŽæ“¾
 	LONG Stick_Y = GetGamePadStick_Y();
 
 	if( CntFrame % DELAY_PAD == 0 )
 	{
 		CntFrame = 0;
 
-		//	ƒJ[ƒ\ƒ‹ˆÚ“®
+		//	ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
 		
-		//	ãˆÚ“®	
+		//	ï¿½ï¿½Ú“ï¿½	
 		if( Stick_Y < 0 )
 		{
 			KeyFlag = true;
 
 			if( KeyFlag == true )
 			{
-				//	Œ»Ý‚ÌƒJ[ƒ\ƒ‹‚ÌˆÊ’u‚É‚æ‚Á‚ÄˆÊ’u‚ª•Ï‚í‚é
+				//	ï¿½ï¿½ï¿½Ý‚ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½ÌˆÊ’uï¿½É‚ï¿½ï¿½ï¿½ÄˆÊ’uï¿½ï¿½ï¿½Ï‚ï¿½ï¿½
 
-				//	ƒ‰ƒ“ƒLƒ“ƒO
+				//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½O
 				if( g_RankingFlag == true )
 				{
 					g_serect.Pos.y = TUTORIAL_POS_Y + TUTORIAL_WIDTH * 0.1f;
 
 					g_RankingFlag = false;
 
-					//	SEÄ¶
+					//	SEï¿½Äï¿½
 					PlaySound( SOUND_LABEL_SE_SERECT );
 				}
 
-				//	ƒ`ƒ…[ƒgƒŠƒAƒ‹
+				//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½
 				else if( g_TutorialFlag == true )
 				{
 					g_serect.Pos.y = START_POS_Y + START_WIDTH * 0.1f;
 
 					g_TutorialFlag = false;
 
-					//	SEÄ¶
+					//	SEï¿½Äï¿½
 					PlaySound( SOUND_LABEL_SE_SERECT );
 				}
 			}	//	end of if
 		}
 
 
-		//	‰ºˆÚ“®
+		//	ï¿½ï¿½ï¿½Ú“ï¿½
 		if( 999 < Stick_Y )
 		{
 			KeyFlag = false;
@@ -686,47 +684,47 @@ void GamePadCursorMove( void )
 			if( KeyFlag == false )
 			{
 			
-				//	Œ»Ý‚ÌƒJ[ƒ\ƒ‹‚ÌˆÊ’u‚É‚æ‚Á‚ÄˆÊ’u‚ª•Ï‚í‚é
+				//	ï¿½ï¿½ï¿½Ý‚ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½ÌˆÊ’uï¿½É‚ï¿½ï¿½ï¿½ÄˆÊ’uï¿½ï¿½ï¿½Ï‚ï¿½ï¿½
 
-				//	ƒ`ƒ…[ƒgƒŠƒAƒ‹
+				//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½
 				if( g_TutorialFlag == false )
 				{
 					g_serect.Pos.y = TUTORIAL_POS_Y + TUTORIAL_WIDTH * 0.2f;
 
 					g_TutorialFlag = true;
 
-					//	SEÄ¶
+					//	SEï¿½Äï¿½
 					PlaySound( SOUND_LABEL_SE_SERECT );
 				}
 
-				//	ƒ‰ƒ“ƒLƒ“ƒO
+				//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½O
 				else if( g_RankingFlag == false )
 				{
 					g_serect.Pos.y = RANKING_POS_Y + RANKING_WIDTH * 0.2f;
 
 					g_RankingFlag = true;
 
-					//	SEÄ¶
+					//	SEï¿½Äï¿½
 					PlaySound( SOUND_LABEL_SE_SERECT );
 				}
 			}
 		}
 	}
 
-	//	‰æ–Ê‘JˆÚ
+	//	ï¿½ï¿½Ê‘Jï¿½ï¿½
 	GamePadTitleScreenTransition();
 }
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void GamePadTitleScreenTransition( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒQ[ƒ€ƒpƒbƒh‚Ì‰æ–Ê‘JˆÚ
+ ï¿½Öï¿½ï¿½ï¿½:	void GamePadTitleScreenTransition( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½Ì‰ï¿½Ê‘Jï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void GamePadTitleScreenTransition( void )
 {
-	//	‰æ–Ê‘JˆÚ
+	//	ï¿½ï¿½Ê‘Jï¿½ï¿½
 
-	//	ƒQ[ƒ€
+	//	ï¿½Qï¿½[ï¿½ï¿½
 	if( RectangleDecision( g_serect.Pos.x , g_serect.Pos.y , g_serect.Size.x , g_serect.Size.y  , START_POS_X , START_POS_Y , START_WIDTH , START_HEIGHT ) )
 	{
 		if( GetGamePadTrigger( BUTTOM_04 ) )
@@ -735,16 +733,16 @@ void GamePadTitleScreenTransition( void )
 
 			SetFade(FADE_OUT , MODE_GAME);
 
-			//	SEÄ¶
+			//	SEï¿½Äï¿½
 			PlaySound( SOUND_LABEL_SE_ENTER );
 
-			//	‰¹Šy’âŽ~
+			//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 			StopSound( SOUND_LABEL_BGM_TITLE );
 
 		}	//	end of if
 	}	//	end of if
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½
 	if( RectangleDecision( g_serect.Pos.x , g_serect.Pos.y , g_serect.Size.x , g_serect.Size.y  , TUTORIAL_POS_X , TUTORIAL_POS_Y , TUTORIAL_WIDTH , TUTORIAL_HEIGHT ) )
 	{
 		if( GetGamePadTrigger( BUTTOM_04 ) )
@@ -753,16 +751,16 @@ void GamePadTitleScreenTransition( void )
 
 			SetFade(FADE_OUT , MODE_TUTORIAL);
 
-			//	SEÄ¶
+			//	SEï¿½Äï¿½
 			PlaySound( SOUND_LABEL_SE_ENTER );
 
-			//	‰¹Šy’âŽ~
+			//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 			StopSound( SOUND_LABEL_BGM_TITLE );
 
 		}	//	end of if
 	}	//	end of if
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½O
 	if( RectangleDecision( g_serect.Pos.x , g_serect.Pos.y , g_serect.Size.x , g_serect.Size.y  , RANKING_POS_X , RANKING_POS_Y , RANKING_WIDTH , RANKING_HEIGHT ) )
 	{
 		if( GetGamePadTrigger( BUTTOM_04 ) )
@@ -771,30 +769,30 @@ void GamePadTitleScreenTransition( void )
 
 			SetFade( FADE_OUT , MODE_RANKING );
 
-			//	SEÄ¶
+			//	SEï¿½Äï¿½
 			PlaySound( SOUND_LABEL_SE_ENTER );
 
-			//	‰¹Šy’âŽ~
+			//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 			StopSound( SOUND_LABEL_BGM_TITLE );
 		
 		}	//	end of if
 	}	//	end of if
 }
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void MakeVerTexSerectPos( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		–îˆóÀ•WXV
+ ï¿½Öï¿½ï¿½ï¿½:	void MakeVerTexSerectPos( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Xï¿½V
 -----------------------------------------------------------------------------*/
 void MakeVerTexSerectPos( VERTEX_2D* pVtx )
 {
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].pos = D3DXVECTOR3( g_serect.Pos.x , g_serect.Pos.y , 0.0f );
 	pVtx[ 17 ].pos = D3DXVECTOR3( g_serect.Pos.x+g_serect.Size.x , g_serect.Pos.y , 0.0f );
 	pVtx[ 18 ].pos = D3DXVECTOR3( g_serect.Pos.x, g_serect.Pos.y+g_serect.Size.y , 0.0f );
 	pVtx[ 19 ].pos = D3DXVECTOR3( g_serect.Pos.x+g_serect.Size.x , g_serect.Pos.y+g_serect.Size.y , 0.0f );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].tex = D3DXVECTOR2( 0 + g_Offset , 0 );
 	pVtx[ 17 ].tex = D3DXVECTOR2( 0.5f + g_Offset , 0 );
 	pVtx[ 18 ].tex = D3DXVECTOR2( 0 + g_Offset , 1 );
@@ -802,10 +800,10 @@ void MakeVerTexSerectPos( VERTEX_2D* pVtx )
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void TitleRogoPos( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ^ƒCƒgƒ‹‚ÌÀ•W•ÏX
+ ï¿½Öï¿½ï¿½ï¿½:	void TitleRogoPos( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ìï¿½ï¿½Wï¿½ÏX
 -----------------------------------------------------------------------------*/
 void TitleRogoPos( VERTEX_2D* pVtx )
 {
@@ -814,7 +812,7 @@ void TitleRogoPos( VERTEX_2D* pVtx )
 		g_TitleRogo.Pos.y += g_TitleRogo.move.y;
 	}
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( g_TitleRogo.Pos.x                      , g_TitleRogo.Pos.y , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( g_TitleRogo.Pos.x + g_TitleRogo.Size.x , g_TitleRogo.Pos.y , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( g_TitleRogo.Pos.x                      , g_TitleRogo.Pos.y + g_TitleRogo.Size.y , 0.0f );
