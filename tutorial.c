@@ -1,19 +1,17 @@
 /*=============================================================================
 
-		à–¾[ tutorial.cpp ]
+		ï¿½ï¿½ï¿½ï¿½[ tutorial.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/09/01
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/09/01
 -----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "main.h"
@@ -32,149 +30,149 @@
 #include "operation.h"
 #include "guid.h"
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-//	ˆÚ“®
+//	ï¿½Ú“ï¿½
 #define TUTORIAL_MOVE01_TEXTURENAME "data/TEXTURE/tutorial/move01.png"
 #define TUTORIAL_MOVE02_TEXTURENAME "data/TEXTURE/tutorial/move02.png"
 
-//	UŒ‚
+//	ï¿½Uï¿½ï¿½
 #define TUTORIAL_ATTACK01_TEXTURENAME "data/TEXTURE/tutorial/attack01.png"
 #define TUTORIAL_ATTACK02_TEXTURENAME "data/TEXTURE/tutorial/attack02.png"
 
-//	ƒ_ƒbƒVƒ…
+//	ï¿½_ï¿½bï¿½Vï¿½ï¿½
 #define TUTORIAL_DASH01_TEXTURENAME "data/TEXTURE/tutorial/dash01.png"
 #define TUTORIAL_DASH02_TEXTURENAME "data/TEXTURE/tutorial/dash02.png"
 
-//	ƒWƒƒƒ“ƒv
+//	ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
 #define TUTORIAL_JUMP01_TEXTURENAME "data/TEXTURE/tutorial/jump01.png"
 #define TUTORIAL_JUMP02_TEXTURENAME "data/TEXTURE/tutorial/jump02.png"
 
-//	ƒ|[ƒY
+//	ï¿½|ï¿½[ï¿½Y
 #define TUTORIAL_PAUSE01_TEXTURENAME "data/TEXTURE/tutorial/pause01.png"
 #define TUTORIAL_PAUSE02_TEXTURENAME "data/TEXTURE/tutorial/pause02.png"
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
 LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferTutorial = NULL;
 
-//	ˆÚ“®
-LPDIRECT3DTEXTURE9 g_pTextureTutorial_Move = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½Ú“ï¿½
+LPDIRECT3DTEXTURE9 g_pTextureTutorial_Move = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	UŒ‚
-LPDIRECT3DTEXTURE9 g_pTextureTutorial_Attack = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½Uï¿½ï¿½
+LPDIRECT3DTEXTURE9 g_pTextureTutorial_Attack = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	ƒ_ƒbƒVƒ…
-LPDIRECT3DTEXTURE9 g_pTextureTutorial_Dash = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½_ï¿½bï¿½Vï¿½ï¿½
+LPDIRECT3DTEXTURE9 g_pTextureTutorial_Dash = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	ƒWƒƒƒ“ƒv
-LPDIRECT3DTEXTURE9 g_pTextureTutorial_Jump = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
+LPDIRECT3DTEXTURE9 g_pTextureTutorial_Jump = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	ƒ|[ƒY
-LPDIRECT3DTEXTURE9 g_pTextureTutorial_Pause = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½|ï¿½[ï¿½Y
+LPDIRECT3DTEXTURE9 g_pTextureTutorial_Pause = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
 TUTORIAL g_Tutorial[ MAX_TUTORIAL ];
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-HRESULT MakeVertexTutorial( LPDIRECT3DDEVICE9 pDevice );						//	’¸“_‚Ìì¬
-void TutorialPos( VERTEX_2D* pVtx , int IndexTutorial );	//	À•W•ÏX
+HRESULT MakeVertexTutorial( LPDIRECT3DDEVICE9 pDevice );						//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+void TutorialPos( VERTEX_2D* pVtx , int IndexTutorial );	//	ï¿½ï¿½ï¿½Wï¿½ÏX
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void InitTutorial(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void InitTutorial(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void InitTutorial(void)
 {
 	int CntTutorial;
 
-	//	¡‚Ìƒ‚[ƒh
+	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 	MODE *Mode = GetMode();
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	ƒQ[ƒ€ƒpƒbƒhƒfƒoƒCƒXŽæ“¾
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½æ“¾
 	LPDIRECTINPUTDEVICE8 *GamePad = GetGamePad( 0 );
 
-	//	‘«êî•ñ‚ÌŽæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌŽæ“¾
 	BASE *Base = GetBase( 0 );
 
 	if( GamePad[ 0 ] == NULL )
 	{
-		//	ƒGƒ‰[ƒ`ƒFƒbƒN
+		//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_MOVE01_TEXTURENAME , &g_pTextureTutorial_Move  ) ) )
 		{
-			MessageBox( NULL , "ˆÚ“®‚O‚P‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½Ú“ï¿½ï¿½Oï¿½Pï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_ATTACK01_TEXTURENAME , &g_pTextureTutorial_Attack  ) ) )
 		{
-			MessageBox( NULL , "UŒ‚‚O‚P‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½Uï¿½ï¿½ï¿½Oï¿½Pï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_DASH01_TEXTURENAME , &g_pTextureTutorial_Dash  ) ) )
 		{
-			MessageBox( NULL , "ƒ_ƒbƒVƒ…‚O‚P‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½_ï¿½bï¿½Vï¿½ï¿½ï¿½Oï¿½Pï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_JUMP01_TEXTURENAME , &g_pTextureTutorial_Jump  ) ) )
 		{
-			MessageBox( NULL , "ƒWƒƒƒ“ƒv‚O‚P‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Oï¿½Pï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_PAUSE01_TEXTURENAME , &g_pTextureTutorial_Pause  ) ) )
 		{
-			MessageBox( NULL , "ƒ|[ƒY‚O‚P‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½|ï¿½[ï¿½Yï¿½Oï¿½Pï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 	}
 
 	if( GamePad[ 0 ] != NULL )
 	{
-		//	ƒGƒ‰[ƒ`ƒFƒbƒN
+		//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_MOVE02_TEXTURENAME , &g_pTextureTutorial_Move  ) ) )
 		{
-			MessageBox( NULL , "ˆÚ“®‚O‚Q‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½Ú“ï¿½ï¿½Oï¿½Qï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_ATTACK02_TEXTURENAME , &g_pTextureTutorial_Attack  ) ) )
 		{
-			MessageBox( NULL , "UŒ‚‚O‚Q‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½Uï¿½ï¿½ï¿½Oï¿½Qï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_DASH02_TEXTURENAME , &g_pTextureTutorial_Dash  ) ) )
 		{
-			MessageBox( NULL , "ƒ_ƒbƒVƒ…‚O‚Q‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½_ï¿½bï¿½Vï¿½ï¿½ï¿½Oï¿½Qï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_JUMP02_TEXTURENAME , &g_pTextureTutorial_Jump  ) ) )
 		{
-			MessageBox( NULL , "ƒWƒƒƒ“ƒv‚O‚Q‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Oï¿½Qï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 		if( FAILED( D3DXCreateTextureFromFile(  pDevice , TUTORIAL_PAUSE02_TEXTURENAME , &g_pTextureTutorial_Pause  ) ) )
 		{
-			MessageBox( NULL , "ƒ|[ƒY‚O‚Q‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½|ï¿½[ï¿½Yï¿½Oï¿½Qï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 	}
 
-	//	’¸“_‚Ìì¬
+	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 	MakeVertexTutorial( pDevice );
 
 	*Mode = MODE_TUTORIAL;
 
-	InitBg();	//	”wŒi‚Ì‰Šú‰»
+	InitBg();	//	ï¿½wï¿½iï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitBase();	//	‘«ê‚Ì‰Šú‰»
+	InitBase();	//	ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitGuid();	//	ˆÄ“à‚Ì‰Šú‰»
+	InitGuid();	//	ï¿½Ä“ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitCloud();	//	‰_‚Ì‰Šú‰»
+	InitCloud();	//	ï¿½_ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitEnemy();	//	“G‚Ì‰Šú‰»
+	InitEnemy();	//	ï¿½Gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitPlayer();	//	ƒvƒŒƒCƒ„[‚Ì‰Šú‰»
+	InitPlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	Initparticle();	//	ƒp[ƒeƒBƒNƒ‹‚Ì‰Šú‰»
+	Initparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitPause();	//	ƒ|[ƒY‚Ì‰Šú‰»
+	InitPause();	//	ï¿½|ï¿½[ï¿½Yï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitOperation();	//	‘€ì•û–@‚Ì‰Šú‰»
+	InitOperation();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	//	‰Šú‰»
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	for( CntTutorial = 0 ; CntTutorial < MAX_TUTORIAL ; CntTutorial++ )
 	{
 		g_Tutorial[ CntTutorial ].pos.y = 100.0f;
@@ -191,14 +189,14 @@ void InitTutorial(void)
 
 	
 
-	//	‰¹ŠyÄ¶
+	//	ï¿½ï¿½ï¿½yï¿½Äï¿½
 	PlaySound( SOUND_LABEL_BGM_GAME );
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitTutorial(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ`ƒ…[ƒgƒŠƒAƒ‹‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitTutorial(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitTutorial(void)
 {
@@ -208,86 +206,86 @@ void UninitTutorial(void)
 		g_pVtxBufferTutorial = NULL;
 	}	//	end of if
 
-	//	ˆÚ“®
-	if( g_pTextureTutorial_Move != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½Ú“ï¿½
+	if( g_pTextureTutorial_Move != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureTutorial_Move -> Release();
 		g_pTextureTutorial_Move = NULL;
 	}	//	end of if
 
-	//	UŒ‚
-	if( g_pTextureTutorial_Attack != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½Uï¿½ï¿½
+	if( g_pTextureTutorial_Attack != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureTutorial_Attack -> Release();
 		g_pTextureTutorial_Attack = NULL;
 	}	//	end of if
 
-	//	ƒ_ƒbƒVƒ…
-	if( g_pTextureTutorial_Dash != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½_ï¿½bï¿½Vï¿½ï¿½
+	if( g_pTextureTutorial_Dash != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureTutorial_Dash -> Release();
 		g_pTextureTutorial_Dash = NULL;
 	}	//	end of if
 
-	//	ƒWƒƒƒ“ƒv
-	if( g_pTextureTutorial_Jump != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
+	if( g_pTextureTutorial_Jump != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureTutorial_Jump -> Release();
 		g_pTextureTutorial_Jump = NULL;
 	}	//	end of if
 
-	//	ƒ|[ƒY
-	if( g_pTextureTutorial_Pause != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½|ï¿½[ï¿½Y
+	if( g_pTextureTutorial_Pause != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureTutorial_Pause -> Release();
 		g_pTextureTutorial_Pause = NULL;
 	}	//	end of if
 
-	UninitBg();	//	”wŒi‚ÌI—¹
+	UninitBg();	//	ï¿½wï¿½iï¿½ÌIï¿½ï¿½
 
-	UninitBase();	//	‘«ê‚ÌI—¹
+	UninitBase();	//	ï¿½ï¿½ï¿½ï¿½ÌIï¿½ï¿½
 
-	UninitGuid();	//	ˆÄ“à‚ÌI—¹
+	UninitGuid();	//	ï¿½Ä“ï¿½ï¿½ÌIï¿½ï¿½
 
-	UninitCloud();	//	‰_‚ÌI—¹
+	UninitCloud();	//	ï¿½_ï¿½ÌIï¿½ï¿½
 
-	UninitEnemy();	//	“G‚ÌI—¹
+	UninitEnemy();	//	ï¿½Gï¿½ÌIï¿½ï¿½
 
-	UninitPlayer();	//	ƒvƒŒƒCƒ„[‚ÌI—¹
+	UninitPlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌIï¿½ï¿½
 
-	Uninitparticle();	//	ƒp[ƒeƒBƒNƒ‹‚ÌI—¹
+	Uninitparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½ÌIï¿½ï¿½
 
-	UninitPause();	//	ƒ|[ƒY‚ÌI—¹
+	UninitPause();	//	ï¿½|ï¿½[ï¿½Yï¿½ÌIï¿½ï¿½
 
-	UninitOperation();	//	‘€ì•û–@‚ÌI—¹
+	UninitOperation();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½ÌIï¿½ï¿½
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdateTutorial(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ`ƒ…[ƒgƒŠƒAƒ‹‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdateTutorial(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdateTutorial(void)
 {
 	int CntTutorial;
 
-	//	ƒ|[ƒYî•ñ‚ÌŽæ“¾
+	//	ï¿½|ï¿½[ï¿½Yï¿½ï¿½ï¿½ÌŽæ“¾
 	bool *Pause = GetPause();
 	bool *PauseUse = GetOpeFlag();
 
-	//	ƒvƒŒƒCƒ„[î•ñ‚ÌŽæ“¾
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÌŽæ“¾
 	PLAYER *Player = GetPlayer();
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferTutorial -> Lock ( 0 , 0 ,( void** )&pVtx ,0 );
 
 	for( CntTutorial = 0 ; CntTutorial < MAX_TUTORIAL ; CntTutorial++ )
 	{
-		//	À•W•ÏX
+		//	ï¿½ï¿½ï¿½Wï¿½ÏX
 		TutorialPos( pVtx , CntTutorial );
 	}	//	end of for
 
@@ -296,166 +294,166 @@ void UpdateTutorial(void)
 	if( *Pause == false )
 	{
 
-		UpdateBg();	//	”wŒi‚ÌXV
+		UpdateBg();	//	ï¿½wï¿½iï¿½ÌXï¿½V
 
-		UpdateBase();	//	‘«ê‚ÌXV
+		UpdateBase();	//	ï¿½ï¿½ï¿½ï¿½ÌXï¿½V
 
-		UpdateGuid();	//	ˆÄ“à‚ÌXV
+		UpdateGuid();	//	ï¿½Ä“ï¿½ï¿½ÌXï¿½V
 
-		UpdateCloud();	//	‰_‚ÌXV
+		UpdateCloud();	//	ï¿½_ï¿½ÌXï¿½V
 
-		UpdateEnemy();	//	“G‚ÌXV
+		UpdateEnemy();	//	ï¿½Gï¿½ÌXï¿½V
 
-		UpdatePlayer();	//	ƒvƒŒƒCƒ„[‚ÌXV
+		UpdatePlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌXï¿½V
 
-		Updateparticle();	//	ƒp[ƒeƒBƒNƒ‹‚ÌXV
+		Updateparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½ÌXï¿½V
 	}
 
 	if( *PauseUse == false )
 	{
-		UpdatePause();	//	ƒ|[ƒY‚ÌXV
+		UpdatePause();	//	ï¿½|ï¿½[ï¿½Yï¿½ÌXï¿½V
 	}
 	else if( *PauseUse == true )
 	{
-		UpdateOperation();	//	‘€ì•û–@‚ÌXV
+		UpdateOperation();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½ÌXï¿½V
 	}
 
-	//	‰æ–Ê‘JˆÚ
+	//	ï¿½ï¿½Ê‘Jï¿½ï¿½
 	if( Player->gool == true || Player -> bUse == false )
 	{
 		SetFade(FADE_OUT , MODE_RESULT);
 
-		//	‰¹Šy’âŽ~
+		//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 		StopSound( SOUND_LABEL_BGM_GAME );
 	}	//	end of if
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawTutorial(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawTutorial(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawTutorial(void)
 {
-	//	ƒ|[ƒYî•ñ‚ÌŽæ“¾
+	//	ï¿½|ï¿½[ï¿½Yï¿½ï¿½ï¿½ÌŽæ“¾
 	bool *PauseUse = GetOpeFlag();
 
-	DrawBg();	//	”wŒi‚Ì•`‰æ
+	DrawBg();	//	ï¿½wï¿½iï¿½Ì•`ï¿½ï¿½
 
-	DrawBase();		//	‘«ê‚Ì•`‰æ
+	DrawBase();		//	ï¿½ï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 
-	DrawGuid();	//	ˆÄ“à‚Ì•`‰æ
+	DrawGuid();	//	ï¿½Ä“ï¿½ï¿½Ì•`ï¿½ï¿½
 
-	DrawCloud();	//	‰_‚Ì•`‰æ
+	DrawCloud();	//	ï¿½_ï¿½Ì•`ï¿½ï¿½
 
 
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ÌÝ’ï¿½
 	pDevice -> SetFVF( FVF_VERTEX_2D );
 
-	//	ƒXƒgƒŠ[ƒ€‚ðÝ’è‚·‚é
+	//	ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½Ý’è‚·ï¿½ï¿½
 	pDevice -> SetStreamSource( 0 , g_pVtxBufferTutorial , 0 , sizeof( VERTEX_2D ) );
 
-	//	ˆÚ“®
+	//	ï¿½Ú“ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureTutorial_Move );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 0, NUM_POLYGON);
 
-	//	UŒ‚
+	//	ï¿½Uï¿½ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureTutorial_Attack );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 4, NUM_POLYGON);
 
-	//	ƒ_ƒbƒVƒ…
+	//	ï¿½_ï¿½bï¿½Vï¿½ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureTutorial_Dash );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 8, NUM_POLYGON);
 
-	//	ƒWƒƒƒ“ƒv
+	//	ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
 	pDevice -> SetTexture( 0 , g_pTextureTutorial_Jump );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 12, NUM_POLYGON);
 
-	//	ƒ|[ƒY
+	//	ï¿½|ï¿½[ï¿½Y
 	pDevice -> SetTexture( 0 , g_pTextureTutorial_Pause );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 16, NUM_POLYGON);
 
 
-	DrawEnemy();	//	“G‚Ì•`‰æ
+	DrawEnemy();	//	ï¿½Gï¿½Ì•`ï¿½ï¿½
 
-	DrawPlayer();	//	ƒvƒŒƒCƒ„[‚Ì•`‰æ
+	DrawPlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì•`ï¿½ï¿½
 
-	Drawparticle();	//	ƒp[ƒeƒBƒNƒ‹‚Ì•`‰æ
+	Drawparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 
 	if( *PauseUse == false )
 	{
-		DrawPause();	//	ƒ|[ƒY‚Ì•`‰æ
+		DrawPause();	//	ï¿½|ï¿½[ï¿½Yï¿½Ì•`ï¿½ï¿½
 	}
 	else if( *PauseUse == true )
 	{
-		DrawOperation();	//	‘€ì•û–@‚Ì•`‰æ
+		DrawOperation();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½Ì•`ï¿½ï¿½
 	}
 
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT MakeVertexTutorial( LPDIRECT3DDEVICE9 pDevice )
- ˆø”:		LPDIRECT3DDEVICE9 pDevice
- –ß‚è’l:	‚È‚µ
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT MakeVertexTutorial( LPDIRECT3DDEVICE9 pDevice )
+ ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 pDevice
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 HRESULT MakeVertexTutorial( LPDIRECT3DDEVICE9 pDevice )
 {
 	int CntTutorial;
 
-	// FAILEDƒ}ƒNƒ‚ÅƒGƒ‰[ƒ`ƒFƒbƒN
+	// FAILEDï¿½}ï¿½Nï¿½ï¿½ï¿½ÅƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if ( FAILED ( pDevice -> CreateVertexBuffer ( sizeof ( VERTEX_2D ) * NUM_VERTEX * MAX_TUTORIAL , D3DUSAGE_WRITEONLY , FVF_VERTEX_2D , D3DPOOL_MANAGED , &g_pVtxBufferTutorial , NULL ) ) )
 	{
 		return E_FAIL;
 	}
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferTutorial -> Lock ( 0 , 0 ,( void** )&pVtx ,0 );
 
 	for( CntTutorial = 0 ; CntTutorial < MAX_TUTORIAL ; CntTutorial++ )
 	{
-		//	’¸“_À•W‚ÌÝ’è
+		//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 		pVtx[ 0 ].pos = D3DXVECTOR3( g_Tutorial[ CntTutorial ].pos.x                                    , g_Tutorial[ CntTutorial ].pos.y                                    , 0.0f );
 		pVtx[ 1 ].pos = D3DXVECTOR3( g_Tutorial[ CntTutorial ].pos.x + g_Tutorial[ CntTutorial ].size.x , g_Tutorial[ CntTutorial ].pos.y                                    , 0.0f );
 		pVtx[ 2 ].pos = D3DXVECTOR3( g_Tutorial[ CntTutorial ].pos.x                                    , g_Tutorial[ CntTutorial ].pos.y + g_Tutorial[ CntTutorial ].size.y , 0.0f );
 		pVtx[ 3 ].pos = D3DXVECTOR3( g_Tutorial[ CntTutorial ].pos.x + g_Tutorial[ CntTutorial ].size.x , g_Tutorial[ CntTutorial ].pos.y + g_Tutorial[ CntTutorial ].size.y , 0.0f );
 
-		//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+		//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 		pVtx[ 0 ].rhw = 1.0f;
 		pVtx[ 1 ].rhw = 1.0f;
 		pVtx[ 2 ].rhw = 1.0f;
 		pVtx[ 3 ].rhw = 1.0f;
 
-		//	’¸“_F‚ÌÝ’è
+		//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 		pVtx[ 0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ 1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ 2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 		pVtx[ 3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-		//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 		pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 		pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 		pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
 		pVtx[ 3 ].tex = D3DXVECTOR2( 1 , 1 );
 
-		//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+		//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 		pVtx += 4;
 	}	//	end of for
 
@@ -465,16 +463,16 @@ HRESULT MakeVertexTutorial( LPDIRECT3DDEVICE9 pDevice )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void TutorialPos( VERTEX_2D* pVtx , int IndexTutorial )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		À•W•ÏX
+ ï¿½Öï¿½ï¿½ï¿½:	void TutorialPos( VERTEX_2D* pVtx , int IndexTutorial )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½Wï¿½ÏX
 -----------------------------------------------------------------------------*/
 void TutorialPos( VERTEX_2D* pVtx , int IndexTutorial )
 {
 	pVtx += IndexTutorial * NUM_VERTEX;
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( g_Tutorial[ IndexTutorial ].pos.x                                      , g_Tutorial[ IndexTutorial ].pos.y                                      , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( g_Tutorial[ IndexTutorial ].pos.x + g_Tutorial[ IndexTutorial ].size.x , g_Tutorial[ IndexTutorial ].pos.y                                      , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( g_Tutorial[ IndexTutorial ].pos.x                                      , g_Tutorial[ IndexTutorial ].pos.y + g_Tutorial[ IndexTutorial ].size.y , 0.0f );
@@ -483,10 +481,10 @@ void TutorialPos( VERTEX_2D* pVtx , int IndexTutorial )
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	TUTORIAL *GetTutorial( void )
- ˆø”:		
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ`ƒ…[ƒgƒŠƒAƒ‹î•ñ‚ÌŽæ“¾
+ ï¿½Öï¿½ï¿½ï¿½:	TUTORIAL *GetTutorial( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ÌŽæ“¾
 -----------------------------------------------------------------------------*/
 TUTORIAL *GetTutorial( void )
 {

@@ -1,49 +1,47 @@
 /*=============================================================================
 
-		ƒvƒŒƒCƒ„[[ player.cpp ]
+		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[[ player.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/07/28
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/07/28
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include <stdio.h>
 				#include "main.h"
 				#include "player.h"
 				#include "bg.h"
-			E’è”’è‹`’Ç‰Á
+			ï¿½Eï¿½è”ï¿½ï¿½`ï¿½Ç‰ï¿½
 				#define PLAYER_TEXTURENAME
-			EƒOƒ[ƒoƒ‹•Ï”’Ç‰Á
-				LPDIRECT3DTEXTURE9 g_pTexturePlayer = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-				LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferPlayer = NULL;//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
+			ï¿½Eï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½ï¿½Ç‰ï¿½
+				LPDIRECT3DTEXTURE9 g_pTexturePlayer = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+				LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferPlayer = NULL;//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
 				PLAYER g_Player;
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				HRESULT MakeVertexPolygon( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
-				void MakePlayerPos( VERTEX_2D* pVtx );	//	À•W•ÏX
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				HRESULT MakeVertexPolygon( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+				void MakePlayerPos( VERTEX_2D* pVtx );	//	ï¿½ï¿½ï¿½Wï¿½ÏX
 		2016/08/22
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "base.h"
 		2016/08/28
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "score.h"
 		2016/09/07
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				void PlayerOperation( void );	//	ƒvƒŒƒCƒ„[‚ÌŠî–{‘€ì
-				void GoolPlayerOperation( void );	//	ƒS[ƒ‹‚µ‚½‚ÌƒvƒŒƒCƒ„[‚Ìˆ—
-				void GoolDecision( void );	//	ƒS[ƒ‹”»’è
-				void ScrollObject( void );	//	ƒvƒŒƒCƒ„[ˆÚ“®‚Ì‘«ê‚Æ“G‚ÌƒXƒNƒ[ƒ‹
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				void PlayerOperation( void );	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌŠï¿½{ï¿½ï¿½ï¿½ï¿½
+				void GoolPlayerOperation( void );	//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½
+				void GoolDecision( void );	//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				void ScrollObject( void );	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ú“ï¿½ï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½Æ“Gï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½
 		2016/09/14
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-					//	ƒXƒNƒ[ƒ‹‚·‚éƒIƒuƒWƒFƒNƒg‚Ì‘¬‚³•ÏX
-				void AttackDecision( void );	//	UŒ‚”»’è
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+					//	ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‘ï¿½ï¿½ï¿½ï¿½ÏX
+				void AttackDecision( void );	//	ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "main.h"
@@ -64,25 +62,25 @@
 #include "guid.h"
 
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define PLAYER_TEXTURENAME "data/TEXTURE/game/player2.png"
 
-#define	JUMP_VALUE ( 20.0f )		// ƒWƒƒƒ“ƒv—Ê
+#define	JUMP_VALUE ( 20.0f )		// ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½
 
-#define POS_HAMMER ( 20.0f )	//	ƒnƒ“ƒ}[‚ÌÀ•W
+#define POS_HAMMER ( 20.0f )	//	ï¿½nï¿½ï¿½ï¿½}ï¿½[ï¿½Ìï¿½ï¿½W
 
 #define UP_PLAYER_CNT ( 50 )
 
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-LPDIRECT3DTEXTURE9 g_pTexturePlayer = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferPlayer = NULL;//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
+LPDIRECT3DTEXTURE9 g_pTexturePlayer = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferPlayer = NULL;//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
 
 PLAYER g_Player;
 
-//	ƒeƒNƒXƒ`ƒƒØ‚è‘Ö‚¦
+//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ø‚ï¿½Ö‚ï¿½
 float fUesult = 0 , fVesult = 0;
 
 int g_CntUp = 0;
@@ -92,45 +90,45 @@ bool g_GoolMove = false;
 bool g_HitUp = false;
 
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-HRESULT MakeVertexPolygon( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
-void MakePlayerPos( VERTEX_2D* pVtx );					//	À•W•ÏX
-void PlayerOperation( void );							//	ƒvƒŒƒCƒ„[‚ÌŠî–{‘€ì
-void KeyboardOperation( void );							//	ƒL[ƒ{[ƒh‚ÌŠî–{‘€ì
-void GamePadOperation( void );							//	ƒQ[ƒ€ƒpƒbƒh‚ÌŠî–{‘€ì
-void GoolPlayerOperation( void );						//	ƒS[ƒ‹‚µ‚½‚ÌƒvƒŒƒCƒ„[‚Ìˆ—
-void GoolDecision( void );								//	ƒS[ƒ‹”»’è
-void GoolHeightScore( void );							//	ƒS[ƒ‹‚Ì‚‚³‚É‚æ‚Á‚ÄƒXƒRƒA‚Ì•Ï‰»
-void GoolModeGame( void );								//	ƒQ[ƒ€ƒ‚[ƒh‚Ì‚ÌƒvƒŒƒCƒ„[ˆ—
-void GoolModeTutorial( void );							//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒ‚[ƒh‚Ì‚ÌƒvƒŒƒCƒ„[ˆ—
-void ScrollObject( void );								//	ƒvƒŒƒCƒ„[ˆÚ“®‚Ì‘«ê‚Æ“G‚ÌƒXƒNƒ[ƒ‹
-void ScrollMoveAlterObject( void );						//	ƒXƒNƒ[ƒ‹‚·‚éƒIƒuƒWƒFƒNƒg‚Ì‘¬‚³•ÏX
-void ScrollMoveRepositObject( void );					//	ƒXƒNƒ[ƒ‹‚·‚éƒIƒuƒWƒFƒNƒg‚Ì‘¬‚³‚ğŒ³‚É–ß‚·
-void AttackDecision( void );							//	UŒ‚”»’è
-void EnemyDecision( void );								//	“G‚Æ‚Ì“–‚½‚è”»’è
-void HitOperation( void );								//	“G‚Æƒqƒbƒg‚µ‚½‚Ìs“®
+HRESULT MakeVertexPolygon( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+void MakePlayerPos( VERTEX_2D* pVtx );					//	ï¿½ï¿½ï¿½Wï¿½ÏX
+void PlayerOperation( void );							//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌŠï¿½{ï¿½ï¿½ï¿½ï¿½
+void KeyboardOperation( void );							//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½ÌŠï¿½{ï¿½ï¿½ï¿½ï¿½
+void GamePadOperation( void );							//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ÌŠï¿½{ï¿½ï¿½ï¿½ï¿½
+void GoolPlayerOperation( void );						//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½
+void GoolDecision( void );								//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void GoolHeightScore( void );							//	ï¿½Sï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½ÄƒXï¿½Rï¿½Aï¿½Ì•Ï‰ï¿½
+void GoolModeGame( void );								//	ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½Ìï¿½ï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
+void GoolModeTutorial( void );							//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½Ìï¿½ï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
+void ScrollObject( void );								//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ú“ï¿½ï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½Æ“Gï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½
+void ScrollMoveAlterObject( void );						//	ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‘ï¿½ï¿½ï¿½ï¿½ÏX
+void ScrollMoveRepositObject( void );					//	ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É–ß‚ï¿½
+void AttackDecision( void );							//	ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void EnemyDecision( void );								//	ï¿½Gï¿½Æ‚Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
+void HitOperation( void );								//	ï¿½Gï¿½Æƒqï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìsï¿½ï¿½
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void InitPlayer(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒvƒŒƒCƒ„[‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void InitPlayer(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void InitPlayer(void)
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	‘«êî•ñ‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	BASE *Base = GetBase( 0 );
 
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , PLAYER_TEXTURENAME , &g_pTexturePlayer  ) ) )
 	{
-		MessageBox( NULL , "ƒvƒŒƒCƒ„[‚Ì“Ç‚İ‚İ‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì“Ç‚İï¿½ï¿½İ‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}
 
-	//	ƒvƒŒƒCƒ„[‚Ì‰Šú‰»
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 	g_Player.Pos.x = 100.0f;
 	g_Player.Pos.y = Base -> pos . y;
 	g_Player.OldPos.x = 0.0f;
@@ -156,27 +154,27 @@ void InitPlayer(void)
 	g_CntUp = 0;
 	g_CntPlayerFrame = 0;
 
-	MakeVertexPolygon( pDevice );	//	’¸“_‚Ìì¬
+	MakeVertexPolygon( pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitPlayer(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒvƒŒƒCƒ„[‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitPlayer(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitPlayer(void)
 {
 	fUesult = 0.0f;
 	fVesult = 0.0f;
 
-	if( g_pTexturePlayer != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	if( g_pTexturePlayer != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTexturePlayer -> Release();
 		g_pTexturePlayer = NULL;
 	}	//	end of if
-	if(g_pVtxBufferPlayer != NULL)	//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^‚Ì‰ğ•ú
+	if(g_pVtxBufferPlayer != NULL)	//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½Ì‰ï¿½ï¿½
 	{
 		g_pVtxBufferPlayer -> Release();
 		g_pVtxBufferPlayer = NULL;
@@ -184,108 +182,108 @@ void UninitPlayer(void)
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdatePlayer(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒvƒŒƒCƒ„[‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdatePlayer(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdatePlayer(void)
 {
-	//	‘«êî•ñ(ƒS[ƒ‹)‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Sï¿½[ï¿½ï¿½)ï¿½Ìæ“¾
 	BASE *Base = GetBase( MAX_GOOL );
 
 	VERTEX_2D* pVtx;
 
-	//	‘O‚ÌÀ•W‚Ìæ“¾
+	//	ï¿½Oï¿½Ìï¿½ï¿½Wï¿½Ìæ“¾
 	g_Player.OldPos.x = g_Player.Pos.x;
 	g_Player.OldPos.y = g_Player.Pos.y;
 
-	//ƒoƒbƒtƒ@‚ğƒƒbƒN‚µ‰¼‘zƒAƒhƒŒƒX‚ğæ“¾‚·‚é
+	//ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	g_pVtxBufferPlayer -> Lock( 0 , 0 ,	( void** )&pVtx , 0 );
 
-	//	ƒvƒŒƒCƒ„[‚ªƒS[ƒ‹‚µ‚Ä‚¢‚È‚©‚Á‚½‚ç
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if( Base -> GoolFalg == false )
 	{
-		PlayerOperation();	//	ƒvƒŒƒCƒ„[‚ÌŠî–{‘€ì
+		PlayerOperation();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌŠï¿½{ï¿½ï¿½ï¿½ï¿½
 	}
-	//	ƒS[ƒ‹‚µ‚Ä‚¢‚½‚ç
+	//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½
 	else if( Base -> GoolFalg == true )
 	{
-		GoolPlayerOperation();	//	ƒS[ƒ‹‚µ‚½‚ÌƒvƒŒƒCƒ„[‚Ìˆ—
+		GoolPlayerOperation();	//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½
 	}
 
-	MakePlayerPos( pVtx );	//	ƒvƒŒƒCƒ„[‚ÌÀ•W•ÏX
+	MakePlayerPos( pVtx );	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½Wï¿½ÏX
 
-	g_pVtxBufferPlayer -> Unlock(); //‚±‚êˆÈ~G‚ê‚Ä‚Í‚¢‚¯‚È‚¢
+	g_pVtxBufferPlayer -> Unlock(); //ï¿½ï¿½ï¿½ï¿½È~ï¿½Gï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½
 
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawPlayer(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒvƒŒƒCƒ„[‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawPlayer(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawPlayer(void)
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½Ìİ’ï¿½
 	pDevice -> SetFVF( FVF_VERTEX_2D );
 
-	//	ƒXƒgƒŠ[ƒ€‚ğİ’è‚·‚é
+	//	ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½
 	pDevice -> SetStreamSource( 0 , g_pVtxBufferPlayer , 0 , sizeof( VERTEX_2D ) );
 
 	pDevice -> SetTexture( 0 , g_pTexturePlayer );
 
 	if( g_Player.bUse == true )
 	{
-		//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+		//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 		pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 0, NUM_POLYGON);
 	}	//	end of if
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT MakeVertexPolygon( LPDIRECT3DDEVICE9 pDevice )
- ˆø”:		‚È‚µ
- –ß‚è’l:	—Ç‚¢ê‡	return S_OK;
-			ƒ_ƒ‚Èê‡	return E_FAIL;
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT MakeVertexPolygon( LPDIRECT3DDEVICE9 pDevice )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½Ç‚ï¿½ï¿½ê‡	return S_OK;
+			ï¿½_ï¿½ï¿½ï¿½Èê‡	return E_FAIL;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 HRESULT MakeVertexPolygon( LPDIRECT3DDEVICE9 pDevice )
 {
-	// FAILEDƒ}ƒNƒ‚ÅƒGƒ‰[ƒ`ƒFƒbƒN
+	// FAILEDï¿½}ï¿½Nï¿½ï¿½ï¿½ÅƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if ( FAILED ( pDevice -> CreateVertexBuffer ( sizeof ( VERTEX_2D ) * NUM_VERTEX , D3DUSAGE_WRITEONLY , FVF_VERTEX_2D , D3DPOOL_MANAGED , &g_pVtxBufferPlayer , NULL ) ) )
 	{
 		return E_FAIL;
 	}	//	end of if
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
 
-	// ƒoƒbƒtƒ@‚ğƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ğæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferPlayer -> Lock( 0 , 0 ,	( void** )&pVtx , 0 );
 
-	//	’¸“_À•W‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( g_Player.Pos.x , g_Player.Pos.y , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( g_Player.Pos.x+g_Player.Size.x , g_Player.Pos.y , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( g_Player.Pos.x , g_Player.Pos.y+g_Player.Size.y , 0.0f );
 	pVtx[ 3 ].pos = D3DXVECTOR3( g_Player.Pos.x+g_Player.Size.x , g_Player.Pos.y+g_Player.Size.y , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚İ’¸“_ƒtƒ‰ƒO‚Ìİ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚İ’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½Ìİ’ï¿½
 	pVtx[ 0 ].rhw = 1.0f;
 	pVtx[ 1 ].rhw = 1.0f;
 	pVtx[ 2 ].rhw = 1.0f;
 	pVtx[ 3 ].rhw = 1.0f;
 
-	//	’¸“_F‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½Ìİ’ï¿½
 	pVtx[ 0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚Ìİ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
@@ -298,23 +296,23 @@ HRESULT MakeVertexPolygon( LPDIRECT3DDEVICE9 pDevice )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void MakePlayerPos( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒvƒŒƒCƒ„[‚ÌÀ•W•ÏX
+ ï¿½Öï¿½ï¿½ï¿½:	void MakePlayerPos( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½Wï¿½ÏX
 -----------------------------------------------------------------------------*/
 void MakePlayerPos( VERTEX_2D* pVtx )
 {
-	//	’¸“_À•W‚Ìİ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( g_Player.Pos.x , g_Player.Pos.y , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( g_Player.Pos.x+g_Player.Size.x , g_Player.Pos.y , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( g_Player.Pos.x , g_Player.Pos.y+g_Player.Size.y , 0.0f );
 	pVtx[ 3 ].pos = D3DXVECTOR3( g_Player.Pos.x+g_Player.Size.x , g_Player.Pos.y+g_Player.Size.y , 0.0f );
 
-	//	ƒvƒŒƒCƒ„[‚ÌŒü‚«‚É‚æ‚Á‚ÄƒeƒNƒXƒ`ƒƒ‚ÌŒü‚«‚ğ•Ï‚¦‚é
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌŒï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Äƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÌŒï¿½ï¿½ï¿½ï¿½ï¿½Ï‚ï¿½ï¿½ï¿½
 	if( g_Player.Direct == 1.0f )
 	{
-		//	ƒeƒNƒXƒ`ƒƒÀ•W‚Ìİ’è
+		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 		pVtx[ 0 ].tex = D3DXVECTOR2( fUesult             , 0 + fVesult );
 		pVtx[ 1 ].tex = D3DXVECTOR2( TEX_WIDTH + fUesult , 0 + fVesult );
 		pVtx[ 2 ].tex = D3DXVECTOR2( fUesult             , TEX_HEIGHT + fVesult );
@@ -322,7 +320,7 @@ void MakePlayerPos( VERTEX_2D* pVtx )
 	}
 	else if( g_Player.Direct == -1.0f )
 	{
-		//	ƒeƒNƒXƒ`ƒƒÀ•W‚Ìİ’è
+		//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìİ’ï¿½
 		pVtx[ 0 ].tex = D3DXVECTOR2( TEX_WIDTH+fUesult , 0 + fVesult );
 		pVtx[ 1 ].tex = D3DXVECTOR2( fUesult           , 0 + fVesult );
 		pVtx[ 2 ].tex = D3DXVECTOR2( TEX_WIDTH+fUesult , TEX_HEIGHT + fVesult );
@@ -331,55 +329,55 @@ void MakePlayerPos( VERTEX_2D* pVtx )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void PlayerOperation( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒvƒŒƒCƒ„[‚ÌŠî–{‘€ì
+ ï¿½Öï¿½ï¿½ï¿½:	void PlayerOperation( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌŠï¿½{ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void PlayerOperation( void )
 {
-	//	ƒQ[ƒ€ƒpƒbƒhƒfƒoƒCƒXæ“¾
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½æ“¾
 	LPDIRECTINPUTDEVICE8 *GamePad = GetGamePad( 0 );
 
 	if( g_Player.Hit == true )
 	{
-		//	“G‚Æƒqƒbƒg‚µ‚½‚Ìs“®
+		//	ï¿½Gï¿½Æƒqï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìsï¿½ï¿½
 		HitOperation();
 	}
 	else if( g_Player.Hit == false )
 	{
 		for( int CntPad = 0 ; CntPad < MAX_PAD ; CntPad++ , GamePad++ )
 
-		//	ƒQ[ƒ€ƒpƒbƒh‚ª–³‚©‚Á‚½‚ç
+		//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( GamePad[ CntPad ] == NULL )
 		{
-			//	ƒL[ƒ{[ƒh‚ÌŠî–{‘€ì
+			//	ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½ÌŠï¿½{ï¿½ï¿½ï¿½ï¿½
 			KeyboardOperation();
 		}
-		//	ƒQ[ƒ€ƒpƒbƒh‚ª‚ ‚Á‚½‚ç
+		//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		else if( GamePad[ CntPad ] != NULL )
 		{
-			//	ƒQ[ƒ€ƒpƒbƒhƒfƒoƒCƒXæ“¾
+			//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½æ“¾
 			GamePadOperation();
 		}
 
-		//	“G‚Æ‚Ì“–‚½‚è”»’è
+		//	ï¿½Gï¿½Æ‚Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
 		EnemyDecision();
 	
-		g_Player.Move.y += GRAVITY;	//	d—Í‚ğ‰Á‚¦‚é
+		g_Player.Move.y += GRAVITY;	//	ï¿½dï¿½Í‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		g_Player.Pos.y += g_Player.Move.y;
 
-		//	ƒS[ƒ‹”»’è
+		//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		GoolDecision();
 
-		//	ƒWƒƒƒ“ƒv‚³‚¹‚È‚¢ˆ—
+		//	ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( (g_Player.Pos.y + g_Player.Size.y) > SCREEN_HEIGHT - 25.0f )
 		{
 			g_Player.Jump = true;
 			g_Player.fall = true;
 		}
 
-		//	‰æ–Ê‚ª‚¢ˆ—
+		//	ï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( g_Player.Pos.y > SCREEN_HEIGHT + 200.0f )
 		{
 			g_Player.bUse = false;
@@ -388,52 +386,52 @@ void PlayerOperation( void )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void KeyboardOperation( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒL[ƒ{[ƒh‚ÌŠî–{‘€ì
+ ï¿½Öï¿½ï¿½ï¿½:	void KeyboardOperation( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½ÌŠï¿½{ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void KeyboardOperation( void )
 {
 
-	//	UŒ‚
+	//	ï¿½Uï¿½ï¿½
 	if( GetKeyboardTrigger( DIK_SPACE ) )
 	{
 		fUesult = 0.5f;
 
-		//	UŒ‚”»’è
+		//	ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		AttackDecision();
 
-		//	SEÄ¶
-		//	UŒ‚‰¹
+		//	SEï¿½Äï¿½
+		//	ï¿½Uï¿½ï¿½ï¿½ï¿½
 
 	}	//	end of if
 		
-	//	UŒ‚ƒ{ƒ^ƒ“‚ğ—£‚µ‚½‚ç
+	//	ï¿½Uï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½ğ—£‚ï¿½ï¿½ï¿½ï¿½ï¿½
 	else if( GetKeyboardRelease( DIK_SPACE ) )
 	{
 		fUesult = 0;
 	}	//	end of if
 		
-	//	ƒ_ƒbƒVƒ…
+	//	ï¿½_ï¿½bï¿½Vï¿½ï¿½
 	if( GetKeyboardPress( DIK_LSHIFT ) )
 	{
 		g_Player.Move.x = 4.0f;
 
-		//	ƒXƒNƒ[ƒ‹‚·‚éƒIƒuƒWƒFƒNƒg‚Ì‘¬‚³•ÏX
+		//	ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‘ï¿½ï¿½ï¿½ï¿½ÏX
 		ScrollMoveAlterObject();
 	}	//	end of if
 		
-	//	UŒ‚ƒ{ƒ^ƒ“‚ª—£‚µ‚½‚ç
+	//	ï¿½Uï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	else if( GetKeyboardRelease( DIK_LSHIFT ) )
 	{
 		g_Player.Move.x = 2.0f;
 
-		//	ƒXƒNƒ[ƒ‹‚·‚éƒIƒuƒWƒFƒNƒg‚Ì‘¬‚³‚ğŒ³‚É–ß‚·
+		//	ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É–ß‚ï¿½
 		ScrollMoveRepositObject();
 	} // end of else if
 		
-	//	ƒWƒƒƒ“ƒv
+	//	ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
 	if ( GetKeyboardPress( DIK_W ) || GetKeyboardPress(DIK_UPARROW) )
 	{
 		if( g_Player.Jump == false )
@@ -443,12 +441,12 @@ void KeyboardOperation( void )
 		}	//	end of if
 	}	//	end of if
 		
-	//	ˆÚ“®
-	if ( GetKeyboardPress( DIK_A ) || GetKeyboardPress(DIK_LEFTARROW) )	//	¶ˆÚ“®
+	//	ï¿½Ú“ï¿½
+	if ( GetKeyboardPress( DIK_A ) || GetKeyboardPress(DIK_LEFTARROW) )	//	ï¿½ï¿½ï¿½Ú“ï¿½
 	{
-		g_Player.Direct = -1.0f;	//	Œü‚«‚Ì•ÏX
+		g_Player.Direct = -1.0f;	//	ï¿½ï¿½ï¿½ï¿½ï¿½Ì•ÏX
 
-		//	‰æ–Ê‚ª‚¢ˆ—
+		//	ï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( g_Player.Pos.x < 0 )
 		{
 			g_Player.Pos.x += g_Player.Move.x;
@@ -459,9 +457,9 @@ void KeyboardOperation( void )
 		}	//	end of else
 	}	//	end of if
 		
-	if ( GetKeyboardPress( DIK_D ) || GetKeyboardPress(DIK_RIGHTARROW) )	//	‰EˆÚ“®
+	if ( GetKeyboardPress( DIK_D ) || GetKeyboardPress(DIK_RIGHTARROW) )	//	ï¿½Eï¿½Ú“ï¿½
 	{
-		//	”wŒiA“GA‘«ê‚ğƒXƒNƒ[ƒ‹‚³‚¹‚é
+		//	ï¿½wï¿½iï¿½Aï¿½Gï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( g_Player.Pos.x+g_Player.Size.x > SCREEN_WIDTH*0.5f )
 		{
 			ScrollObject();
@@ -471,62 +469,62 @@ void KeyboardOperation( void )
 			g_Player.Pos.x += g_Player.Move.x;
 		}	//	end of else
 
-		g_Player.Direct = 1.0f;	//	Œü‚«‚Ì•ÏX
+		g_Player.Direct = 1.0f;	//	ï¿½ï¿½ï¿½ï¿½ï¿½Ì•ÏX
 
 	}	//	end of if
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void GamePadOperation( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒQ[ƒ€ƒpƒbƒh‚ÌŠî–{‘€ì
+ ï¿½Öï¿½ï¿½ï¿½:	void GamePadOperation( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ÌŠï¿½{ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void GamePadOperation( void )
 {
-	//	ƒXƒeƒBƒbƒN‚Ìæ“¾
+	//	ï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½Ìæ“¾
 	LONG Stick_X = GetGamePadStick_X();
 
-	//	UŒ‚
+	//	ï¿½Uï¿½ï¿½
 	//if( GetGamePadTrigger( BUTTOM_01 ) )
 	if( GetGamePadTrigger( BUTTOM_06 ) )
 	{
 		fUesult = 0.5f;
 
-		//	UŒ‚”»’è
+		//	ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		AttackDecision();
 
-		//	SEÄ¶
-		//	UŒ‚‰¹
+		//	SEï¿½Äï¿½
+		//	ï¿½Uï¿½ï¿½ï¿½ï¿½
 
 	}	//	end of if
 		
-	//	UŒ‚ƒ{ƒ^ƒ“‚ğ—£‚µ‚½‚ç
+	//	ï¿½Uï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½ğ—£‚ï¿½ï¿½ï¿½ï¿½ï¿½
 	//else if( GetGamePadRelease( BUTTOM_01 ) )
 	else if( GetGamePadRelease( BUTTOM_06 ) )
 	{
 		fUesult = 0;
 	}	//	end of if
 		
-	//	ƒ_ƒbƒVƒ…
+	//	ï¿½_ï¿½bï¿½Vï¿½ï¿½
 	if( GetGamePadPress( BUTTOM_03 ) )
 	{
 		g_Player.Move.x = 4.0f;
 
-		//	ƒXƒNƒ[ƒ‹‚·‚éƒIƒuƒWƒFƒNƒg‚Ì‘¬‚³•ÏX
+		//	ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‘ï¿½ï¿½ï¿½ï¿½ÏX
 		ScrollMoveAlterObject();
 	}	//	end of if
 		
-	//	UŒ‚ƒ{ƒ^ƒ“‚ª—£‚µ‚½‚ç
+	//	ï¿½Uï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	else if( GetGamePadRelease( BUTTOM_03 ) )
 	{
 		g_Player.Move.x = 2.0f;
 
-		//	ƒXƒNƒ[ƒ‹‚·‚éƒIƒuƒWƒFƒNƒg‚Ì‘¬‚³‚ğŒ³‚É–ß‚·
+		//	ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É–ß‚ï¿½
 		ScrollMoveRepositObject();
 	} // end of else if
 		
-	//	ƒWƒƒƒ“ƒv
+	//	ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
 	if ( GetGamePadPress( BUTTOM_04 ) )
 	{
 		if( g_Player.Jump == false )
@@ -536,12 +534,12 @@ void GamePadOperation( void )
 		}	//	end of if
 	}	//	end of if
 		
-	//	ˆÚ“®
-	if ( Stick_X < 0 )	//	¶ˆÚ“®
+	//	ï¿½Ú“ï¿½
+	if ( Stick_X < 0 )	//	ï¿½ï¿½ï¿½Ú“ï¿½
 	{
-		g_Player.Direct = -1.0f;	//	Œü‚«‚Ì•ÏX
+		g_Player.Direct = -1.0f;	//	ï¿½ï¿½ï¿½ï¿½ï¿½Ì•ÏX
 
-		//	‰æ–Ê‚ª‚¢ˆ—
+		//	ï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( g_Player.Pos.x < 0 )
 		{
 			g_Player.Pos.x += g_Player.Move.x;
@@ -552,9 +550,9 @@ void GamePadOperation( void )
 		}	//	end of else
 	}	//	end of if
 		
-	if ( Stick_X > 0 )	//	‰EˆÚ“®
+	if ( Stick_X > 0 )	//	ï¿½Eï¿½Ú“ï¿½
 	{
-		//	”wŒiA“GA‘«ê‚ğƒXƒNƒ[ƒ‹‚³‚¹‚é
+		//	ï¿½wï¿½iï¿½Aï¿½Gï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( g_Player.Pos.x+g_Player.Size.x > SCREEN_WIDTH*0.5f )
 		{
 			ScrollObject();
@@ -564,62 +562,62 @@ void GamePadOperation( void )
 			g_Player.Pos.x += g_Player.Move.x;
 		}	//	end of else
 
-		g_Player.Direct = 1.0f;	//	Œü‚«‚Ì•ÏX
+		g_Player.Direct = 1.0f;	//	ï¿½ï¿½ï¿½ï¿½ï¿½Ì•ÏX
 
 	}	//	end of if
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void GoolPlayerOperation( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		ƒS[ƒ‹‚µ‚½‚ÌƒvƒŒƒCƒ„[‚Ìˆ—
+ ï¿½Öï¿½ï¿½ï¿½:	void GoolPlayerOperation( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void GoolPlayerOperation( void )
 {
-	//	¡‚Ìƒ‚[ƒh
+	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 	MODE *Mode = GetMode();
 
 	fUesult = 0.0f;
 	fVesult = 0.0f;
 
-	//	ƒQ[ƒ€ƒ‚[ƒh‚Ì
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½Ìï¿½
 	if( *Mode == MODE_GAME )
 	{
-		//	ƒQ[ƒ€ƒ‚[ƒh‚Ì‚ÌƒvƒŒƒCƒ„[ˆ—
+		//	ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½Ìï¿½ï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
 		GoolModeGame();
 	}	//	end of if
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒ‚[ƒh‚Ì
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½Ìï¿½
 	else if( *Mode == MODE_TUTORIAL )
 	{
-		//	ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒ‚[ƒh‚Ì‚ÌƒvƒŒƒCƒ„[ˆ—
+		//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½Ìï¿½ï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
 		GoolModeTutorial();
 	}	//	end of else if
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void ScrollField( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		ƒS[ƒ‹”»’è
+ ï¿½Öï¿½ï¿½ï¿½:	void ScrollField( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void GoolDecision( void )
 {
-	//	‘«êî•ñ(ƒS[ƒ‹)‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Sï¿½[ï¿½ï¿½)ï¿½Ìæ“¾
 	BASE *Base = GetBase( MAX_GOOL );
 
-	//	Ÿ‚Ìƒ‚[ƒh‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½hï¿½Ìæ“¾
 	MODE *Mode = GetNextMode();
 
-	//	ƒS[ƒ‹”»’è
+	//	ï¿½Sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if( RectangleDecision( g_Player.Pos.x , g_Player.Pos.y , g_Player.Size.x-POS_HAMMER , g_Player.Size.y , Base->pos.x+30.0f , Base->pos.y , Base->size.x-30.0f , Base->size.y ) )
 	{
 		Base -> GoolFalg = true;
 
 		if( *Mode == MODE_GAME )
 		{
-			//	ƒS[ƒ‹‚Ì‚‚³‚É‚æ‚Á‚ÄƒXƒRƒA‚Ì•Ï‰»
+			//	ï¿½Sï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½ÄƒXï¿½Rï¿½Aï¿½Ì•Ï‰ï¿½
 			GoolHeightScore();
 		}
 		PlaySound( SOUND_LABEL_SE_GOOL );
@@ -627,14 +625,14 @@ void GoolDecision( void )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void GoolHeightScore( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		ƒS[ƒ‹‚Ì‚‚³‚É‚æ‚Á‚ÄƒXƒRƒA‚Ì•Ï‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void GoolHeightScore( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Sï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½ÄƒXï¿½Rï¿½Aï¿½Ì•Ï‰ï¿½
 -----------------------------------------------------------------------------*/
 void GoolHeightScore( void )
 {
-	//	ƒXƒRƒA‚Ìî•ñ‚Ìæ“¾
+	//	ï¿½Xï¿½Rï¿½Aï¿½Ìï¿½ï¿½Ìæ“¾
 	int *Score = GetScore();
 
 	if( 100.0f > g_Player.Pos.y )
@@ -654,24 +652,24 @@ void GoolHeightScore( void )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void GoolModeGame( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		ƒQ[ƒ€ƒ‚[ƒh‚Ì‚ÌƒvƒŒƒCƒ„[ˆ—
+ ï¿½Öï¿½ï¿½ï¿½:	void GoolModeGame( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½Ìï¿½ï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void GoolModeGame( void )
 {
-	//	ƒXƒRƒAî•ñ‚Ìæ“¾
+	//	ï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½Ìæ“¾
 	int *Score = GetScore();
 	bool *ScoreFlag = GetScoreFlag();
 
-	//	ƒ^ƒCƒ€î•ñ‚Ìæ“¾
+	//	ï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	int *Time = GetTime();
 
 	if( g_GoolMove == false )
 	{
 		g_Player.Pos.y += 2;
-		//	ƒS[ƒ‹‚Ì‰º‚Ü‚Ås‚Á‚½‚ç
+		//	ï¿½Sï¿½[ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½Ü‚Åsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( g_Player.Pos.y + g_Player.Size.y > SCREEN_HEIGHT - 40.0f )
 		{
 			g_GoolMove = true;
@@ -682,7 +680,7 @@ void GoolModeGame( void )
 	if( g_GoolMove == true )
 	{
 		g_Player.Pos.x += g_Player.Move.x;
-		//	‰æ–Ê”ÍˆÍŠO‚És‚Á‚½‚ç
+		//	ï¿½ï¿½Ê”ÍˆÍŠOï¿½Ésï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( g_Player.Pos.x > SCREEN_WIDTH && *Time <= 0 )
 		{
 			g_Player.gool = true;
@@ -698,17 +696,17 @@ void GoolModeGame( void )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void GoolModeTutorial( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒ‚[ƒh‚Ì‚ÌƒvƒŒƒCƒ„[ˆ—
+ ï¿½Öï¿½ï¿½ï¿½:	void GoolModeTutorial( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½Ìï¿½ï¿½Ìƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void GoolModeTutorial( void )
 {
 	if( g_GoolMove == false )
 	{
 		g_Player.Pos.y += 2;
-		//	ƒS[ƒ‹‚Ì‰º‚Ü‚Ås‚Á‚½‚ç
+		//	ï¿½Sï¿½[ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½Ü‚Åsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( g_Player.Pos.y + g_Player.Size.y > SCREEN_HEIGHT - 40.0f )
 		{
 			g_GoolMove = true;
@@ -718,7 +716,7 @@ void GoolModeTutorial( void )
 	if( g_GoolMove == true )
 	{
 		g_Player.Pos.x += g_Player.Move.x;
-		//	‰æ–Ê”ÍˆÍŠO‚És‚Á‚½‚ç
+		//	ï¿½ï¿½Ê”ÍˆÍŠOï¿½Ésï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if( g_Player.Pos.x > SCREEN_WIDTH )
 		{
 			g_Player.gool = true;
@@ -728,34 +726,34 @@ void GoolModeTutorial( void )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void ScrollObject( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		ƒvƒŒƒCƒ„[ˆÚ“®‚Ì‘«ê‚Æ“G‚ÌƒXƒNƒ[ƒ‹
+ ï¿½Öï¿½ï¿½ï¿½:	void ScrollObject( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ú“ï¿½ï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½Æ“Gï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void ScrollObject( void )
 {
-	int CntEnemy;	//	“G‚ğfor‚Å”‚¦‚é
-	int CntBase;	//	‘«ê‚ğfor‚Å”‚¦‚é
+	int CntEnemy;	//	ï¿½Gï¿½ï¿½forï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½
+	int CntBase;	//	ï¿½ï¿½ï¿½ï¿½ï¿½forï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½
 	int CntTutorial;
 
-	//	”wŒiî•ñ‚Ìæ“¾
+	//	ï¿½wï¿½iï¿½ï¿½ï¿½Ìæ“¾
 	float *pBgTex = GetBgTex();
 	float *pBgVTex = GetVTex();
 
-	//	“Gî•ñ‚Ìæ“¾
+	//	ï¿½Gï¿½ï¿½ï¿½Ìæ“¾
 	ENEMY *Enemy = GetEnemy( 0 );
 
-	//	‘«êî•ñ‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	BASE *Base = GetBase( 0 );
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹î•ñ‚Ìæ“¾
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	TUTORIAL *Tutorial = GetTutorial();
 
-	//	ˆÄ“àî•ñ‚Ìæ“¾
+	//	ï¿½Ä“ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	GUIDSIGNBOARD *Guid = GetGuid();
 
-	//	”wŒi‚ÌƒXƒNƒ[ƒ‹
+	//	ï¿½wï¿½iï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½
 	*pBgTex += BG_TEX_SPEED;
 
 
@@ -765,7 +763,7 @@ void ScrollObject( void )
 		*pBgTex = 0.0f;
 	} // end of if
 
-	//	‘«ê‚ÌƒXƒNƒ[ƒ‹	
+	//	ï¿½ï¿½ï¿½ï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½	
 	for( CntBase = 0 ; CntBase < MAX_BASE ; CntBase++ , Base++ )
 	{
 		if( Base -> use == true )
@@ -779,7 +777,7 @@ void ScrollObject( void )
 		}	//	end of if
 	}	//	end of for
 				
-	//	“G‚ÌƒXƒNƒ[ƒ‹	
+	//	ï¿½Gï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½	
 	for( CntEnemy = 0 ; CntEnemy < MAX_ENEMY ; CntEnemy++ , Enemy++ )
 	{
 		if( Enemy -> Use == true )
@@ -788,140 +786,140 @@ void ScrollObject( void )
 		}	//	end of if
 	}	//	end of for
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹‚ÌƒXƒNƒ[ƒ‹
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½
 	for( CntTutorial = 0 ; CntTutorial < MAX_TUTORIAL ; CntTutorial++ , Tutorial++ )
 	{
 		Tutorial -> pos.x -= Tutorial -> Move_X;
 	}
 
-	//	ˆÄ“à‚ÌƒXƒNƒ[ƒ‹
+	//	ï¿½Ä“ï¿½ï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½
 	Guid -> pos.x -= Guid -> move_X;
 
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void ScrollMoveAlterObject( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		ƒXƒNƒ[ƒ‹‚·‚éƒIƒuƒWƒFƒNƒg‚Ì‘¬‚³•ÏX
+ ï¿½Öï¿½ï¿½ï¿½:	void ScrollMoveAlterObject( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‘ï¿½ï¿½ï¿½ï¿½ÏX
 -----------------------------------------------------------------------------*/
 void ScrollMoveAlterObject( void )
 {
-	int CntEnemy;	//	“G‚ğfor‚Å”‚¦‚é
-	int CntBase;	//	‘«ê‚ğfor‚Å”‚¦‚é
+	int CntEnemy;	//	ï¿½Gï¿½ï¿½forï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½
+	int CntBase;	//	ï¿½ï¿½ï¿½ï¿½ï¿½forï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½
 	int CntTutorial;
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹î•ñ‚Ìæ“¾
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	TUTORIAL *Tutorial = GetTutorial();
 
-	//	“Gî•ñ‚Ìæ“¾
+	//	ï¿½Gï¿½ï¿½ï¿½Ìæ“¾
 	ENEMY *Enemy = GetEnemy( 0 );
 
-	//	‘«êî•ñ(ƒS[ƒ‹)‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Sï¿½[ï¿½ï¿½)ï¿½Ìæ“¾
 	BASE *Base = GetBase( 0 );
 
-	//	ˆÄ“àî•ñ‚Ìæ“¾
+	//	ï¿½Ä“ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	GUIDSIGNBOARD *Guid = GetGuid();
 
-	//	‘«ê
+	//	ï¿½ï¿½ï¿½ï¿½
 	for( CntBase = 0 ; CntBase < MAX_BASE ; CntBase++ , Base++ )
 	{
 		Base->move_X = MOVE_AFTER;
 	}	//	end of for
 
-	//	“G
+	//	ï¿½G
 	for( CntEnemy = 0 ; CntEnemy < MAX_ENEMY ; CntEnemy++ , Enemy++ )
 	{
 		Enemy -> Scroll_Move_X = MOVE_AFTER;
 	}	//	end of for
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½
 	for( CntTutorial = 0 ; CntTutorial < MAX_TUTORIAL ; CntTutorial++ , Tutorial++ )
 	{
 		Tutorial -> Move_X = MOVE_AFTER;
 	}	//	end of for
 
-	//	ˆÄ“à‚ÌƒXƒNƒ[ƒ‹
+	//	ï¿½Ä“ï¿½ï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½
 	Guid -> move_X = MOVE_AFTER;
 
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void ScrollMoveRepositObject( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		ƒXƒNƒ[ƒ‹‚·‚éƒIƒuƒWƒFƒNƒg‚Ì‘¬‚³‚ğŒ³‚É–ß‚·
+ ï¿½Öï¿½ï¿½ï¿½:	void ScrollMoveRepositObject( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É–ß‚ï¿½
 -----------------------------------------------------------------------------*/
 void ScrollMoveRepositObject( void )
 {
-	int CntEnemy;	//	“G‚ğfor‚Å”‚¦‚é
-	int CntBase;	//	‘«ê‚ğfor‚Å”‚¦‚é
+	int CntEnemy;	//	ï¿½Gï¿½ï¿½forï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½
+	int CntBase;	//	ï¿½ï¿½ï¿½ï¿½ï¿½forï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½
 	int CntTutorial;
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹î•ñ‚Ìæ“¾
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	TUTORIAL *Tutorial = GetTutorial();
 
-	//	“Gî•ñ‚Ìæ“¾
+	//	ï¿½Gï¿½ï¿½ï¿½Ìæ“¾
 	ENEMY *Enemy = GetEnemy( 0 );
 
-	//	‘«êî•ñ(ƒS[ƒ‹)‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Sï¿½[ï¿½ï¿½)ï¿½Ìæ“¾
 	BASE *Base = GetBase( 0 );
 
-	//	ˆÄ“àî•ñ‚Ìæ“¾
+	//	ï¿½Ä“ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	GUIDSIGNBOARD *Guid = GetGuid();
 
-	//	‘«ê
+	//	ï¿½ï¿½ï¿½ï¿½
 	for( CntBase = 0 ; CntBase < MAX_BASE ; CntBase++ , Base++ )
 	{
 		Base->move_X = MOVE_REPOSIT;
 	}	//	end of for
 
-	//	“G
+	//	ï¿½G
 	for( CntEnemy = 0 ; CntEnemy < MAX_ENEMY ; CntEnemy++ , Enemy++ )
 	{
 		Enemy -> Scroll_Move_X = MOVE_REPOSIT;
 	}	//	end of for
 
-	//	ƒ`ƒ…[ƒgƒŠƒAƒ‹
+	//	ï¿½`ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½ï¿½
 	for( CntTutorial = 0 ; CntTutorial < MAX_TUTORIAL ; CntTutorial++ , Tutorial++ )
 	{
 		Tutorial -> Move_X = MOVE_REPOSIT;
 	}	//	end of for
 
-	//	ˆÄ“à
+	//	ï¿½Ä“ï¿½
 	Guid -> move_X = MOVE_REPOSIT;
 
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void AttackDecision( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		UŒ‚”»’è
+ ï¿½Öï¿½ï¿½ï¿½:	void AttackDecision( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void AttackDecision( void )
 {
-	int CntEnemy;	//	“G‚ğfor‚Å”‚¦‚é
+	int CntEnemy;	//	ï¿½Gï¿½ï¿½forï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½
 
-	//	ƒQ[ƒ€ƒpƒbƒhƒfƒoƒCƒXæ“¾
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½æ“¾
 	LPDIRECTINPUTDEVICE8 *GamePad = GetGamePad( 0 );
 
-	//	“Gî•ñ‚Ìæ“¾
+	//	ï¿½Gï¿½ï¿½ï¿½Ìæ“¾
 	ENEMY *Enemy = GetEnemy( 0 );
 
-	//	ƒXƒRƒA‚Ìî•ñ‚Ìæ“¾
+	//	ï¿½Xï¿½Rï¿½Aï¿½Ìï¿½ï¿½Ìæ“¾
 	int *Score = GetScore();
 
-	//	Ÿ‚Ìƒ‚[ƒh‚Ìæ“¾
+	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½hï¿½Ìæ“¾
 	MODE *Mode = GetNextMode();
 
 	for( CntEnemy = 0 ; CntEnemy < MAX_ENEMY ; CntEnemy++ , Enemy++ )
 	{
 		if( Enemy ->Use == true )
 		{
-			//	Œü‚«‚É‚æ‚Á‚Ä”»’è‚ğ•Ï‚¦‚é
+			//	ï¿½ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Ä”ï¿½ï¿½ï¿½ï¿½Ï‚ï¿½ï¿½ï¿½
 
-			//	‰EŒü‚«
+			//	ï¿½Eï¿½ï¿½ï¿½ï¿½
 			if( g_Player.Direct == 1.0f )
 			{
 				if( RectangleDecision( ( g_Player.Pos.x + g_Player.Size.y ) - POS_HAMMER , g_Player.Pos.y , POS_HAMMER + 15.0f , g_Player.Size.y , Enemy->Pos.x , Enemy->Pos.y , Enemy->Size.x , Enemy->Size.y ) )
@@ -930,17 +928,17 @@ void AttackDecision( void )
 
 					if( *Mode == MODE_GAME )
 					{
-						//	ƒXƒRƒA‚Ì‰ÁZ
+						//	ï¿½Xï¿½Rï¿½Aï¿½Ì‰ï¿½ï¿½Z
 						*Score += Enemy->Score;
 					}
 
 					if( GamePad[ 0 ] != NULL )
 					{
-						//	ƒoƒCƒuƒŒ[ƒVƒ‡ƒ“‚ÌŠJn
+						//	ï¿½oï¿½Cï¿½uï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÌŠJï¿½n
 						VibrationStart( 1 , 0 );
 					}
 
-					//	ƒGƒtƒFƒNƒg‚ÌƒZƒbƒg
+					//	ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½ÌƒZï¿½bï¿½g
 					SetParticle( Enemy->Pos.x + Enemy->Size.x * 0.5f , Enemy->Pos.y + Enemy->Size.y * 0.5f );
 					SetParticle( Enemy->Pos.x + Enemy->Size.x * 0.5f , Enemy->Pos.y + Enemy->Size.y * 0.5f );
 					SetParticle( Enemy->Pos.x + Enemy->Size.x * 0.5f , Enemy->Pos.y + Enemy->Size.y * 0.5f );
@@ -952,11 +950,11 @@ void AttackDecision( void )
 					SetParticle( Enemy->Pos.x + Enemy->Size.x * 0.5f , Enemy->Pos.y + Enemy->Size.y * 0.5f );
 					SetParticle( Enemy->Pos.x + Enemy->Size.x * 0.5f , Enemy->Pos.y + Enemy->Size.y * 0.5f );
 
-					//	SEÄ¶
+					//	SEï¿½Äï¿½
 					PlaySound( SOUND_LABEL_SE_HIT );
 				}
 			}
-			//	¶Œü‚«
+			//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			else if( g_Player.Direct == -1.0f )
 			{
 				if( RectangleDecision( g_Player.Pos.x - 15.0f, g_Player.Pos.y , POS_HAMMER , g_Player.Size.y , Enemy->Pos.x , Enemy->Pos.y , Enemy->Size.x , Enemy->Size.y ) )
@@ -965,17 +963,17 @@ void AttackDecision( void )
 
 					if( *Mode == MODE_GAME )
 					{
-						//	ƒXƒRƒA‚Ì‰ÁZ
+						//	ï¿½Xï¿½Rï¿½Aï¿½Ì‰ï¿½ï¿½Z
 						*Score += Enemy->Score;
 					}
 
 					if( GamePad[ 0 ] != NULL )
 					{
-						//	ƒoƒCƒuƒŒ[ƒVƒ‡ƒ“‚ÌŠJn
+						//	ï¿½oï¿½Cï¿½uï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÌŠJï¿½n
 						VibrationStart( 1 , 0 );
 					}
 
-					//	ƒGƒtƒFƒNƒg‚ÌƒZƒbƒg
+					//	ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½ÌƒZï¿½bï¿½g
 					SetParticle( Enemy->Pos.x + Enemy->Size.x * 0.5f , Enemy->Pos.y + Enemy->Size.y * 0.5f );
 					SetParticle( Enemy->Pos.x + Enemy->Size.x * 0.5f , Enemy->Pos.y + Enemy->Size.y * 0.5f );
 					SetParticle( Enemy->Pos.x + Enemy->Size.x * 0.5f , Enemy->Pos.y + Enemy->Size.y * 0.5f );
@@ -987,7 +985,7 @@ void AttackDecision( void )
 					SetParticle( Enemy->Pos.x + Enemy->Size.x * 0.5f , Enemy->Pos.y + Enemy->Size.y * 0.5f );
 					SetParticle( Enemy->Pos.x + Enemy->Size.x * 0.5f , Enemy->Pos.y + Enemy->Size.y * 0.5f );
 
-					//	SEÄ¶
+					//	SEï¿½Äï¿½
 					PlaySound( SOUND_LABEL_SE_HIT );
 				}	//	end of if
 			}	//	end of else if
@@ -997,23 +995,23 @@ void AttackDecision( void )
 }	//	end of func
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void EnemyDecision( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		“G‚Æ‚Ì“–‚½‚è”»’è
+ ï¿½Öï¿½ï¿½ï¿½:	void EnemyDecision( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Gï¿½Æ‚Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void EnemyDecision( void )
 {
-	int CntEnemy;	//	“G‚ğfor‚Å”‚¦‚é
+	int CntEnemy;	//	ï¿½Gï¿½ï¿½forï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½
 
-	//	“Gî•ñ‚Ìæ“¾
+	//	ï¿½Gï¿½ï¿½ï¿½Ìæ“¾
 	ENEMY *Enemy = GetEnemy( 0 );
 
-	//	ƒQ[ƒ€ƒpƒbƒhƒfƒoƒCƒXæ“¾
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½æ“¾
 	LPDIRECTINPUTDEVICE8 *GamePad = GetGamePad( 0 );
 
 
-	//	“G‚Ì“–‚½‚è”»’è
+	//	ï¿½Gï¿½Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
 	for( CntEnemy = 0 ; CntEnemy < MAX_ENEMY ; CntEnemy++ , Enemy++ )
 	{
 		if( RectangleDecision( g_Player.Pos.x , g_Player.Pos.y , g_Player.Size.x-POS_HAMMER , g_Player.Size.y , Enemy->Pos.x + 40.0f , Enemy->Pos.y + 30.0f , Enemy->Size.x - 80.0f , Enemy->Size.y - 40.0f ) && Enemy -> Use == true )
@@ -1022,7 +1020,7 @@ void EnemyDecision( void )
 
 			if( GamePad[ 0 ] != NULL )
 			{
-				//	ƒoƒCƒuƒŒ[ƒVƒ‡ƒ“‚ÌŠJn
+				//	ï¿½oï¿½Cï¿½uï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÌŠJï¿½n
 				VibrationStart( 1 , 0 );
 			}
 
@@ -1031,15 +1029,15 @@ void EnemyDecision( void )
 }	//	end of for
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void HitOperation( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	
- à–¾:		“G‚Æƒqƒbƒg‚µ‚½‚Ìs“®
+ ï¿½Öï¿½ï¿½ï¿½:	void HitOperation( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Gï¿½Æƒqï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìsï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void HitOperation( void )
 {
 
-	//	ƒeƒNƒXƒ`ƒƒ•ÏX
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÏX
 	fUesult = 0.0f;
 	fVesult = 0.5f;
 
@@ -1056,7 +1054,7 @@ void HitOperation( void )
 		}
 	}
 
-	//	‰æ–ÊŠOˆ—
+	//	ï¿½ï¿½ÊŠOï¿½ï¿½ï¿½ï¿½
 	if( g_Player.Pos.y > SCREEN_HEIGHT )
 	{
 		g_Player.bUse = false;
@@ -1064,10 +1062,10 @@ void HitOperation( void )
 }
 
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	PLAYER *GetPlayer(void)
- ˆø”:		‚È‚µ
- –ß‚è’l:	return &g_Player;
- à–¾:		ƒvƒŒƒCƒ„[î•ñ‚Ìæ“¾
+ ï¿½Öï¿½ï¿½ï¿½:	PLAYER *GetPlayer(void)
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	return &g_Player;
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìæ“¾
 -----------------------------------------------------------------------------*/
 PLAYER *GetPlayer(void)
 {

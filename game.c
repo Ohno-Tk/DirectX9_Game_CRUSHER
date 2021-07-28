@@ -1,135 +1,133 @@
 /*=============================================================================
 
-		ƒQ[ƒ€“à—e[ game.cpp ]
+		ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½e[ game.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/07/28
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/07/28
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include <stdio.h>
 				#include "game.h"
 				#include "input.h"
 				#include "fade.h"
 				#include "player.h"
 				#include "bg.h"
-			EInitGame’Ç‰Á
-				InitBg();	//	”wŒi‚Ì‰Šú‰»
-				InitPlayer();	//	ƒvƒŒƒCƒ„[‚Ì‰Šú‰»
-			EUninitGame’Ç‰Á
-				UninitBg();	//	”wŒi‚ÌI—¹
-				UninitPlayer();	//	ƒvƒŒƒCƒ„[‚ÌI—¹
-			EUpdateGame’Ç‰Á
-				UpdateBg();	//	”wŒi‚ÌXV
-				UpdatePlayer();	//	ƒvƒŒƒCƒ„[‚ÌXV
-			EDrawGame’Ç‰Á
-				DrawBg();	//	”wŒi‚Ì•`‰æ
-				DrawPlayer();	//	ƒvƒŒƒCƒ„[‚Ì•`‰æ
+			ï¿½EInitGameï¿½Ç‰ï¿½
+				InitBg();	//	ï¿½wï¿½iï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+				InitPlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+			ï¿½EUninitGameï¿½Ç‰ï¿½
+				UninitBg();	//	ï¿½wï¿½iï¿½ÌIï¿½ï¿½
+				UninitPlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌIï¿½ï¿½
+			ï¿½EUpdateGameï¿½Ç‰ï¿½
+				UpdateBg();	//	ï¿½wï¿½iï¿½ÌXï¿½V
+				UpdatePlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌXï¿½V
+			ï¿½EDrawGameï¿½Ç‰ï¿½
+				DrawBg();	//	ï¿½wï¿½iï¿½Ì•`ï¿½ï¿½
+				DrawPlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì•`ï¿½ï¿½
 		2016/08/02
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "time.h"
 				#include "score.h"
-			EInitGame’Ç‰Á
-				InitScore();	//	ƒXƒRƒA‚Ì‰Šú‰»
-				InitTime();	//	ƒ^ƒCƒ€‚Ì‰Šú‰»
-			EUninitGame’Ç‰Á
-				UninitScore();	//	ƒXƒRƒA‚ÌI—¹
-				UninitTime();	//	ƒ^ƒCƒ€‚ÌI—¹
-			EUpdateGame’Ç‰Á
-				UpdateScore();	//	ƒXƒRƒA‚ÌXV
-				UpdateTime();	//	ƒ^ƒCƒ€‚ÌXV
-			EDrawGame’Ç‰Á
-				DrawScore();	//	ƒXƒRƒA‚Ì•`‰æ
-				DrawTime();	//	ƒ^ƒCƒ€‚Ì•`‰æ
+			ï¿½EInitGameï¿½Ç‰ï¿½
+				InitScore();	//	ï¿½Xï¿½Rï¿½Aï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+				InitTime();	//	ï¿½^ï¿½Cï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+			ï¿½EUninitGameï¿½Ç‰ï¿½
+				UninitScore();	//	ï¿½Xï¿½Rï¿½Aï¿½ÌIï¿½ï¿½
+				UninitTime();	//	ï¿½^ï¿½Cï¿½ï¿½ï¿½ÌIï¿½ï¿½
+			ï¿½EUpdateGameï¿½Ç‰ï¿½
+				UpdateScore();	//	ï¿½Xï¿½Rï¿½Aï¿½ÌXï¿½V
+				UpdateTime();	//	ï¿½^ï¿½Cï¿½ï¿½ï¿½ÌXï¿½V
+			ï¿½EDrawGameï¿½Ç‰ï¿½
+				DrawScore();	//	ï¿½Xï¿½Rï¿½Aï¿½Ì•`ï¿½ï¿½
+				DrawTime();	//	ï¿½^ï¿½Cï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 		2016/08/08
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "enemy.h"
-			EInitGame’Ç‰Á
-				InitEnemy();	//	“G‚Ì‰Šú‰»
-			EUninitGame’Ç‰Á
-				UninitEnemy();	//	“G‚ÌI—¹
-			EUpdateGame’Ç‰Á
-				UpdateEnemy();	//	“G‚ÌXV
-			EDrawGame’Ç‰Á
-				DrawEnemy();	//	“G‚Ì•`‰æ
+			ï¿½EInitGameï¿½Ç‰ï¿½
+				InitEnemy();	//	ï¿½Gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+			ï¿½EUninitGameï¿½Ç‰ï¿½
+				UninitEnemy();	//	ï¿½Gï¿½ÌIï¿½ï¿½
+			ï¿½EUpdateGameï¿½Ç‰ï¿½
+				UpdateEnemy();	//	ï¿½Gï¿½ÌXï¿½V
+			ï¿½EDrawGameï¿½Ç‰ï¿½
+				DrawEnemy();	//	ï¿½Gï¿½Ì•`ï¿½ï¿½
 		2016/08/22
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				##include "base.h"
-			EInitGame’Ç‰Á
-				InitBase();	//	‘«ê‚Ì‰Šú‰»
-			EUninitGame’Ç‰Á
-				UninitBase();	//	‘«ê‚ÌI—¹
-			EUpdateGame’Ç‰Á
-				UpdateBase();	//	‘«ê‚ÌXV
-			EDrawGame’Ç‰Á
-				DrawBase();		//	‘«ê‚Ì•`‰æ
+			ï¿½EInitGameï¿½Ç‰ï¿½
+				InitBase();	//	ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+			ï¿½EUninitGameï¿½Ç‰ï¿½
+				UninitBase();	//	ï¿½ï¿½ï¿½ï¿½ÌIï¿½ï¿½
+			ï¿½EUpdateGameï¿½Ç‰ï¿½
+				UpdateBase();	//	ï¿½ï¿½ï¿½ï¿½ÌXï¿½V
+			ï¿½EDrawGameï¿½Ç‰ï¿½
+				DrawBase();		//	ï¿½ï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 		2016/08/28
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "sound.h"
 		2016/09/07
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "effect.h"
-			EInitGame’Ç‰Á
-				InitEffect();	//	ƒGƒtƒFƒNƒg‚Ì‰Šú‰»
-			EUninitGame’Ç‰Á
-				UninitEffect();	//	ƒGƒtƒFƒNƒg‚ÌI—¹
-			EUpdateGame’Ç‰Á
-				UpdateEffect();	//	ƒGƒtƒFƒNƒg‚ÌXV
-			EDrawGame’Ç‰Á
-				DrawEffect();	//	ƒGƒtƒFƒNƒg‚Ì•`‰æ
+			ï¿½EInitGameï¿½Ç‰ï¿½
+				InitEffect();	//	ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+			ï¿½EUninitGameï¿½Ç‰ï¿½
+				UninitEffect();	//	ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½ÌIï¿½ï¿½
+			ï¿½EUpdateGameï¿½Ç‰ï¿½
+				UpdateEffect();	//	ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½ÌXï¿½V
+			ï¿½EDrawGameï¿½Ç‰ï¿½
+				DrawEffect();	//	ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½Ì•`ï¿½ï¿½
 		2016/09/11
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "particle.h"
-			EInitGame’Ç‰Á
-				Initparticle();	//	ƒp[ƒeƒBƒNƒ‹‚Ì‰Šú‰»
-			EUninitGame’Ç‰Á
-				Uninitparticle();	//	ƒp[ƒeƒBƒNƒ‹‚ÌI—¹
-			EUpdateGame’Ç‰Á
-				Updateparticle();	//	ƒp[ƒeƒBƒNƒ‹‚ÌXV
-			EDrawGame’Ç‰Á
-				Drawparticle();	//	ƒp[ƒeƒBƒNƒ‹‚Ì•`‰æ
+			ï¿½EInitGameï¿½Ç‰ï¿½
+				Initparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+			ï¿½EUninitGameï¿½Ç‰ï¿½
+				Uninitparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½ÌIï¿½ï¿½
+			ï¿½EUpdateGameï¿½Ç‰ï¿½
+				Updateparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½ÌXï¿½V
+			ï¿½EDrawGameï¿½Ç‰ï¿½
+				Drawparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 		2016/09/14
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "cloud.h"
-			EInitGame’Ç‰Á
-				InitCloud();	//	‰_‚Ì‰Šú‰»
-			EUninitGame’Ç‰Á
-				UninitCloud();	//	‰_‚ÌI—¹
-			EUpdateGame’Ç‰Á
-				UpdateCloud();	//	‰_‚ÌXV
-			EDrawGame’Ç‰Á
-				DrawCloud();	//	‰_‚Ì•`‰æ
+			ï¿½EInitGameï¿½Ç‰ï¿½
+				InitCloud();	//	ï¿½_ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+			ï¿½EUninitGameï¿½Ç‰ï¿½
+				UninitCloud();	//	ï¿½_ï¿½ÌIï¿½ï¿½
+			ï¿½EUpdateGameï¿½Ç‰ï¿½
+				UpdateCloud();	//	ï¿½_ï¿½ÌXï¿½V
+			ï¿½EDrawGameï¿½Ç‰ï¿½
+				DrawCloud();	//	ï¿½_ï¿½Ì•`ï¿½ï¿½
 		2016/09/19
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "pause.h"
-			EInitGame’Ç‰Á
-				InitPause();	//	ƒ|[ƒY‚Ì‰Šú‰»
-			EUninitGame’Ç‰Á
-				UninitPause();	//	ƒ|[ƒY‚ÌI—¹
-			EUpdateGame’Ç‰Á
-				UpdatePause();	//	ƒ|[ƒY‚ÌXV
-			EDrawGame’Ç‰Á
-				DrawPause();	//	ƒ|[ƒY‚Ì•`‰æ
+			ï¿½EInitGameï¿½Ç‰ï¿½
+				InitPause();	//	ï¿½|ï¿½[ï¿½Yï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+			ï¿½EUninitGameï¿½Ç‰ï¿½
+				UninitPause();	//	ï¿½|ï¿½[ï¿½Yï¿½ÌIï¿½ï¿½
+			ï¿½EUpdateGameï¿½Ç‰ï¿½
+				UpdatePause();	//	ï¿½|ï¿½[ï¿½Yï¿½ÌXï¿½V
+			ï¿½EDrawGameï¿½Ç‰ï¿½
+				DrawPause();	//	ï¿½|ï¿½[ï¿½Yï¿½Ì•`ï¿½ï¿½
 		2016/09/27
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include "guid.h"
-			EInitGame’Ç‰Á
-				InitGuid();	//	ˆÄ“à‚Ì‰Šú‰»
-			EUninitGame’Ç‰Á
-				UninitGuid();	//	ˆÄ“à‚ÌI—¹
-			EUpdateGame’Ç‰Á
-				UpdateGuid();	//	ˆÄ“à‚ÌXV
-			EDrawGame’Ç‰Á
-				DrawGuid();	//	ˆÄ“à‚Ì•`‰æ
+			ï¿½EInitGameï¿½Ç‰ï¿½
+				InitGuid();	//	ï¿½Ä“ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+			ï¿½EUninitGameï¿½Ç‰ï¿½
+				UninitGuid();	//	ï¿½Ä“ï¿½ï¿½ÌIï¿½ï¿½
+			ï¿½EUpdateGameï¿½Ç‰ï¿½
+				UpdateGuid();	//	ï¿½Ä“ï¿½ï¿½ÌXï¿½V
+			ï¿½EDrawGameï¿½Ç‰ï¿½
+				DrawGuid();	//	ï¿½Ä“ï¿½ï¿½Ì•`ï¿½ï¿½
 -------------------------------------------------------------------------------
 */
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "game.h"
@@ -149,92 +147,92 @@
 #include "operation.h"
 #include "guid.h"
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void InitGame( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒQ[ƒ€‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	void InitGame( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Qï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void InitGame( void )
 {
-	//	¡‚Ìƒ‚[ƒh
+	//	ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½h
 	MODE *Mode = GetMode();
 
 	*Mode = MODE_GAME;
 
-	InitBg();		//	”wŒi‚Ì‰Šú‰»
+	InitBg();		//	ï¿½wï¿½iï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitCloud();	//	‰_‚Ì‰Šú‰»
+	InitCloud();	//	ï¿½_ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitBase();		//	‘«ê‚Ì‰Šú‰»
+	InitBase();		//	ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitGuid();	//	ˆÄ“à‚Ì‰Šú‰»
+	InitGuid();	//	ï¿½Ä“ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitEnemy();	//	“G‚Ì‰Šú‰»
+	InitEnemy();	//	ï¿½Gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitPlayer();	//	ƒvƒŒƒCƒ„[‚Ì‰Šú‰»
+	InitPlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	Initparticle();	//	ƒp[ƒeƒBƒNƒ‹‚Ì‰Šú‰»
+	Initparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitEffect();	//	ƒGƒtƒFƒNƒg‚Ì‰Šú‰»
+	InitEffect();	//	ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitScore();	//	ƒXƒRƒA‚Ì‰Šú‰»
+	InitScore();	//	ï¿½Xï¿½Rï¿½Aï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitTime();		//	ƒ^ƒCƒ€‚Ì‰Šú‰»
+	InitTime();		//	ï¿½^ï¿½Cï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitPause();	//	ƒ|[ƒY‚Ì‰Šú‰»
+	InitPause();	//	ï¿½|ï¿½[ï¿½Yï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	InitOperation();	//	‘€ì•û–@‚Ì‰Šú‰»
+	InitOperation();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 
-	//	‰¹ŠyÄ¶
+	//	ï¿½ï¿½ï¿½yï¿½Äï¿½
 	PlaySound( SOUND_LABEL_BGM_GAME );
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitGame( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒQ[ƒ€‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitGame( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Qï¿½[ï¿½ï¿½ï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitGame( void )
 {
-	UninitBg();		//	”wŒi‚ÌI—¹
+	UninitBg();		//	ï¿½wï¿½iï¿½ÌIï¿½ï¿½
 
-	UninitCloud();	//	‰_‚ÌI—¹
+	UninitCloud();	//	ï¿½_ï¿½ÌIï¿½ï¿½
 
-	UninitBase();	//	‘«ê‚ÌI—¹
+	UninitBase();	//	ï¿½ï¿½ï¿½ï¿½ÌIï¿½ï¿½
 
-	UninitGuid();	//	ˆÄ“à‚ÌI—¹
+	UninitGuid();	//	ï¿½Ä“ï¿½ï¿½ÌIï¿½ï¿½
 
-	UninitEnemy();	//	“G‚ÌI—¹
+	UninitEnemy();	//	ï¿½Gï¿½ÌIï¿½ï¿½
 
-	UninitPlayer();	//	ƒvƒŒƒCƒ„[‚ÌI—¹
+	UninitPlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌIï¿½ï¿½
 
-	Uninitparticle();	//	ƒp[ƒeƒBƒNƒ‹‚ÌI—¹
+	Uninitparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½ÌIï¿½ï¿½
 
-	UninitEffect();	//	ƒGƒtƒFƒNƒg‚ÌI—¹
+	UninitEffect();	//	ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½ÌIï¿½ï¿½
 
-	UninitTime();	//	ƒ^ƒCƒ€‚ÌI—¹
+	UninitTime();	//	ï¿½^ï¿½Cï¿½ï¿½ï¿½ÌIï¿½ï¿½
 
-	UninitPause();	//	ƒ|[ƒY‚ÌI—¹
+	UninitPause();	//	ï¿½|ï¿½[ï¿½Yï¿½ÌIï¿½ï¿½
 
-	UninitOperation();	//	‘€ì•û–@‚ÌI—¹
+	UninitOperation();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½ÌIï¿½ï¿½
 
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdeteGame( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒQ[ƒ€‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdeteGame( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Qï¿½[ï¿½ï¿½ï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdateGame( void )
 {
-	//	ƒ^ƒCƒ€î•ñ‚Ìæ“¾
+	//	ï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ìæ“¾
 	int *Time = GetTime();
 
-	//	ƒvƒŒƒCƒ„[î•ñ‚Ìæ“¾
+	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìæ“¾
 	PLAYER *Player = GetPlayer();
 
-	//	ƒ|[ƒYî•ñ‚Ìæ“¾
+	//	ï¿½|ï¿½[ï¿½Yï¿½ï¿½ï¿½Ìæ“¾
 	bool *Pause = GetPause();
 	bool *PauseUse = GetOpeFlag();
 
@@ -245,86 +243,86 @@ void UpdateGame( void )
 		BebugPause ^= 1;
 	}
 
-	//	‰æ–Ê‘JˆÚ
+	//	ï¿½ï¿½Ê‘Jï¿½ï¿½
 	if( Player->gool == true || Player -> bUse == false )
 	{
 		SetFade(FADE_OUT , MODE_RESULT);
 
-		//	‰¹Šy’â~
+		//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 		StopSound( SOUND_LABEL_BGM_GAME );
 	}
 
 	if( *Pause == false && BebugPause == false )
 	{
-		UpdateBg();		//	”wŒi‚ÌXV
+		UpdateBg();		//	ï¿½wï¿½iï¿½ÌXï¿½V
 
-		UpdateCloud();	//	‰_‚ÌXV
+		UpdateCloud();	//	ï¿½_ï¿½ÌXï¿½V
 
-		UpdateBase();	//	‘«ê‚ÌXV
+		UpdateBase();	//	ï¿½ï¿½ï¿½ï¿½ÌXï¿½V
 
-		UpdateGuid();	//	ˆÄ“à‚ÌXV
+		UpdateGuid();	//	ï¿½Ä“ï¿½ï¿½ÌXï¿½V
 
-		UpdateEnemy();	//	“G‚ÌXV
+		UpdateEnemy();	//	ï¿½Gï¿½ÌXï¿½V
 
-		UpdatePlayer();	//	ƒvƒŒƒCƒ„[‚ÌXV
+		UpdatePlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌXï¿½V
 
-		Updateparticle();	//	ƒp[ƒeƒBƒNƒ‹‚ÌXV
+		Updateparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½ÌXï¿½V
 
-		UpdateEffect();	//	ƒGƒtƒFƒNƒg‚ÌXV
+		UpdateEffect();	//	ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½ÌXï¿½V
 
-		UpdateScore();	//	ƒXƒRƒA‚ÌXV
+		UpdateScore();	//	ï¿½Xï¿½Rï¿½Aï¿½ÌXï¿½V
 
-		UpdateTime();	//	ƒ^ƒCƒ€‚ÌXV
+		UpdateTime();	//	ï¿½^ï¿½Cï¿½ï¿½ï¿½ÌXï¿½V
 	}	//	end of if
 
 	if( *PauseUse == false )
 	{
-		UpdatePause();	//	ƒ|[ƒY‚ÌXV
+		UpdatePause();	//	ï¿½|ï¿½[ï¿½Yï¿½ÌXï¿½V
 	}
 	else if( *PauseUse == true )
 	{
-		UpdateOperation();	//	‘€ì•û–@‚ÌXV
+		UpdateOperation();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½ÌXï¿½V
 	}
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawGame( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒQ[ƒ€‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawGame( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Qï¿½[ï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawGame( void )
 {
-	//	ƒ|[ƒYî•ñ‚Ìæ“¾
+	//	ï¿½|ï¿½[ï¿½Yï¿½ï¿½ï¿½Ìæ“¾
 	bool *PauseUse = GetOpeFlag();
 
-	DrawBg();		//	”wŒi‚Ì•`‰æ
+	DrawBg();		//	ï¿½wï¿½iï¿½Ì•`ï¿½ï¿½
 
-	DrawCloud();	//	‰_‚Ì•`‰æ
+	DrawCloud();	//	ï¿½_ï¿½Ì•`ï¿½ï¿½
 
-	DrawBase();		//	‘«ê‚Ì•`‰æ
+	DrawBase();		//	ï¿½ï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 
-	DrawGuid();	//	ˆÄ“à‚Ì•`‰æ
+	DrawGuid();	//	ï¿½Ä“ï¿½ï¿½Ì•`ï¿½ï¿½
 
-	DrawEnemy();	//	“G‚Ì•`‰æ
+	DrawEnemy();	//	ï¿½Gï¿½Ì•`ï¿½ï¿½
 
-	DrawPlayer();	//	ƒvƒŒƒCƒ„[‚Ì•`‰æ
+	DrawPlayer();	//	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ì•`ï¿½ï¿½
 
-	Drawparticle();	//	ƒp[ƒeƒBƒNƒ‹‚Ì•`‰æ
+	Drawparticle();	//	ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 
-	DrawEffect();	//	ƒGƒtƒFƒNƒg‚Ì•`‰æ
+	DrawEffect();	//	ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½Ì•`ï¿½ï¿½
 
-	DrawScore();	//	ƒXƒRƒA‚Ì•`‰æ
+	DrawScore();	//	ï¿½Xï¿½Rï¿½Aï¿½Ì•`ï¿½ï¿½
 
-	DrawTime();		//	ƒ^ƒCƒ€‚Ì•`‰æ
+	DrawTime();		//	ï¿½^ï¿½Cï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 
 	if( *PauseUse == false )
 	{
-		DrawPause();	//	ƒ|[ƒY‚Ì•`‰æ
+		DrawPause();	//	ï¿½|ï¿½[ï¿½Yï¿½Ì•`ï¿½ï¿½
 	}
 	else if( *PauseUse == true )
 	{
-		DrawOperation();	//	‘€ì•û–@‚Ì•`‰æ
+		DrawOperation();	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½Ì•`ï¿½ï¿½
 	}
 
 }	//	end of func

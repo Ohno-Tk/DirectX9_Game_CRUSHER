@@ -1,23 +1,21 @@
 /*=============================================================================
 
-		ƒ‰ƒ“ƒLƒ“ƒO[ ranking.cpp ]
+		ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½O[ ranking.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/09/05
 -------------------------------------------------------------------------------
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/09/05
 -------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
-		scanf ‚Ìwarning–hŽ~ 
+		scanf ï¿½ï¿½warningï¿½hï¿½~ 
 -----------------------------------------------------------------------------*/
 #define _CRT_SECURE_NO_WARNINGS
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "main.h"
@@ -29,134 +27,134 @@
 #include "fade.h"
 #include "sound.h"
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define ENABLE_PEOC_SAVE	//	ƒZ[ƒuˆ——LŒø
-#undef ENABLE_PEOC_SAVE	//	( ƒ}ƒNƒ‚ð–³Œø‚É‚·‚é )
+#define ENABLE_PEOC_SAVE	//	ï¿½Zï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½
+#undef ENABLE_PEOC_SAVE	//	( ï¿½}ï¿½Nï¿½ï¿½ï¿½ð–³Œï¿½ï¿½É‚ï¿½ï¿½ï¿½ )
 
 #ifdef ENABLE_PEOC_SAVE
-	#define FILENAME "data/RANKING_DATA/save.txt"	//	ƒZ[ƒu‚·‚é–¼‘O
+	#define FILENAME "data/RANKING_DATA/save.txt"	//	ï¿½Zï¿½[ï¿½uï¿½ï¿½ï¿½é–¼ï¿½O
 #else
-	#define FILENAME "data/RANKING_DATA/save.bin"	//	ƒZ[ƒu‚·‚é–¼‘O
+	#define FILENAME "data/RANKING_DATA/save.bin"	//	ï¿½Zï¿½[ï¿½uï¿½ï¿½ï¿½é–¼ï¿½O
 #endif
 
-//	”Žš
+//	ï¿½ï¿½ï¿½ï¿½
 #define RANKING_SCORE_TEXTURENAME "data/TEXTURE/ranking/number000.png"
-//	‡ˆÊ
+//	ï¿½ï¿½ï¿½ï¿½
 #define RANKING_RANK_TEXTURENAME "data/TEXTURE/ranking/ranking_rank.png"
 
-//	ƒ‰ƒ“ƒLƒ“ƒO”wŒi
+//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½wï¿½i
 #define RANKING_BG_TEXTURENAME "data/TEXTURE/func/titleBg.jpg"
-//	ƒ‰ƒ“ƒLƒ“ƒO•¶Žš
+//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
 #define RANKING_ASCII_TEXTURENAME "data/TEXTURE/ranking/RankingAscii.png"
-//	ƒ{ƒ^ƒ“
+//	ï¿½{ï¿½^ï¿½ï¿½
 #define RANKING_PUSH_TEXTURENAME "data/TEXTURE/func/ButtomRogo .png"
 
 #define RANKING_PAD_TEXTURENAME "data/TEXTURE/func/ButtomPad.png"
 
-#define MAX_RANKING ( 5 )	//	ƒ‰ƒ“ƒLƒ“ƒO‚ÌÅ‘å”
+#define MAX_RANKING ( 5 )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ÌÅ‘å”
 
-#define TEXTURE ( 3 )	//	”Žš‚Æ‡ˆÊ‚ðœ‚¢‚½ƒeƒNƒXƒ`ƒƒ‚Ì”
+#define TEXTURE ( 3 )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Æï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ìï¿½
 
-#define RANKING_X ( 750.0f )	//	ƒ‰ƒ“ƒLƒ“ƒO”Žš‚ÌX
-#define RANKING_Y ( 500.0f )	//	ƒ‰ƒ“ƒLƒ“ƒO”Žš‚ÌY
-#define RANKING_WIDTH ( 100.0f )	//	ƒ‰ƒ“ƒLƒ“ƒO”Žš‚ÌWIDTH
-#define RANKING_HEIGHT ( 50.0f )	//	ƒ‰ƒ“ƒLƒ“ƒO”Žš‚ÌHEIGHT
+#define RANKING_X ( 750.0f )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½X
+#define RANKING_Y ( 500.0f )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y
+#define RANKING_WIDTH ( 100.0f )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½WIDTH
+#define RANKING_HEIGHT ( 50.0f )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HEIGHT
 
-#define RANKING_ASCII_X ( 300.0f )	//	ƒ‰ƒ“ƒLƒ“ƒO•¶Žš‚ÌX
-#define RANKING_ASCII_Y ( 0.0f )	//	ƒ‰ƒ“ƒLƒ“ƒO•¶Žš‚ÌY
-#define RANKING_ASCII_WIDTH ( 400.0f )	//	ƒ‰ƒ“ƒLƒ“ƒO•¶Žš‚ÌWIDTH
-#define RANKING_ASCII_HEIGHT ( 100.0f )	//	ƒ‰ƒ“ƒLƒ“ƒO•¶Žš‚ÌHEIGHT
+#define RANKING_ASCII_X ( 300.0f )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½X
+#define RANKING_ASCII_Y ( 0.0f )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y
+#define RANKING_ASCII_WIDTH ( 400.0f )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½WIDTH
+#define RANKING_ASCII_HEIGHT ( 100.0f )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HEIGHT
 
-#define RANKING_RANK_X ( 100.0f )	//	‡ˆÊ‚ÌX
-#define RANKING_RANK_Y ( RANKING_Y )	//	‡ˆÊ‚ÌY
-#define RANKING_RANK_WIDTH ( 80.0f )	//	‡ˆÊ‚ÌWIDTH
-#define RANKING_RANK_HEIGHT ( 100.0f )	//	‡ˆÊ‚ÌX
+#define RANKING_RANK_X ( 100.0f )	//	ï¿½ï¿½ï¿½Ê‚ï¿½X
+#define RANKING_RANK_Y ( RANKING_Y )	//	ï¿½ï¿½ï¿½Ê‚ï¿½Y
+#define RANKING_RANK_WIDTH ( 80.0f )	//	ï¿½ï¿½ï¿½Ê‚ï¿½WIDTH
+#define RANKING_RANK_HEIGHT ( 100.0f )	//	ï¿½ï¿½ï¿½Ê‚ï¿½X
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-HRESULT MakeVertexRanking( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
-void RankingButtomFade( VERTEX_2D* pVtx );	//	ƒ{ƒ^ƒ“‚ÌƒtƒF[ƒh
-void RankTex( VERTEX_2D* pVtx );	//	‡ˆÊ‚ÌƒeƒNƒXƒ`ƒƒ‚ÆF‚ð•ÏX
-void Save( void );	//	ƒZ[ƒu
-void Load( void );	//	ƒ[ƒh
-void BubbleSort( void );	//	ƒoƒuƒ‹ƒ\[ƒg
+HRESULT MakeVertexRanking( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+void RankingButtomFade( VERTEX_2D* pVtx );	//	ï¿½{ï¿½^ï¿½ï¿½ï¿½Ìƒtï¿½Fï¿½[ï¿½h
+void RankTex( VERTEX_2D* pVtx );	//	ï¿½ï¿½ï¿½Ê‚Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÆFï¿½ï¿½ÏX
+void Save( void );	//	ï¿½Zï¿½[ï¿½u
+void Load( void );	//	ï¿½ï¿½ï¿½[ï¿½h
+void BubbleSort( void );	//	ï¿½oï¿½uï¿½ï¿½ï¿½\ï¿½[ï¿½g
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferRanking = NULL;	//	’¸“_ƒoƒbƒtƒ@
+LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferRanking = NULL;	//	ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@
 
-//	ƒ‰ƒ“ƒLƒ“ƒO”Žš
-LPDIRECT3DTEXTURE9 g_pTextureRanking = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
+LPDIRECT3DTEXTURE9 g_pTextureRanking = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	ƒ‰ƒ“ƒLƒ“ƒO”wŒi
-LPDIRECT3DTEXTURE9 g_pTextureRankingBg = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½wï¿½i
+LPDIRECT3DTEXTURE9 g_pTextureRankingBg = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	ƒ‰ƒ“ƒLƒ“ƒO•¶Žš
-LPDIRECT3DTEXTURE9 g_pTextureRankingAscii = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
+LPDIRECT3DTEXTURE9 g_pTextureRankingAscii = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	‡ˆÊ
-LPDIRECT3DTEXTURE9 g_pTextureRankingRank = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½ï¿½ï¿½ï¿½
+LPDIRECT3DTEXTURE9 g_pTextureRankingRank = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-//	ƒ{ƒ^ƒ“
-LPDIRECT3DTEXTURE9 g_pTextureRankingButtom = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
+//	ï¿½{ï¿½^ï¿½ï¿½
+LPDIRECT3DTEXTURE9 g_pTextureRankingButtom = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
 RANKING g_RankingList[ MAX_RANKING ] = { 0 };
 
-FADE g_RankingFade = FADE_IN;	//	ƒtƒF[ƒhó‘Ô
-D3DXCOLOR g_RankingFadeColor;	//	ƒtƒF[ƒhF
+FADE g_RankingFade = FADE_IN;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½
+D3DXCOLOR g_RankingFadeColor;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½F
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT InitRanking( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ‰ƒ“ƒLƒ“ƒO‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT InitRanking( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void InitRanking( void )
 {
 
-	//	ƒfƒoƒCƒX‚ÌŽæ“¾
+	//	ï¿½fï¿½oï¿½Cï¿½Xï¿½ÌŽæ“¾
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	ƒQ[ƒ€ƒpƒbƒhƒfƒoƒCƒXŽæ“¾
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½æ“¾
 	LPDIRECTINPUTDEVICE8 *GamePad = GetGamePad( 0 );
 
-	//	ƒXƒRƒA‚ÌŽæ“¾
+	//	ï¿½Xï¿½Rï¿½Aï¿½ÌŽæ“¾
 	int *Hiscore = GetScore();
 
 
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if( FAILED( D3DXCreateTextureFromFile( pDevice , RANKING_SCORE_TEXTURENAME , &g_pTextureRanking  ) ) )
 	{
-		MessageBox( NULL , "ƒiƒ“ƒo[‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½iï¿½ï¿½ï¿½oï¿½[ï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 	if( FAILED( D3DXCreateTextureFromFile( pDevice , RANKING_BG_TEXTURENAME , &g_pTextureRankingBg  ) ) )
 	{
-		MessageBox( NULL , "ƒ‰ƒ“ƒLƒ“ƒO”wŒi‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½wï¿½iï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 	if( FAILED( D3DXCreateTextureFromFile( pDevice , RANKING_ASCII_TEXTURENAME , &g_pTextureRankingAscii  ) ) )
 	{
-		MessageBox( NULL , "ƒ‰ƒ“ƒLƒ“ƒO•¶Žš‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 	if( FAILED( D3DXCreateTextureFromFile( pDevice , RANKING_RANK_TEXTURENAME , &g_pTextureRankingRank  ) ) )
 	{
-		MessageBox( NULL , "‡ˆÊ‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½ï¿½ï¿½Ê‚Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
-	//	ƒQ[ƒ€ƒpƒbƒh‚ª–³‚©‚Á‚½‚ç
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if( GamePad[ 0 ] == NULL )
 	{
 		if( FAILED( D3DXCreateTextureFromFile( pDevice , RANKING_PUSH_TEXTURENAME , &g_pTextureRankingButtom  ) ) )
 		{
-			MessageBox( NULL , "ƒ{ƒ^ƒ“‚O‚P‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½{ï¿½^ï¿½ï¿½ï¿½Oï¿½Pï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 	}
 
-	//	ƒQ[ƒ€ƒpƒbƒh‚ª‚ ‚Á‚½‚ç
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	else if( GamePad[ 0 ] != NULL )
 	{
 		if( FAILED( D3DXCreateTextureFromFile( pDevice , RANKING_PAD_TEXTURENAME , &g_pTextureRankingButtom  ) ) )
 		{
-			MessageBox( NULL , "ƒ{ƒ^ƒ“‚O‚Q‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+			MessageBox( NULL , "ï¿½{ï¿½^ï¿½ï¿½ï¿½Oï¿½Qï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 		}	//	end of if
 	}
 
@@ -167,120 +165,120 @@ void InitRanking( void )
 		g_RankingList[ Cnt2 ].score = 0;
 	}
 
-	//	ƒZ[ƒu
+	//	ï¿½Zï¿½[ï¿½u
 	Save();
 #endif
 	
-	//	ƒ[ƒh
+	//	ï¿½ï¿½ï¿½[ï¿½h
 	Load();
 
-	//	ƒoƒuƒ‹ƒ\[ƒg
+	//	ï¿½oï¿½uï¿½ï¿½ï¿½\ï¿½[ï¿½g
 	BubbleSort();
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO‚Ìˆê”Ô‰º‚ÆƒQ[ƒ€ƒXƒRƒA‚Ì”äŠr
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½Ìˆï¿½Ô‰ï¿½ï¿½ÆƒQï¿½[ï¿½ï¿½ï¿½Xï¿½Rï¿½Aï¿½Ì”ï¿½r
 	if( g_RankingList[ 0 ].score <= *Hiscore )
 	{
-	//	//	–¼‘O‚Ì“ü—Í
+	//	//	ï¿½ï¿½ï¿½Oï¿½Ì“ï¿½ï¿½ï¿½
 	//	g_RankingList[ MAX_RANKING - 1 ].name[ 0 ] = 0;
 	//	g_RankingList[ MAX_RANKING - 1 ].name[ 0 ] = 10;
 	//	g_RankingList[ MAX_RANKING - 1 ].name[ 0 ] = 17;
 
-		//	ƒ‰ƒ“ƒLƒ“ƒO‚Ìˆê”Ô‰º‚ÉƒnƒCƒXƒRƒA‚ð“ü‚ê‚é
+		//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½Ìˆï¿½Ô‰ï¿½ï¿½Éƒnï¿½Cï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		g_RankingList[ 0 ].score = *Hiscore;
 
-		//	ƒoƒuƒ‹ƒ\[ƒg
+		//	ï¿½oï¿½uï¿½ï¿½ï¿½\ï¿½[ï¿½g
 		BubbleSort();
 	}	//	end of if
 
-	//	ƒZ[ƒu
+	//	ï¿½Zï¿½[ï¿½u
 	Save();
 		
 
 	g_RankingFadeColor = D3DXCOLOR( 1.0f , 1.0f , 1.0f , 1.0f );
 
-	//	’¸“_‚Ìì¬
+	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 	MakeVertexRanking( pDevice );
 
-	//	‰¹ŠyÄ¶
+	//	ï¿½ï¿½ï¿½yï¿½Äï¿½
 	PlaySound( SOUND_LABEL_BGM_RESULT );
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitRanking( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ‰ƒ“ƒLƒ“ƒO‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitRanking( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitRanking( void )
 {
 
-	if(g_pVtxBufferRanking != NULL)	//	’¸“_ƒoƒbƒtƒ@‚ÌŠJ•ú
+	if(g_pVtxBufferRanking != NULL)	//	ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌŠJï¿½ï¿½
 	{
 		g_pVtxBufferRanking -> Release();
 		g_pVtxBufferRanking = NULL;
 	}	//	end of if
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO”Žš
-	if( g_pTextureRanking != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
+	if( g_pTextureRanking != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureRanking -> Release();
 		g_pTextureRanking = NULL;
 	}	//	end of if
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO”wŒi
-	if( g_pTextureRankingBg != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½wï¿½i
+	if( g_pTextureRankingBg != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureRankingBg -> Release();
 		g_pTextureRankingBg = NULL;
 	}	//	end of if
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO•¶Žš
-	if( g_pTextureRankingAscii != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
+	if( g_pTextureRankingAscii != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureRankingAscii -> Release();
 		g_pTextureRankingAscii = NULL;
 	}	//	end of if
 
-	//	‡ˆÊ
-	if( g_pTextureRankingRank != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½ï¿½ï¿½ï¿½
+	if( g_pTextureRankingRank != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureRankingRank -> Release();
 		g_pTextureRankingRank = NULL;
 	}	//	end of if
 
-	//	ƒ{ƒ^ƒ“
-	if( g_pTextureRankingButtom != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	//	ï¿½{ï¿½^ï¿½ï¿½
+	if( g_pTextureRankingButtom != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTextureRankingButtom -> Release();
 		g_pTextureRankingButtom = NULL;
 	}	//	end of if
 
-	UninitScore();	//	ƒXƒRƒA‚ÌI—¹
+	UninitScore();	//	ï¿½Xï¿½Rï¿½Aï¿½ÌIï¿½ï¿½
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdateRanking( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ‰ƒ“ƒLƒ“ƒO‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdateRanking( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdateRanking( void )
 {
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	//	ƒQ[ƒ€ƒpƒbƒhƒfƒoƒCƒXŽæ“¾
+	//	ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½æ“¾
 	LPDIRECTINPUTDEVICE8 *GamePad = GetGamePad( 0 );
 
-	//	ƒtƒF[ƒh’†‚©‚Ç‚¤‚©
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
 	bool *FadeUse = GetFadeUse();
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferRanking -> Lock ( 0 , 0 , ( void** )&pVtx , 0 );
 
-	//	‡ˆÊ‚ÌƒeƒNƒXƒ`ƒƒ‚ÆF‚ð•ÏX
+	//	ï¿½ï¿½ï¿½Ê‚Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÆFï¿½ï¿½ÏX
 	RankTex( pVtx );
 
-	//	ƒ{ƒ^ƒ“‚ÌƒtƒF[ƒh
+	//	ï¿½{ï¿½^ï¿½ï¿½ï¿½Ìƒtï¿½Fï¿½[ï¿½h
 	RankingButtomFade( pVtx );
 
 	g_pVtxBufferRanking -> Unlock();
@@ -291,15 +289,15 @@ void UpdateRanking( void )
 		{
 			if( GamePad[ CntPad ] == NULL )
 			{
-				//	‰æ–Ê‘JˆÚ
+				//	ï¿½ï¿½Ê‘Jï¿½ï¿½
 				if( GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE) )
 				{
 					SetFade(FADE_OUT , MODE_TITLE);
 
-					//	SEÄ¶
+					//	SEï¿½Äï¿½
 					PlaySound( SOUND_LABEL_SE_ENTER );
 
-					//	‰¹Šy’âŽ~
+					//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 					StopSound( SOUND_LABEL_BGM_RESULT );
 				}	//	end of if
 			}
@@ -309,10 +307,10 @@ void UpdateRanking( void )
 				{
 					SetFade(FADE_OUT , MODE_TITLE);
 
-					//	SEÄ¶
+					//	SEï¿½Äï¿½
 					PlaySound( SOUND_LABEL_SE_ENTER );
 
-					//	‰¹Šy’âŽ~
+					//	ï¿½ï¿½ï¿½yï¿½ï¿½~
 					StopSound( SOUND_LABEL_BGM_RESULT );
 				}
 			}
@@ -320,10 +318,10 @@ void UpdateRanking( void )
 	}
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawRanking( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ‰ƒ“ƒLƒ“ƒO‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawRanking( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawRanking( void )
 {
@@ -331,202 +329,202 @@ void DrawRanking( void )
 
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ÌÝ’ï¿½
 	pDevice -> SetFVF( FVF_VERTEX_2D );
 
-	//	ƒXƒgƒŠ[ƒ€‚ðÝ’è‚·‚é
+	//	ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½Ý’è‚·ï¿½ï¿½
 	pDevice -> SetStreamSource( 0 , g_pVtxBufferRanking , 0 , sizeof( VERTEX_2D ) );
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO”wŒi
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½wï¿½i
 
-	//	ƒeƒNƒXƒ`ƒƒÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ý’ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureRankingBg );
 
-	//	ƒtƒF[ƒh‚Ì•`‰æ
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 0 , NUM_POLYGON);
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO•¶Žš
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
 
-	//	ƒeƒNƒXƒ`ƒƒÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ý’ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureRankingAscii );
 
-	//	ƒtƒF[ƒh‚Ì•`‰æ
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 4 , NUM_POLYGON);
 
-	//	‡ˆÊ
-	//	ƒeƒNƒXƒ`ƒƒÝ’è
+	//	ï¿½ï¿½ï¿½ï¿½
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ý’ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureRankingRank );
 
 	for( Cnt = 0 ; Cnt < MAX_RANKING ; Cnt++ )
 	{
-		//	ƒtƒF[ƒh‚Ì•`‰æ
+		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì•`ï¿½ï¿½
 		pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , ( Cnt + TEXTURE ) * NUM_VERTEX , NUM_POLYGON);
 	}	//	end of for
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO”Žš
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
 
-	//	ƒeƒNƒXƒ`ƒƒÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ý’ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureRanking );
 
 	for( Cnt = 0 ; Cnt < MAX_RANKING * ( SCORE_DIGIT - 1 ) ; Cnt++ )
 	{
-		//	ƒtƒF[ƒh‚Ì•`‰æ
+		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì•`ï¿½ï¿½
 		pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , ( Cnt + TEXTURE + MAX_RANKING ) * NUM_VERTEX , NUM_POLYGON);
 	}	//	end of for
 
-	//	ƒ{ƒ^ƒ“
+	//	ï¿½{ï¿½^ï¿½ï¿½
 
-	//	ƒeƒNƒXƒ`ƒƒÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Ý’ï¿½
 	pDevice -> SetTexture( 0 , g_pTextureRankingButtom );
 
-	//	ƒtƒF[ƒh‚Ì•`‰æ
+	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 8 , NUM_POLYGON);
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT MakeVertexRanking( LPDIRECT3DDEVICE9 pDevice )
- ˆø”:		LPDIRECT3DDEVICE9 pDevice
- –ß‚è’l:	‚È‚µ
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT MakeVertexRanking( LPDIRECT3DDEVICE9 pDevice )
+ ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 pDevice
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 HRESULT MakeVertexRanking( LPDIRECT3DDEVICE9 pDevice )
 {
 	int Cnt1 , Cnt2;
-	int num;	//	”Žš‚ð•\Ž¦‚·‚é•Ï”
+	int num;	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïï¿½
 	int value;
 	
-	// FAILEDƒ}ƒNƒ‚ÅƒGƒ‰[ƒ`ƒFƒbƒN
+	// FAILEDï¿½}ï¿½Nï¿½ï¿½ï¿½ÅƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if ( FAILED ( pDevice -> CreateVertexBuffer ( sizeof ( VERTEX_2D ) * NUM_VERTEX * ( ( SCORE_DIGIT * MAX_RANKING ) + TEXTURE + MAX_RANKING ) , D3DUSAGE_WRITEONLY , FVF_VERTEX_2D , D3DPOOL_MANAGED , &g_pVtxBufferRanking , NULL ) ) )
 	{
 		return E_FAIL;
 	}
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferRanking -> Lock ( 0 , 0 ,( void** )&pVtx ,0 );
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO”wŒi
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½wï¿½i
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( 0.0f                , 0.0f                 , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( 0.0f + SCREEN_WIDTH , 0.0f                 , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( 0.0f                , 0.0f + SCREEN_HEIGHT , 0.0f );
 	pVtx[ 3 ].pos = D3DXVECTOR3( 0.0f + SCREEN_WIDTH , 0.0f + SCREEN_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].rhw = 1.0f;
 	pVtx[ 1 ].rhw = 1.0f;
 	pVtx[ 2 ].rhw = 1.0f;
 	pVtx[ 3 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 3 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 	pVtx += 4;
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO•¶Žš
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( RANKING_ASCII_X                       , RANKING_ASCII_Y                 , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( RANKING_ASCII_X + RANKING_ASCII_WIDTH , RANKING_ASCII_Y                 , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( RANKING_ASCII_X                       , RANKING_ASCII_Y + RANKING_ASCII_HEIGHT , 0.0f );
 	pVtx[ 3 ].pos = D3DXVECTOR3( RANKING_ASCII_X + RANKING_ASCII_WIDTH , RANKING_ASCII_Y + RANKING_ASCII_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].rhw = 1.0f;
 	pVtx[ 1 ].rhw = 1.0f;
 	pVtx[ 2 ].rhw = 1.0f;
 	pVtx[ 3 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 3 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 	pVtx += 4;
 
-	//	ƒ{ƒ^ƒ“
+	//	ï¿½{ï¿½^ï¿½ï¿½
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( RESULT_PUSH_POS_X                         , ( RESULT_PUSH_POS_Y + 28.0f ) , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( RESULT_PUSH_POS_X + RESULT_PUSH_POS_WIDTH , ( RESULT_PUSH_POS_Y + 28.0f ) , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( RESULT_PUSH_POS_X                         , ( RESULT_PUSH_POS_Y + 28.0f ) + RESULT_PUSH_POS_HEIGHT - 20.0f , 0.0f );
 	pVtx[ 3 ].pos = D3DXVECTOR3( RESULT_PUSH_POS_X + RESULT_PUSH_POS_WIDTH , ( RESULT_PUSH_POS_Y + 28.0f ) + RESULT_PUSH_POS_HEIGHT - 20.0f , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].rhw = 1.0f;
 	pVtx[ 1 ].rhw = 1.0f;
 	pVtx[ 2 ].rhw = 1.0f;
 	pVtx[ 3 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
 	pVtx[ 3 ].tex = D3DXVECTOR2( 1 , 1 );
 
-	//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+	//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 	pVtx += 4;
 
-	//	‡ˆÊ
+	//	ï¿½ï¿½ï¿½ï¿½
 	for( Cnt1 = 0 ; Cnt1 < MAX_RANKING ; Cnt1++ )
 	{
-			//	’¸“_À•W‚ÌÝ’è
+			//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 			pVtx[ 0 ].pos = D3DXVECTOR3( RANKING_RANK_X                      , ( RANKING_RANK_Y - 20.0f )                       - ( Cnt1 * RANKING_RANK_HEIGHT ) , 0.0f );
 			pVtx[ 1 ].pos = D3DXVECTOR3( RANKING_RANK_X + RANKING_RANK_WIDTH , ( RANKING_RANK_Y - 20.0f )                       - ( Cnt1 * RANKING_RANK_HEIGHT ) , 0.0f );
 			pVtx[ 2 ].pos = D3DXVECTOR3( RANKING_RANK_X                      , ( RANKING_RANK_Y - 20.0f ) + RANKING_RANK_HEIGHT - ( Cnt1 * RANKING_RANK_HEIGHT ) , 0.0f );
 			pVtx[ 3 ].pos = D3DXVECTOR3( RANKING_RANK_X + RANKING_RANK_WIDTH , ( RANKING_RANK_Y - 20.0f ) + RANKING_RANK_HEIGHT - ( Cnt1 * RANKING_RANK_HEIGHT ) , 0.0f );
 
-			//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+			//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 			pVtx[ 0 ].rhw = 1.0f;
 			pVtx[ 1 ].rhw = 1.0f;
 			pVtx[ 2 ].rhw = 1.0f;
 			pVtx[ 3 ].rhw = 1.0f;
 
-			//	’¸“_F‚ÌÝ’è
+			//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 			pVtx[ 0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 			pVtx[ 1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 			pVtx[ 2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 			pVtx[ 3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-			//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+			//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 			pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 			pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 			pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
 			pVtx[ 3 ].tex = D3DXVECTOR2( 1 , 1 );
 
-			//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+			//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 			pVtx += 4;
 
 	}	//	end of for
 
-	//	ƒ‰ƒ“ƒLƒ“ƒO”Žš
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
 	for( Cnt1 = 0 ; Cnt1 < MAX_RANKING ; Cnt1++ )
 	{
 		value = g_RankingList[ Cnt1 ].score;
@@ -536,31 +534,31 @@ HRESULT MakeVertexRanking( LPDIRECT3DDEVICE9 pDevice )
 			num = value % 10;
 			value /= 10;
 
-			//	’¸“_À•W‚ÌÝ’è
+			//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 			pVtx[ 0 ].pos = D3DXVECTOR3( RANKING_X                 - ( Cnt2 * RANKING_WIDTH ) , RANKING_Y                  - ( Cnt1 * ( RANKING_HEIGHT * 2 ) ) , 0.0f );
 			pVtx[ 1 ].pos = D3DXVECTOR3( RANKING_X + RANKING_WIDTH - ( Cnt2 * RANKING_WIDTH ) , RANKING_Y                  - ( Cnt1 * ( RANKING_HEIGHT * 2 ) ) , 0.0f );
 			pVtx[ 2 ].pos = D3DXVECTOR3( RANKING_X                 - ( Cnt2 * RANKING_WIDTH ) , RANKING_Y + RANKING_HEIGHT - ( Cnt1 * ( RANKING_HEIGHT * 2 ) ) , 0.0f );
 			pVtx[ 3 ].pos = D3DXVECTOR3( RANKING_X + RANKING_WIDTH - ( Cnt2 * RANKING_WIDTH ) , RANKING_Y + RANKING_HEIGHT - ( Cnt1 * ( RANKING_HEIGHT * 2 ) ) , 0.0f );
 
-			//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+			//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 			pVtx[ 0 ].rhw = 1.0f;
 			pVtx[ 1 ].rhw = 1.0f;
 			pVtx[ 2 ].rhw = 1.0f;
 			pVtx[ 3 ].rhw = 1.0f;
 
-			//	’¸“_F‚ÌÝ’è
+			//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 			pVtx[ 0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 			pVtx[ 1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 			pVtx[ 2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 			pVtx[ 3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-			//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+			//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 			pVtx[ 0 ].tex = D3DXVECTOR2( 0.1f * num        , 0 );
 			pVtx[ 1 ].tex = D3DXVECTOR2( 0.1f * num + 0.1f , 0 );
 			pVtx[ 2 ].tex = D3DXVECTOR2( 0.1f * num        , 1 );
 			pVtx[ 3 ].tex = D3DXVECTOR2( 0.1f * num + 0.1f , 1 );
 
-			//	ƒ|ƒCƒ“ƒ^‚ð‚¸‚ç‚·
+			//	ï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 			pVtx += 4;
 		}	//	end of for
 
@@ -571,17 +569,17 @@ HRESULT MakeVertexRanking( LPDIRECT3DDEVICE9 pDevice )
 	return S_OK;
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void RankingButtomFade( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ{ƒ^ƒ“‚ÌƒtƒF[ƒh
+ ï¿½Öï¿½ï¿½ï¿½:	void RankingButtomFade( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½{ï¿½^ï¿½ï¿½ï¿½Ìƒtï¿½Fï¿½[ï¿½h
 -----------------------------------------------------------------------------*/
 void RankingButtomFade( VERTEX_2D* pVtx )
 {
-	if( g_RankingFade == FADE_IN )	//	ƒtƒF[ƒhƒCƒ“Žž‚Ìˆ—
+	if( g_RankingFade == FADE_IN )	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	{
-		g_RankingFadeColor.a -= FADE_RATE;	//	a’l‚ðŒ¸ŽZ‚µ‚ÄŒã‚ë‚Ì‰æ–Ê‚ð•‚‚©‚Ñã‚ª‚ç‚¹‚é
-		//	ƒtƒF[ƒhƒCƒ“‚ÌI—¹
+		g_RankingFadeColor.a -= FADE_RATE;	//	aï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ÄŒï¿½ï¿½Ì‰ï¿½Ê‚ð•‚‚ï¿½ï¿½Ñã‚ªï¿½ç‚¹ï¿½ï¿½
+		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½ÌIï¿½ï¿½
 		if( g_RankingFadeColor.a < 0.0f )
 		{
 			g_RankingFadeColor.a = 0.0f;
@@ -589,171 +587,171 @@ void RankingButtomFade( VERTEX_2D* pVtx )
 		}	//	end od if
 	}	//	end of if
 
-	else if( g_RankingFade == FADE_OUT )	//	ƒtƒF[ƒhƒAƒEƒgŽž‚Ìˆ—
+	else if( g_RankingFade == FADE_OUT )	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	{
-		g_RankingFadeColor.a += FADE_RATE;	//	a’l‚ð‰ÁŽZ‚µ‚ÄŒã‚ë‚Ì‰æ–Ê‚ðÁ‚µ‚Ä‚¢‚­
-		//	ƒtƒF[ƒhƒAƒEƒg‚ÌI—¹
+		g_RankingFadeColor.a += FADE_RATE;	//	aï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ÄŒï¿½ï¿½Ì‰ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
+		//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ÌIï¿½ï¿½
 		if( g_RankingFadeColor.a > 1.0f )
 		{
 			g_RankingFadeColor.a = 1.0f;
-			g_RankingFade = FADE_IN;	//	ƒtƒF[ƒhƒCƒ“‚Éˆ—‚ÌØ‚è‘Ö‚¦
+			g_RankingFade = FADE_IN;	//	ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ÌØ‚ï¿½Ö‚ï¿½
 		}	//	end of if
 	}	//	end of else if
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 8  ].color = D3DXCOLOR( g_RankingFadeColor.r , g_RankingFadeColor.g , g_RankingFadeColor.b , g_RankingFadeColor.a );
 	pVtx[ 9  ].color = D3DXCOLOR( g_RankingFadeColor.r , g_RankingFadeColor.g , g_RankingFadeColor.b , g_RankingFadeColor.a );
 	pVtx[ 10 ].color = D3DXCOLOR( g_RankingFadeColor.r , g_RankingFadeColor.g , g_RankingFadeColor.b , g_RankingFadeColor.a );
 	pVtx[ 11 ].color = D3DXCOLOR( g_RankingFadeColor.r , g_RankingFadeColor.g , g_RankingFadeColor.b , g_RankingFadeColor.a );
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void RankTex( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		‡ˆÊ‚ÌƒeƒNƒXƒ`ƒƒ‚ÆF‚ð•ÏX
+ ï¿½Öï¿½ï¿½ï¿½:	void RankTex( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½Ê‚Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ÆFï¿½ï¿½ÏX
 -----------------------------------------------------------------------------*/
 void RankTex( VERTEX_2D* pVtx )
 {
-	//	5ˆÊ
+	//	5ï¿½ï¿½
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 12 ].color = D3DXCOLOR( 255 , 255 , 255 , 255 );
 	pVtx[ 13 ].color = D3DXCOLOR( 255 , 255 , 255 , 255 );
 	pVtx[ 14 ].color = D3DXCOLOR( 255 , 255 , 255 , 255 );
 	pVtx[ 15 ].color = D3DXCOLOR( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 12 ].tex = D3DXVECTOR2( 0 , 0.8f );
 	pVtx[ 13 ].tex = D3DXVECTOR2( 1 , 0.8f );
 	pVtx[ 14 ].tex = D3DXVECTOR2( 0 , 1.0f );
 	pVtx[ 15 ].tex = D3DXVECTOR2( 1 , 1.0f );
 
-	//	4ˆÊ
+	//	4ï¿½ï¿½
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 17 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 18 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 19 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 16 ].tex = D3DXVECTOR2( 0 , 0.6f );
 	pVtx[ 17 ].tex = D3DXVECTOR2( 1 , 0.6f );
 	pVtx[ 18 ].tex = D3DXVECTOR2( 0 , 0.8f );
 	pVtx[ 19 ].tex = D3DXVECTOR2( 1 , 0.8f );
 
-	//	3ˆÊ
+	//	3ï¿½ï¿½
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 20 ].color = D3DCOLOR_RGBA( 196 , 112 , 34 , 255 );
 	pVtx[ 21 ].color = D3DCOLOR_RGBA( 196 , 112 , 34 , 255 );
 	pVtx[ 22 ].color = D3DCOLOR_RGBA( 196 , 112 , 34 , 255 );
 	pVtx[ 23 ].color = D3DCOLOR_RGBA( 196 , 112 , 34 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 20 ].tex = D3DXVECTOR2( 0 , 0.4f );
 	pVtx[ 21 ].tex = D3DXVECTOR2( 1 , 0.4f );
 	pVtx[ 22 ].tex = D3DXVECTOR2( 0 , 0.6f );
 	pVtx[ 23 ].tex = D3DXVECTOR2( 1 , 0.6f );
 
-	//	2ˆÊ
+	//	2ï¿½ï¿½
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 24 ].color = D3DCOLOR_RGBA( 192 , 192 , 192 , 192 );
 	pVtx[ 25 ].color = D3DCOLOR_RGBA( 192 , 192 , 192 , 192 );
 	pVtx[ 26 ].color = D3DCOLOR_RGBA( 192 , 192 , 192 , 192 );
 	pVtx[ 27 ].color = D3DCOLOR_RGBA( 192 , 192 , 192 , 192 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 24 ].tex = D3DXVECTOR2( 0 , 0.2f );
 	pVtx[ 25 ].tex = D3DXVECTOR2( 1 , 0.2f );
 	pVtx[ 26 ].tex = D3DXVECTOR2( 0 , 0.4f );
 	pVtx[ 27 ].tex = D3DXVECTOR2( 1 , 0.4f );
 
-	//	1ˆÊ
+	//	1ï¿½ï¿½
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 28 ].color = D3DCOLOR_RGBA( 255 , 215 , 0 , 255 );
 	pVtx[ 29 ].color = D3DCOLOR_RGBA( 255 , 215 , 0 , 255 );
 	pVtx[ 30 ].color = D3DCOLOR_RGBA( 255 , 215 , 0 , 255 );
 	pVtx[ 31 ].color = D3DCOLOR_RGBA( 255 , 215 , 0 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 28 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 29 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 30 ].tex = D3DXVECTOR2( 0 , 0.2f );
 	pVtx[ 31 ].tex = D3DXVECTOR2( 1 , 0.2f );
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void Save( void )
- ˆø”:		
- –ß‚è’l:
- à–¾:		ƒZ[ƒu
+ ï¿½Öï¿½ï¿½ï¿½:	void Save( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½Zï¿½[ï¿½u
 -----------------------------------------------------------------------------*/
 void Save( void )
 {
-	FILE *fp;	//	ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
+	FILE *fp;	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^
 
-	fp = fopen( FILENAME , " wb " );	//	ƒtƒ@ƒCƒ‹‚ðŠJ‚­
+	fp = fopen( FILENAME , " wb " );	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½
 									
-	if( fp == NULL )	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	if( fp == NULL )	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	{
-		MessageBox( NULL , "ƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
-//	ƒeƒLƒXƒgƒf[ƒ^‚ÅƒZ[ƒu‚³‚¹‚é
+//	ï¿½eï¿½Lï¿½Xï¿½gï¿½fï¿½[ï¿½^ï¿½ÅƒZï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #ifdef ENABLE_PEOC_SAVE
-	// ƒf[ƒ^‚ðƒZ[ƒu‚³‚¹‚é
+	// ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½Zï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	for( int CntSave = 0 ; CntSave < MAX_RANKING ; CntSave++ )
 	{
 		fprintf( fp , "%d" , g_RankingList[ CntSave ].score );
 	}	//	end of for
-#else	//	ƒoƒCƒiƒŠƒf[ƒ^‚ÅƒZ[ƒu‚³‚¹‚é
+#else	//	ï¿½oï¿½Cï¿½iï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½ÅƒZï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	fwrite( &g_RankingList[ 0 ] , sizeof( RANKING ) , MAX_RANKING , fp );
 
 #endif
-	fclose( fp );	//	ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚é
+	fclose( fp );	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
 
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void Load( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒ[ƒh
+ ï¿½Öï¿½ï¿½ï¿½:	void Load( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½[ï¿½h
 -----------------------------------------------------------------------------*/
 void Load( void )
 {
-	FILE *fp;	//	ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
+	FILE *fp;	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½^
 
-	fp = fopen( FILENAME , " rb " );	//	ƒtƒ@ƒCƒ‹‚ðŠJ‚­
+	fp = fopen( FILENAME , " rb " );	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½
 						
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if( fp == NULL )
 	{
-		MessageBox( NULL , "ƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}	//	end of if
 
-//	ƒeƒLƒXƒgƒf[ƒ^o—Í‚³‚¹‚é
+//	ï¿½eï¿½Lï¿½Xï¿½gï¿½fï¿½[ï¿½^ï¿½oï¿½Í‚ï¿½ï¿½ï¿½ï¿½ï¿½
 #ifdef ENABLE_PEOC_SAVE
-	// ƒf[ƒ^‚ðl”•ªƒ[ƒh‚³‚¹‚é 
+	// ï¿½fï¿½[ï¿½^ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	for( int CntLoad = 0 ; CntLoad < MAX_RANKING ; CntLoad++ )
 	{
 		fscanf( fp , "%d" , &g_RankingList[ CntLoad ].score );
 	}	//	end of func
-#else	//	ƒoƒCƒiƒŠƒf[ƒ^o—Í‚³‚¹‚é
+#else	//	ï¿½oï¿½Cï¿½iï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½oï¿½Í‚ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	fread( &g_RankingList[ 0 ] , sizeof( RANKING ) , MAX_RANKING , fp );
 
 #endif
 		
-	fclose( fp );	//	ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚é
+	fclose( fp );	//	ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void BubbleSort( void )
- ˆø”:		
- –ß‚è’l:	
- à–¾:		ƒoƒuƒ‹ƒ\[ƒg
+ ï¿½Öï¿½ï¿½ï¿½:	void BubbleSort( void )
+ ï¿½ï¿½ï¿½ï¿½:		
+ ï¿½ß‚ï¿½l:	
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½oï¿½uï¿½ï¿½ï¿½\ï¿½[ï¿½g
 -----------------------------------------------------------------------------*/
 void BubbleSort( void )
 {
@@ -766,7 +764,7 @@ void BubbleSort( void )
 		{
 			if( g_RankingList[ Cnt2 ].score < g_RankingList[ Cnt2 - 1 ].score )
 			{
-				//	“ü‚ê‘Ö‚¦ˆ—
+				//	ï¿½ï¿½ï¿½ï¿½Ö‚ï¿½ï¿½ï¿½ï¿½ï¿½
 				MaxScore = g_RankingList[ Cnt2 ].score;
 
 				g_RankingList[ Cnt2 ].score = g_RankingList[ Cnt2 - 1 ].score;

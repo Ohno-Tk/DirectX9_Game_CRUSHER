@@ -1,24 +1,22 @@
 /*=============================================================================
 
-		ŒvZˆ—[ usability.h ]
+		ï¿½vï¿½Zï¿½ï¿½ï¿½ï¿½[ usability.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/08/02
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/08/02
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				bool RectangleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float bPosX , float bPosY , float bWidth , float bHeight );	//	‹éŒ`‚Ì“–‚½‚è”»’è
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				bool RectangleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float bPosX , float bPosY , float bWidth , float bHeight );	//	ï¿½ï¿½`ï¿½Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #ifndef _USABILITY_H_
 #define _USABILITY_H_
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-bool RectangleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float bPosX , float bPosY , float bWidth , float bHeight );	//	‹éŒ`‚Ì“–‚½‚è”»’è
-bool CircleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float aArea , float bPosX , float bPosY , float bWidth , float bHeight , float bArea );	//	‰~‚Ì“–‚½‚è”»’è
+bool RectangleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float bPosX , float bPosY , float bWidth , float bHeight );	//	ï¿½ï¿½`ï¿½Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
+bool CircleDecision( float aPosX , float aPosY , float aWidth , float aHeight , float aArea , float bPosX , float bPosY , float bWidth , float bHeight , float bArea );	//	ï¿½~ï¿½Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
 #endif

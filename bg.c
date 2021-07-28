@@ -1,175 +1,173 @@
 /*=============================================================================
 
-		”wŒi•`‰æ[ bg.cpp ]
+		ï¿½wï¿½iï¿½`ï¿½ï¿½[ bg.cpp ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/07/28
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/07/28
-			Eƒwƒbƒ_ƒtƒ@ƒCƒ‹’Ç‰Á
+			ï¿½Eï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‰ï¿½
 				#include <stdio.h>
 				#include "main.h"
 				#include "bg.h"
-			E’è”’è‹`’Ç‰Á
+			ï¿½Eï¿½è”ï¿½ï¿½`ï¿½Ç‰ï¿½
 				#define BG_TEXTURENAME
-				#define BG_POS_X ( 0.0f )	//	”wŒi‚Ì•\Ž¦ˆÊ’u‚w
-				#define BG_POS_Y ( 0.0f )	//	”wŒi‚Ì•\Ž¦ˆÊ’u‚x
-			EƒOƒ[ƒoƒ‹•Ï”’Ç‰Á
-				LPDIRECT3DTEXTURE9 g_pTexturebg = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-				LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferBg = NULL;	//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				HRESULT MakeVertexBg( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
+				#define BG_POS_X ( 0.0f )	//	ï¿½wï¿½iï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½w
+				#define BG_POS_Y ( 0.0f )	//	ï¿½wï¿½iï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½x
+			ï¿½Eï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½ï¿½Ç‰ï¿½
+				LPDIRECT3DTEXTURE9 g_pTexturebg = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+				LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferBg = NULL;	//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				HRESULT MakeVertexBg( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 =============================================================================*/
 /*-----------------------------------------------------------------------------
-	ƒwƒbƒ_ƒtƒ@ƒCƒ‹
+	ï¿½wï¿½bï¿½_ï¿½tï¿½@ï¿½Cï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "main.h"
 #include "bg.h"
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
 #define BG_TEXTURENAME "data/TEXTURE/func/bg.jpg"
 
-#define BG_POS_X ( 0.0f )	//	”wŒi‚Ì•\Ž¦ˆÊ’u‚w
-#define BG_POS_Y ( 0.0f )	//	”wŒi‚Ì•\Ž¦ˆÊ’u‚x
+#define BG_POS_X ( 0.0f )	//	ï¿½wï¿½iï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½w
+#define BG_POS_Y ( 0.0f )	//	ï¿½wï¿½iï¿½Ì•\ï¿½ï¿½ï¿½Ê’uï¿½x
 /*-----------------------------------------------------------------------------
-	ƒOƒ[ƒoƒ‹•Ï”
+	ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
 -----------------------------------------------------------------------------*/
-LPDIRECT3DTEXTURE9 g_pTexturebg = NULL;//	ƒeƒNƒXƒ`ƒƒƒCƒ“ƒ^[ƒtƒF[ƒX
-LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferBg = NULL;	//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^
+LPDIRECT3DTEXTURE9 g_pTexturebg = NULL;//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
+LPDIRECT3DVERTEXBUFFER9 g_pVtxBufferBg = NULL;	//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^
 
 float g_BgTex = 0.0f;
 float g_Vset = 0.0f;
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-HRESULT MakeVertexBg( LPDIRECT3DDEVICE9 pDevice );	//	’¸“_‚Ìì¬
-void MakeBgTex( VERTEX_2D* pVtx );	//	”wŒi‚ÌƒeƒNƒXƒ`ƒƒÀ•W•ÏX
+HRESULT MakeVertexBg( LPDIRECT3DDEVICE9 pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
+void MakeBgTex( VERTEX_2D* pVtx );	//	ï¿½wï¿½iï¿½Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÏX
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	HRESULT InitBg( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ|ƒŠƒSƒ“‚Ì‰Šú‰»
+ ï¿½Öï¿½ï¿½ï¿½:	HRESULT InitBg( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void InitBg( void )
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	ƒGƒ‰[ƒ`ƒFƒbƒN	‚P‚Â–Ú
+	//	ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N	ï¿½Pï¿½Â–ï¿½
 	if( FAILED( D3DXCreateTextureFromFile(  pDevice , BG_TEXTURENAME , &g_pTexturebg  ) ) )
 	{
-		MessageBox( NULL , "”wŒi‚Ì“Ç‚Ýž‚Ý‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" , "Œx" , MB_OK | MB_ICONHAND );
+		MessageBox( NULL , "ï¿½wï¿½iï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ï¿½ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½" , "ï¿½xï¿½ï¿½" , MB_OK | MB_ICONHAND );
 	}
-	MakeVertexBg( pDevice );	//	’¸“_‚Ìì¬
+	MakeVertexBg( pDevice );	//	ï¿½ï¿½ï¿½_ï¿½Ìì¬
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UninitBg( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ|ƒŠƒSƒ“‚ÌI—¹
+ ï¿½Öï¿½ï¿½ï¿½:	void UninitBg( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½ÌIï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void UninitBg( void )
 {
-	//	‰Šú‰»
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	g_BgTex = 0.0f;
 	g_Vset = 0.0f;
 
 
-	if( g_pTexturebg != NULL )	//	ƒeƒNƒXƒ`ƒƒƒ|ƒŠƒSƒ“ŠJ•ú
+	if( g_pTexturebg != NULL )	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Jï¿½ï¿½
 	{
 		g_pTexturebg -> Release();
 		g_pTexturebg = NULL;
 	}	//	end of if
-	if(g_pVtxBufferBg != NULL)	//’¸“_ƒoƒbƒtƒ@‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒ|ƒCƒ“ƒ^‚Ì‰ð•ú
+	if(g_pVtxBufferBg != NULL)	//ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½|ï¿½Cï¿½ï¿½ï¿½^ï¿½Ì‰ï¿½ï¿½
 	{
 		g_pVtxBufferBg -> Release();
 		g_pVtxBufferBg  = NULL;
 	}	//	end of if
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void UpdataBg( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ|ƒŠƒSƒ“‚ÌXV
+ ï¿½Öï¿½ï¿½ï¿½:	void UpdataBg( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½ÌXï¿½V
 -----------------------------------------------------------------------------*/
 void UpdateBg( void )
 {
 	VERTEX_2D* pVtx;
 
-	//ƒoƒbƒtƒ@‚ðƒƒbƒN‚µ‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾‚·‚é
+	//ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	g_pVtxBufferBg -> Lock( 0 , 0 ,	( void** )&pVtx , 0 );
 
 	MakeBgTex( pVtx );
 
-	g_pVtxBufferBg -> Unlock(); //‚±‚êˆÈ~G‚ê‚Ä‚Í‚¢‚¯‚È‚¢
+	g_pVtxBufferBg -> Unlock(); //ï¿½ï¿½ï¿½ï¿½È~ï¿½Gï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void DrawBg( void )
- ˆø”:		‚È‚µ
- –ß‚è’l:	‚È‚µ
- à–¾:		ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+ ï¿½Öï¿½ï¿½ï¿½:	void DrawBg( void )
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½È‚ï¿½
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 void DrawBg( void )
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//	’¸“_ƒtƒH[ƒ}ƒbƒg‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ÌÝ’ï¿½
 	pDevice -> SetFVF( FVF_VERTEX_2D );
 
-	//	ƒXƒgƒŠ[ƒ€‚ðÝ’è‚·‚é
+	//	ï¿½Xï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½Ý’è‚·ï¿½ï¿½
 	pDevice -> SetStreamSource( 0 , g_pVtxBufferBg , 0 , sizeof( VERTEX_2D ) );
 
 	pDevice -> SetTexture( 0 , g_pTexturebg );
 
-	//	ƒ|ƒŠƒSƒ“‚Ì•`‰æ
+	//	ï¿½|ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
 	pDevice -> DrawPrimitive( D3DPT_TRIANGLESTRIP , 0, NUM_POLYGON);
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void MakeVertexBg( LPDIRECT3DDEVICE9 pDevice )
- ˆø”:		LPDIRECT3DDEVICE9 pDevice
- –ß‚è’l:	‚È‚µ
- à–¾:		’¸“_‚Ìì¬
+ ï¿½Öï¿½ï¿½ï¿½:	void MakeVertexBg( LPDIRECT3DDEVICE9 pDevice )
+ ï¿½ï¿½ï¿½ï¿½:		LPDIRECT3DDEVICE9 pDevice
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½ï¿½ï¿½_ï¿½Ìì¬
 -----------------------------------------------------------------------------*/
 HRESULT MakeVertexBg( LPDIRECT3DDEVICE9 pDevice )
 {
-	// FAILEDƒ}ƒNƒ‚ÅƒGƒ‰[ƒ`ƒFƒbƒN
+	// FAILEDï¿½}ï¿½Nï¿½ï¿½ï¿½ÅƒGï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if ( FAILED ( pDevice -> CreateVertexBuffer ( sizeof ( VERTEX_2D ) * NUM_VERTEX , D3DUSAGE_WRITEONLY , FVF_VERTEX_2D , D3DPOOL_MANAGED , &g_pVtxBufferBg , NULL ) ) )
 	{
 		return E_FAIL;
 	}
 
-	// \‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^éŒ¾
+	// ï¿½\ï¿½ï¿½ï¿½Ì‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½^ï¿½éŒ¾
 	VERTEX_2D* pVtx;
 
-	// ƒoƒbƒtƒ@‚ðƒƒbƒN‚µA‰¼‘zƒAƒhƒŒƒX‚ðŽæ“¾
+	// ï¿½oï¿½bï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½zï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½æ“¾
 	g_pVtxBufferBg -> Lock ( 0 , 0 , ( void** )&pVtx , 0 );
 
 
-	//	’¸“_À•W‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].pos = D3DXVECTOR3( BG_POS_X , BG_POS_Y , 0.0f );
 	pVtx[ 1 ].pos = D3DXVECTOR3( BG_POS_X+SCREEN_WIDTH , BG_POS_Y , 0.0f );
 	pVtx[ 2 ].pos = D3DXVECTOR3( BG_POS_X , BG_POS_Y+SCREEN_HEIGHT , 0.0f );
 	pVtx[ 3 ].pos = D3DXVECTOR3( BG_POS_X+SCREEN_WIDTH , BG_POS_Y+SCREEN_HEIGHT , 0.0f );
 
-	//	À•W•ÏŠ·Ï‚Ý’¸“_ƒtƒ‰ƒO‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½ï¿½Ï‚Ý’ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½Oï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].rhw = 1.0f;
 	pVtx[ 1 ].rhw = 1.0f;
 	pVtx[ 2 ].rhw = 1.0f;
 	pVtx[ 3 ].rhw = 1.0f;
 
-	//	’¸“_F‚ÌÝ’è
+	//	ï¿½ï¿½ï¿½_ï¿½Fï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 1 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 2 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 	pVtx[ 3 ].color = D3DCOLOR_RGBA( 255 , 255 , 255 , 255 );
 
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 , 0 );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 1 , 0 );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 , 1 );
@@ -180,34 +178,34 @@ HRESULT MakeVertexBg( LPDIRECT3DDEVICE9 pDevice )
 	return S_OK;
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	void MakeBgTex( VERTEX_2D* pVtx )
- ˆø”:		VERTEX_2D* pVtx
- –ß‚è’l:	‚È‚µ
- à–¾:		”wŒi‚ÌƒeƒNƒXƒ`ƒƒÀ•W•ÏX
+ ï¿½Öï¿½ï¿½ï¿½:	void MakeBgTex( VERTEX_2D* pVtx )
+ ï¿½ï¿½ï¿½ï¿½:		VERTEX_2D* pVtx
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½wï¿½iï¿½Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÏX
 -----------------------------------------------------------------------------*/
 void MakeBgTex( VERTEX_2D* pVtx )
 {
-	//	ƒeƒNƒXƒ`ƒƒÀ•W‚ÌÝ’è
+	//	ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ÌÝ’ï¿½
 	pVtx[ 0 ].tex = D3DXVECTOR2( 0 + g_BgTex , 0 + g_Vset );
 	pVtx[ 1 ].tex = D3DXVECTOR2( 0.01f + g_BgTex , 0 + g_Vset );
 	pVtx[ 2 ].tex = D3DXVECTOR2( 0 + g_BgTex , 0.1f + g_Vset );
 	pVtx[ 3 ].tex = D3DXVECTOR2( 0.01f + g_BgTex , 0.1f + g_Vset );
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	float *GetBgTex(void)
- ˆø”:		return &g_BgTex;
- –ß‚è’l:	‚È‚µ
- à–¾:		”wŒi‚ÌƒeƒNƒXƒ`ƒƒUÀ•WŽæ“¾
+ ï¿½Öï¿½ï¿½ï¿½:	float *GetBgTex(void)
+ ï¿½ï¿½ï¿½ï¿½:		return &g_BgTex;
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½wï¿½iï¿½Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½Uï¿½ï¿½ï¿½Wï¿½æ“¾
 -----------------------------------------------------------------------------*/
 float *GetBgTex(void)
 {
 	return &g_BgTex;
 }	//	end of func
 /*-----------------------------------------------------------------------------
- ŠÖ”–¼:	float *GetVTex( void )
- ˆø”:		return &g_Vset;
- –ß‚è’l:	‚È‚µ
- à–¾:		”wŒi‚ÌƒeƒNƒXƒ`ƒƒVÀ•WŽæ“¾
+ ï¿½Öï¿½ï¿½ï¿½:	float *GetVTex( void )
+ ï¿½ï¿½ï¿½ï¿½:		return &g_Vset;
+ ï¿½ß‚ï¿½l:	ï¿½È‚ï¿½
+ ï¿½ï¿½ï¿½ï¿½:		ï¿½wï¿½iï¿½Ìƒeï¿½Nï¿½Xï¿½`ï¿½ï¿½Vï¿½ï¿½ï¿½Wï¿½æ“¾
 -----------------------------------------------------------------------------*/
 float *GetVTex( void )
 {

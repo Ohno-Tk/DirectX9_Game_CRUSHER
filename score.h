@@ -1,42 +1,40 @@
 /*=============================================================================
 
-		ƒXƒRƒA[ score.h ]
+		ï¿½Xï¿½Rï¿½A[ score.h ]
 
 -------------------------------------------------------------------------------
-	¡@»ìŽÒ
-		‘å–ì‘ñ–ç
 
-	¡@ì¬“ú
+	ï¿½ï¿½ï¿½@ï¿½ì¬ï¿½ï¿½
 		2016/08/02
 -------------------------------------------------------------------------------
-	¡@Update
+	ï¿½ï¿½ï¿½@Update
 		2016/08/02
-			Eƒvƒƒgƒ^ƒCƒvéŒ¾’Ç‰Á
-				void InitScore( void );	//	ƒXƒRƒA‚Ì‰Šú‰»
-				void UninitScore( void );	//	ƒXƒRƒA‚ÌI—¹
-				void UpdateScore( void );	//	ƒXƒRƒA‚ÌXV
-				void DrawScore( void );	//	ƒXƒRƒA‚Ì•`‰æ
-				int *GetScore(void);	//	ƒXƒRƒA‚Ìî•ñ
+			ï¿½Eï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾ï¿½Ç‰ï¿½
+				void InitScore( void );	//	ï¿½Xï¿½Rï¿½Aï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+				void UninitScore( void );	//	ï¿½Xï¿½Rï¿½Aï¿½ÌIï¿½ï¿½
+				void UpdateScore( void );	//	ï¿½Xï¿½Rï¿½Aï¿½ÌXï¿½V
+				void DrawScore( void );	//	ï¿½Xï¿½Rï¿½Aï¿½Ì•`ï¿½ï¿½
+				int *GetScore(void);	//	ï¿½Xï¿½Rï¿½Aï¿½Ìï¿½ï¿½
 		2016/09/15
-			E’è”’è‹`’Ç‰Á
-				#define SCORE_DIGIT	//	‰½Œ…‚Ì”Žš‚Ì•\Ž¦
+			ï¿½Eï¿½è”ï¿½ï¿½`ï¿½Ç‰ï¿½
+				#define SCORE_DIGIT	//	ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½Ì•\ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 #ifndef _SCORE_H_
 #define _SCORE_H_
 /*-----------------------------------------------------------------------------
-	’è”’è‹`
+	ï¿½è”ï¿½ï¿½`
 -----------------------------------------------------------------------------*/
-#define SCORE_DIGIT ( 6 )	//	‰½Œ…‚Ì”Žš‚Ì•\Ž¦
+#define SCORE_DIGIT ( 6 )	//	ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½Ì•\ï¿½ï¿½
 /*-----------------------------------------------------------------------------
-	\‘¢‘Ì
+	ï¿½\ï¿½ï¿½ï¿½ï¿½
 -----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
-	ƒvƒƒgƒ^ƒCƒvéŒ¾
+	ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
 -----------------------------------------------------------------------------*/
-void InitScore( void );	//	ƒXƒRƒA‚Ì‰Šú‰»
-void UninitScore( void );	//	ƒXƒRƒA‚ÌI—¹
-void UpdateScore( void );	//	ƒXƒRƒA‚ÌXV
-void DrawScore( void );	//	ƒXƒRƒA‚Ì•`‰æ
-int *GetScore(void);	//	ƒXƒRƒA‚Ìî•ñ
-bool *GetScoreFlag( void );	//	ƒXƒRƒAƒtƒ‰ƒO‚Ìî•ñ
+void InitScore( void );	//	ï¿½Xï¿½Rï¿½Aï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+void UninitScore( void );	//	ï¿½Xï¿½Rï¿½Aï¿½ÌIï¿½ï¿½
+void UpdateScore( void );	//	ï¿½Xï¿½Rï¿½Aï¿½ÌXï¿½V
+void DrawScore( void );	//	ï¿½Xï¿½Rï¿½Aï¿½Ì•`ï¿½ï¿½
+int *GetScore(void);	//	ï¿½Xï¿½Rï¿½Aï¿½Ìï¿½ï¿½
+bool *GetScoreFlag( void );	//	ï¿½Xï¿½Rï¿½Aï¿½tï¿½ï¿½ï¿½Oï¿½Ìï¿½ï¿½
 #endif
